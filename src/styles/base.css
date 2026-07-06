@@ -1,0 +1,306 @@
+/* ============================================================
+   Base — reset, typography, layout shell, glass chrome
+   Anti-slop law: open editorial surface. No content boxes.
+   Glass ONLY on the header bar + sticky CTA.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: clip;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--royal);
+}
+
+/* --- type roles (one job each) --- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+/* --- layout --- */
+.wrap {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--content-pad);
+}
+
+.section {
+  padding-block: var(--s-12);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--s-16);
+  }
+}
+
+/* ============================================================
+   Glass header — full-width bar, condenses on scroll
+   ============================================================ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+  transition: padding var(--dur-quick) var(--ease-out);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding-block: var(--s-2);
+  transition: padding var(--dur-quick) var(--ease-out);
+}
+
+.site-header.is-condensed .wrap {
+  padding-block: var(--s-1);
+}
+
+.header-logo img {
+  height: 48px;
+  width: auto;
+  transition: height var(--dur-quick) var(--ease-out);
+}
+
+.site-header.is-condensed .header-logo img {
+  height: 36px;
+}
+
+.header-nav {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .header-nav {
+    display: flex;
+    gap: var(--s-4);
+  }
+
+  .header-nav a {
+    font-family: var(--font-label);
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--navy);
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+/* language toggle */
+.lang-toggle {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: none;
+  border: 1px solid rgba(10, 26, 58, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 10px 14px;
+  min-height: 44px;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+/* ============================================================
+   CTA buttons
+   ============================================================ */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--royal);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-quick) var(--ease-out);
+}
+
+.btn-cta:hover {
+  background: var(--sky);
+}
+
+.header-cta {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .header-cta {
+    display: inline-flex;
+  }
+}
+
+/* --- mobile sticky CTA: bottom bar in the thumb zone --- */
+.sticky-cta {
+  position: fixed;
+  z-index: 100;
+  inset: auto 0 0 0;
+  padding: var(--s-2) var(--content-pad);
+  padding-bottom: calc(var(--s-2) + env(safe-area-inset-bottom, 0px));
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--glass-edge);
+  box-shadow: 0 -8px 32px rgba(10, 26, 58, 0.12);
+}
+
+.sticky-cta .btn-cta {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .sticky-cta {
+    display: none;
+  }
+}
+
+/* keep page content clear of the fixed bars */
+main {
+  padding-top: 80px;
+}
+
+@media (max-width: 639px) {
+  body {
+    padding-bottom: 96px;
+  }
+}
+
+/* ============================================================
+   Footer — navy, white text
+   ============================================================ */
+.site-footer {
+  background: var(--navy);
+  color: var(--white);
+  padding-block: var(--s-8);
+}
+
+.site-footer a {
+  color: var(--cyan);
+}
+
+/* ============================================================
+   ⭐ Signature — specular light-shift on the glass chrome.
+   A soft light band positioned by --specular-x (driven by scroll
+   in motion.js). Gated behind no-preference: reduced motion gets
+   plain static glass.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .site-header,
+  .sticky-cta {
+    overflow: hidden;
+  }
+
+  .site-header::after,
+  .sticky-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent calc(var(--specular-x, 50%) - 14%),
+      rgba(255, 255, 255, 0.28) var(--specular-x, 50%),
+      transparent calc(var(--specular-x, 50%) + 14%)
+    );
+  }
+}
+
+/* ============================================================
+   Overlap-cover scroll — the offer slides over the sticky hero
+   with a soft shadow only (no scale/dim stacking)
+   ============================================================ */
+.hero {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+main .section {
+  position: relative;
+  z-index: 1;
+}
+
+/* solid base so the sticky hero never shows through; the wash/dark
+   modifiers in sections.css (loaded later) override this */
+.section {
+  background: var(--white);
+}
+
+#offer {
+  box-shadow: 0 -32px 64px rgba(10, 26, 58, 0.25);
+}
+
+/* ============================================================
+   Motion safety
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

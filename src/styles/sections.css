@@ -1,0 +1,552 @@
+/* ============================================================
+   Sections — open editorial surface. Whitespace, type hierarchy,
+   numbers, and hairlines separate ideas. NO content boxes.
+   ============================================================ */
+
+/* ---------- 1 · hero (the one bold moment) ---------- */
+.hero {
+  /* REPLACE: real photo of Heidy / SWFL listing —
+     background: linear-gradient(rgba(10,26,58,.55), rgba(11,11,15,.75)), url('/assets/hero.jpg') center/cover; */
+  background: linear-gradient(170deg, var(--navy) 0%, var(--ink) 100%);
+  color: var(--white);
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--s-8);
+}
+
+.hero-eyebrow {
+  color: var(--cyan);
+}
+
+.hero-title {
+  font-size: var(--text-hero);
+  max-width: 16ch;
+  margin-top: var(--s-3);
+}
+
+.hero-sub {
+  font-size: var(--text-lead);
+  max-width: 52ch;
+  margin-top: var(--s-3);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-cta {
+  margin-top: var(--s-4);
+}
+
+.hero-micro {
+  margin-top: var(--s-3);
+  font-size: var(--text-label);
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- shared section furniture ---------- */
+.section-title {
+  font-size: var(--text-title);
+  color: var(--navy);
+  max-width: 22ch;
+  margin-top: var(--s-2);
+}
+
+.section-wash {
+  /* white base under the wash — sections scroll over the sticky hero,
+     so translucent backgrounds would let the navy bleed through */
+  background-color: var(--white);
+  background-image: linear-gradient(180deg, rgba(195, 224, 229, 0.25), rgba(195, 224, 229, 0));
+}
+
+.section-dark {
+  background: linear-gradient(170deg, var(--navy) 0%, var(--ink) 100%);
+  color: var(--white);
+}
+
+.section-dark .section-title {
+  color: var(--white);
+}
+
+.eyebrow-light {
+  color: var(--cyan);
+}
+
+.pillar-num {
+  display: block;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--sky);
+}
+
+/* ---------- 2 · the offer: numbered pillars down an airy page ---------- */
+.pillars {
+  list-style: none;
+  margin-top: var(--s-8);
+}
+
+.pillar {
+  padding-block: var(--s-6);
+  border-top: var(--hairline);
+}
+
+.pillar:first-child {
+  border-top: none;
+  padding-top: var(--s-4);
+}
+
+.pillar-statement {
+  font-size: var(--text-statement);
+  color: var(--navy);
+  max-width: 24ch;
+  margin-top: var(--s-1);
+}
+
+.pillar-support {
+  max-width: 56ch;
+  margin-top: var(--s-2);
+  color: rgba(11, 11, 15, 0.75);
+}
+
+@media (min-width: 900px) {
+  .pillar {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    column-gap: var(--s-4);
+  }
+
+  .pillar-num {
+    padding-top: 10px; /* optically align with the statement's cap height */
+  }
+
+  .pillar-statement {
+    grid-column: 2;
+    margin-top: 0;
+  }
+
+  .pillar-support {
+    grid-column: 2;
+  }
+
+  .pillar-num + .pillar-statement {
+    grid-row: 1;
+  }
+}
+
+/* calculator slot — quiet text button, not a component */
+.calc-slot {
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+  border-top: var(--hairline);
+}
+
+.calc-toggle {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--royal);
+  background: none;
+  border: none;
+  padding: var(--s-1) 0;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+/* calculator panel — open surface, understated; light-ink fields on white */
+.calc-panel {
+  padding-top: var(--s-4);
+  max-width: 640px;
+}
+
+.calc-fields {
+  display: grid;
+  gap: var(--s-4);
+}
+
+@media (min-width: 640px) {
+  .calc-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.calc-field label {
+  color: rgba(11, 11, 15, 0.6);
+}
+
+.calc-field input {
+  color: var(--ink);
+  border-bottom-color: rgba(10, 26, 58, 0.3);
+}
+
+.calc-field input:focus {
+  border-bottom-color: var(--royal);
+}
+
+.calc-split {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+@media (min-width: 640px) {
+  .calc-split {
+    grid-column: 1 / -1;
+  }
+}
+
+.calc-split legend {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 15, 0.6);
+  margin-bottom: var(--s-1);
+}
+
+.calc-split label {
+  font-family: var(--font-body);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.calc-split input {
+  accent-color: var(--royal);
+  width: 18px;
+  height: 18px;
+}
+
+.calc-result {
+  margin-top: var(--s-4);
+  font-size: var(--text-lead);
+  max-width: 46ch;
+  color: var(--navy);
+}
+
+.calc-result strong {
+  font-weight: 600;
+  color: var(--royal);
+}
+
+.calc-cta {
+  display: inline-block;
+  margin-top: var(--s-3);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--royal);
+  min-height: 48px;
+}
+
+/* ---------- 3 · the edge: two large editorial statements ---------- */
+.edge-block {
+  margin-top: var(--s-8);
+  max-width: 720px;
+}
+
+.edge-statement {
+  font-size: var(--text-statement);
+  color: var(--navy);
+  max-width: 20ch;
+  margin-top: var(--s-1);
+}
+
+.edge-support {
+  margin-top: var(--s-2);
+  color: rgba(11, 11, 15, 0.75);
+}
+
+/* ---------- 4 · proof: stats + open testimonials ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  column-gap: var(--s-8);
+  row-gap: var(--s-4);
+  margin-top: var(--s-8);
+}
+
+@media (max-width: 599px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 15, 0.55);
+}
+
+.stat-value {
+  font-family: var(--font-label);
+  font-size: var(--text-stat);
+  font-weight: 700;
+  color: var(--royal);
+  line-height: 1.1;
+}
+
+.testimonials {
+  list-style: none;
+  margin-top: var(--s-8);
+}
+
+.testimonial {
+  padding-block: var(--s-6);
+  border-top: var(--hairline);
+  max-width: 760px;
+}
+
+.testimonial-quote {
+  font-size: var(--text-statement);
+  color: var(--navy);
+}
+
+.testimonial-name {
+  margin-top: var(--s-2);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 15, 0.55);
+}
+
+/* ---------- 5 · what's included: hairline definition rows ---------- */
+.included-list {
+  margin-top: var(--s-8);
+}
+
+.included-row {
+  padding-block: var(--s-4);
+  border-top: var(--hairline);
+}
+
+.included-row dt {
+  font-family: var(--font-label);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+}
+
+.included-row dd {
+  margin-top: var(--s-1);
+  max-width: 56ch;
+  color: rgba(11, 11, 15, 0.75);
+}
+
+@media (min-width: 900px) {
+  .included-row {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    column-gap: var(--s-6);
+  }
+
+  .included-row dd {
+    margin-top: 0;
+  }
+}
+
+.included-callback {
+  margin-top: var(--s-6);
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-style: italic;
+  color: var(--royal);
+}
+
+/* ---------- 6 · faq: hairline accordion ---------- */
+.faq-list {
+  margin-top: var(--s-8);
+  max-width: 760px;
+}
+
+.faq-item {
+  border-top: var(--hairline);
+}
+
+.faq-item:last-child {
+  border-bottom: var(--hairline);
+}
+
+.faq-item summary {
+  font-family: var(--font-label);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  padding-block: var(--s-3);
+  min-height: 48px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  font-family: var(--font-label);
+  font-size: 1.25rem;
+  color: var(--sky);
+  flex-shrink: 0;
+  transition: transform var(--dur-quick) var(--ease-out);
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  padding-bottom: var(--s-4);
+  max-width: 60ch;
+  color: rgba(11, 11, 15, 0.75);
+}
+
+/* ---------- 7 · final cta + form ---------- */
+.contact-sub {
+  font-size: var(--text-lead);
+  max-width: 52ch;
+  margin-top: var(--s-3);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.lead-form {
+  margin-top: var(--s-8);
+  max-width: 640px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+}
+
+@media (min-width: 640px) {
+  .lead-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-field-full,
+  .form-submit,
+  .form-micro {
+    grid-column: 1 / -1;
+  }
+}
+
+.form-field label {
+  display: block;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--s-1);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem; /* ≥16px — prevents iOS zoom-on-focus */
+  color: var(--white);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 12px 0;
+  min-height: 48px;
+  border-radius: 0;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--cyan);
+}
+
+.form-submit {
+  justify-self: start;
+  margin-top: var(--s-2);
+}
+
+.form-micro {
+  font-size: var(--text-label);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-status {
+  grid-column: 1 / -1;
+  font-size: 1rem;
+  min-height: 1.5em;
+}
+
+.form-status[data-state='success'] {
+  color: var(--cyan);
+}
+
+.form-status[data-state='error'],
+.form-status[data-state='invalid'] {
+  color: var(--white); /* palette discipline: state is carried by weight, not a new hue */
+  font-weight: 600;
+}
+
+/* ---------- footer ---------- */
+.footer-grid {
+  display: grid;
+  gap: var(--s-6);
+}
+
+@media (min-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+}
+
+.footer-logo {
+  /* full-color logo sits on navy: give it its own small light plate is a box — instead
+     use the white logo asset when supplied. REPLACE: white/knockout logo version */
+  background: var(--white);
+  padding: 8px;
+  border-radius: 4px;
+  width: 160px;
+  height: auto;
+}
+
+.footer-brand p {
+  margin-top: var(--s-2);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-info p {
+  margin-top: var(--s-1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-legal {
+  margin-top: var(--s-6);
+  padding-top: var(--s-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: var(--text-label);
+  color: rgba(255, 255, 255, 0.55);
+}
