@@ -543,6 +543,13 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+/* 48px tap targets on footer links without disturbing the text rhythm */
+.site-footer a {
+  display: inline-block;
+  padding-block: 12px;
+  margin-block: -12px;
+}
+
 .footer-legal {
   margin-top: var(--s-6);
   padding-top: var(--s-3);

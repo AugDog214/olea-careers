@@ -9,6 +9,7 @@
 - Form: stub `FORM_ENDPOINT` → n8n webhook later (🧑 HUMAN wires n8n→Lofty).
 - Layout law: open editorial (eXp-style), NO content boxes, glass on header + sticky CTA only, one bold moment (dark photo hero).
 - Bilingual: full EN/ES string swap via key→{en,es} map, session-persisted in memory.
+- Fonts fully self-hosted as woff2 (Season Serif TRIAL + Montserrat variable + League Spartan latin/latin-ext) — zero external requests, Cormorant fallback dropped.
 - Never promise leads; "situational qualified leads" only.
 
 ## OPEN

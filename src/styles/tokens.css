@@ -11,7 +11,7 @@
    the licensed files (same names) in /public/fonts. */
 @font-face {
   font-family: 'The Seasons';
-  src: url('/fonts/SeasonSerif-Regular.otf') format('opentype');
+  src: url('/fonts/SeasonSerif-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: 'The Seasons';
-  src: url('/fonts/SeasonSerif-Medium.otf') format('opentype');
+  src: url('/fonts/SeasonSerif-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -38,7 +38,7 @@
   /* --- type ---
      The Seasons is licensed; Cormorant Garamond stands in until the
      real files are supplied. One job per family — roles never blur. */
-  --font-display: 'The Seasons', 'Cormorant Garamond', Georgia, serif; /* hero + section titles only */
+  --font-display: 'The Seasons', Georgia, serif; /* hero + section titles only */
   --font-label: 'League Spartan', system-ui, sans-serif;               /* eyebrows, labels, stat numbers */
   --font-body: 'Montserrat', system-ui, sans-serif;                    /* body + UI */
 
