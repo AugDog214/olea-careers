@@ -8,6 +8,13 @@ export const strings = {
   'nav.edge': { en: 'The edge', es: 'La ventaja' },
   'nav.proof': { en: 'Proof', es: 'Resultados' },
   'nav.faq': { en: 'FAQ', es: 'Preguntas' },
+  'nav.mainsite': { en: 'MyOleaGroup.com', es: 'MyOleaGroup.com' },
+  'ms.home': { en: 'Home', es: 'Inicio' },
+  'ms.listings': { en: 'All listings', es: 'Propiedades' },
+  'ms.sell': { en: 'Sell my home', es: 'Vender mi casa' },
+  'ms.valuation': { en: 'Home valuation', es: 'Valuación de casa' },
+  'ms.about': { en: 'About us', es: 'Nosotros' },
+  'ms.reviews': { en: 'Reviews', es: 'Reseñas' },
   'cta.header': { en: 'Talk to Heidy — confidential', es: 'Habla con Heidy — confidencial' },
   'cta.sticky': { en: 'Talk to Heidy — confidential', es: 'Habla con Heidy — confidencial' },
 

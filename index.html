@@ -114,14 +114,51 @@
             <a href="#proof" data-i18n="nav.proof">Proof</a>
             <a href="#faq" data-i18n="nav.faq">FAQ</a>
           </nav>
+
+          <!-- Back to the main brand site (real myoleagroup.com pages) -->
+          <div class="site-dd" data-dd>
+            <button class="site-dd-btn" type="button" aria-expanded="false" aria-controls="site-dd-panel" data-dd-btn>
+              <span data-i18n="nav.mainsite">MyOleaGroup.com</span>
+              <span class="dd-caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="site-dd-panel" id="site-dd-panel" data-dd-panel hidden>
+              <a href="https://myoleagroup.com/" data-i18n="ms.home">Home</a>
+              <a href="https://myoleagroup.com/listing" data-i18n="ms.listings">All listings</a>
+              <a href="https://myoleagroup.com/sell" data-i18n="ms.sell">Sell my home</a>
+              <a href="https://myoleagroup.com/evaluation" data-i18n="ms.valuation">Home valuation</a>
+              <a href="https://myoleagroup.com/about" data-i18n="ms.about">About us</a>
+              <a href="https://myoleagroup.com/reviews4-1" data-i18n="ms.reviews">Reviews</a>
+            </div>
+          </div>
+
           <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Language / Idioma">
             <button type="button" class="lang-opt is-active" data-lang="en" aria-pressed="true">EN</button>
             <button type="button" class="lang-opt" data-lang="es" aria-pressed="false">ES</button>
           </div>
           <a class="btn-cta header-cta" href="#contact" data-i18n="cta.header">Talk to Heidy — confidential</a>
+
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu" data-menu-btn>
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- Mobile menu (outside header so it isn't clipped by the glass bar) -->
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Menu" data-mobile-menu hidden>
+      <a href="#offer" data-i18n="nav.offer">The offer</a>
+      <a href="#edge" data-i18n="nav.edge">The edge</a>
+      <a href="#proof" data-i18n="nav.proof">Proof</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <p class="mm-heading" data-i18n="nav.mainsite">MyOleaGroup.com</p>
+      <a href="https://myoleagroup.com/" data-i18n="ms.home">Home</a>
+      <a href="https://myoleagroup.com/listing" data-i18n="ms.listings">All listings</a>
+      <a href="https://myoleagroup.com/sell" data-i18n="ms.sell">Sell my home</a>
+      <a href="https://myoleagroup.com/evaluation" data-i18n="ms.valuation">Home valuation</a>
+      <a href="https://myoleagroup.com/about" data-i18n="ms.about">About us</a>
+      <a href="https://myoleagroup.com/reviews4-1" data-i18n="ms.reviews">Reviews</a>
+      <a class="btn-cta mm-cta" href="#contact" data-i18n="cta.header">Talk to Heidy — confidential</a>
+    </nav>
 
     <main id="top">
       <!-- ================= 1 · HERO ================= -->

@@ -176,6 +176,200 @@ a {
 }
 
 /* ============================================================
+   Main-site dropdown (desktop) — glass panel, floating chrome
+   ============================================================ */
+.site-dd {
+  display: none;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .site-dd {
+    display: inline-block;
+  }
+}
+
+.site-dd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: none;
+  border: none;
+  padding: 0;
+  min-height: 44px;
+  cursor: pointer;
+  transition: color var(--dur-quick) var(--ease-out);
+}
+
+.site-dd-btn:hover {
+  color: var(--royal);
+}
+
+.dd-caret {
+  font-size: 0.7em;
+  transition: transform var(--dur-quick) var(--ease-out);
+}
+
+.site-dd-btn[aria-expanded='true'] .dd-caret {
+  transform: rotate(180deg);
+}
+
+.site-dd-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  z-index: 20;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-1);
+  /* more opaque than header glass so links keep AA contrast over any background */
+  background: rgba(255, 255, 255, 0.94);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-chrome);
+  box-shadow: var(--glass-shadow);
+}
+
+.site-dd-panel[hidden] {
+  display: none;
+}
+
+.site-dd-panel a {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  text-decoration: none;
+  color: var(--navy);
+  padding: 11px 14px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  transition: background var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out);
+}
+
+.site-dd-panel a:hover {
+  background: rgba(21, 72, 159, 0.08);
+  color: var(--royal);
+}
+
+/* ============================================================
+   Hamburger (mobile) + mobile menu panel
+   ============================================================ */
+.menu-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  padding: 13px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform var(--dur-quick) var(--ease-out), opacity var(--dur-quick) var(--ease-out);
+}
+
+.menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: calc(80px + var(--s-3)) var(--content-pad) var(--s-6);
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+  max-height: 100svh;
+  overflow-y: auto;
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+.mobile-menu a:not(.btn-cta) {
+  font-family: var(--font-label);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--navy);
+  padding: 14px 4px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.mm-heading {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(10, 26, 58, 0.5);
+  margin-top: var(--s-3);
+  padding-top: var(--s-3);
+  border-top: var(--hairline);
+}
+
+.mm-cta {
+  margin-top: var(--s-4);
+  width: 100%;
+}
+
+/* while the mobile menu is open: lock the page + hide the duplicate sticky CTA */
+body.menu-open {
+  overflow: hidden;
+}
+
+body.menu-open .sticky-cta {
+  display: none;
+}
+
+/* ============================================================
    CTA buttons
    ============================================================ */
 .btn-cta {
@@ -206,7 +400,7 @@ a {
   display: none;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 900px) {
   .header-cta {
     display: inline-flex;
   }
@@ -230,7 +424,7 @@ a {
   width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 900px) {
   .sticky-cta {
     display: none;
   }
@@ -241,7 +435,7 @@ main {
   padding-top: 80px;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 899px) {
   body {
     padding-bottom: 96px;
   }
@@ -267,7 +461,8 @@ main {
    plain static glass.
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
-  .site-header,
+  /* only the sticky CTA clips its sheen; the header must NOT clip, or it
+     would cut off the dropdown panel that overflows below it */
   .sticky-cta {
     overflow: hidden;
   }
