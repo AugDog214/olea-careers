@@ -1,7 +1,7 @@
 // Commission calculator — quiet, collapsed under the Offer.
 // Self-generated proof: the agent's own numbers make the argument.
 
-import { currentLang } from './i18n.js';
+import { currentLang, onLangChange } from './i18n.js';
 
 // ⚠️ CONFIRM #1: fee model is flat per-transaction; EXACT AMOUNT PENDING from
 // Heidy. $495 is a flagged placeholder. Swapping models or amounts = edit here only.
@@ -102,7 +102,7 @@ export function initCalculator() {
   });
 
   // re-render the result in the right language when the site language flips
-  document.getElementById('lang-toggle')?.addEventListener('click', recalc);
+  onLangChange(recalc);
 
   return { recalc };
 }

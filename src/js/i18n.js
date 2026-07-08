@@ -16,13 +16,11 @@ export const strings = {
     en: 'For experienced agents · Cape Coral · Fort Myers · all of SWFL',
     es: 'Para agentes con experiencia · Cape Coral · Fort Myers · todo SWFL',
   },
-  'hero.title': {
-    en: 'Keep 100% of your commission. Get a broker who actually answers — and listings no one else has.',
-    es: 'Quédate con el 100% de tu comisión. Con una broker que sí contesta — y listados que nadie más tiene.',
-  },
+  'hero.title1': { en: 'Keep 100%.', es: 'Quédate con el 100%.' },
+  'hero.title2': { en: 'Never work alone.', es: 'Nunca solo.' },
   'hero.sub': {
-    en: "The Olea Group is a boutique Cape Coral brokerage built for producing agents: one flat transaction fee, in-house new-construction inventory, and a bilingual client market most offices can't serve.",
-    es: 'The Olea Group es un brokerage boutique de Cape Coral hecho para agentes productivos: una sola tarifa fija por transacción, inventario propio de construcción nueva y un mercado bilingüe que la mayoría de las oficinas no puede atender.',
+    en: "The Olea Group is a boutique Cape Coral brokerage built for producing agents: one flat transaction fee, in-house new-construction inventory, a bilingual client market — and a broker who actually answers.",
+    es: 'The Olea Group es un brokerage boutique de Cape Coral hecho para agentes productivos: una sola tarifa fija por transacción, inventario propio de construcción nueva, un mercado bilingüe — y una broker que sí contesta.',
   },
   'cta.hero': { en: 'Schedule a confidential chat', es: 'Agenda una charla confidencial' },
   'hero.micro': {
@@ -38,23 +36,18 @@ export const strings = {
   },
   'offer.p1.h': { en: '100% of every side is yours.', es: 'El 100% de cada lado es tuyo.' },
   'offer.p1.p': {
-    en: 'No splits. One flat fee per closed transaction, and the rest of the check is yours. You built the business — keep what it pays.',
-    es: 'Sin splits. Una tarifa fija por transacción cerrada, y el resto del cheque es tuyo. Tú construiste el negocio — quédate con lo que paga.',
+    en: 'Every commission you earn is yours to keep. No splits, no franchise cut, no royalty skimmed off the top.',
+    es: 'Cada comisión que ganas es tuya. Sin splits, sin cuota de franquicia, sin regalías que te descuenten.',
   },
-  'offer.p2.h': { en: 'A broker who picks up the phone.', es: 'Una broker que contesta el teléfono.' },
+  'offer.p2.h': { en: "One flat fee. That's the whole math.", es: 'Una tarifa fija. Esa es toda la cuenta.' },
   'offer.p2.p': {
-    en: 'Contract trouble at 7pm gets answered at 7pm. Heidy runs the brokerage and works your questions herself — 100% here does not mean alone.',
-    es: 'Un problema de contrato a las 7pm se contesta a las 7pm. Heidy dirige el brokerage y resuelve tus dudas ella misma — aquí el 100% no significa estar solo.',
+    en: 'You pay a single flat fee per closed transaction — the same number every time. No caps to chase, no tiers, no surprises on the statement.',
+    es: 'Pagas una sola tarifa fija por transacción cerrada — el mismo número siempre. Sin topes que perseguir, sin niveles, sin sorpresas en el estado de cuenta.',
   },
-  'offer.p3.h': { en: "Inventory the MLS can't give you.", es: 'Inventario que el MLS no te puede dar.' },
+  'offer.p3.h': { en: 'You built the business. Keep what it pays.', es: 'Tú construiste el negocio. Quédate con lo que paga.' },
   'offer.p3.p': {
-    en: 'We build. Olea Group agents get access to our own new-construction listings and builder relationships — free listings are income.',
-    es: 'Nosotros construimos. Los agentes de Olea Group acceden a nuestros propios listados de construcción nueva y relaciones con constructores — los listados gratis son ingreso.',
-  },
-  'offer.p4.h': { en: "A client market others can't serve.", es: 'Un mercado que otros no pueden atender.' },
-  'offer.p4.p': {
-    en: "English and Spanish under one roof. SWFL's Hispanic buyers and sellers are underserved — at The Olea Group they're your market.",
-    es: 'Inglés y español bajo un mismo techo. Los compradores y vendedores hispanos de SWFL están desatendidos — en The Olea Group son tu mercado.',
+    en: 'Your production is yours. Run the numbers below and see what a real 100% model puts back in your pocket this year.',
+    es: 'Tu producción es tuya. Calcula abajo y mira lo que un modelo 100% real te devuelve al bolsillo este año.',
   },
   'calc.toggle': { en: 'Run your numbers ▾', es: 'Calcula tus números ▾' },
   'calc.gci': { en: "Last year's GCI ($)", es: 'GCI del año pasado ($)' },
@@ -63,7 +56,7 @@ export const strings = {
   'calc.cta': { en: 'Talk to Heidy about your numbers →', es: 'Habla con Heidy sobre tus números →' },
 
   // --- 3 · the edge ---
-  'edge.eyebrow': { en: 'The edge', es: 'La ventaja' },
+  'edge.eyebrow': { en: 'What sets us apart', es: 'Lo que nos distingue' },
   'edge.title': {
     en: "Two things you can't get at the shop down the street.",
     es: 'Dos cosas que no consigues en la oficina de enfrente.',
@@ -81,7 +74,11 @@ export const strings = {
 
   // --- 4 · proof ---
   'proof.eyebrow': { en: 'Proof', es: 'Resultados' },
-  'proof.title': { en: "Don't take the pitch. Take the record.", es: 'No te quedes con el discurso. Mira los números.' },
+  'proof.title': { en: "100% doesn't mean alone. Here's the proof.", es: 'El 100% no significa estar solo. Aquí está la prueba.' },
+  'proof.lead': {
+    en: 'The fear with every "100%" shop is that you keep the commission and lose the broker. Not here. Heidy answers her own phone, works your contracts, and the agents below will tell you so.',
+    es: 'El miedo con cada oficina de "100%" es que te quedas con la comisión y pierdes al broker. Aquí no. Heidy contesta su propio teléfono, trabaja tus contratos, y los agentes de abajo te lo dirán.',
+  },
   'proof.s1.label': { en: 'Closed volume', es: 'Volumen cerrado' },
   'proof.s1.value': { en: '$—M', es: '$—M' },
   'proof.s2.label': { en: 'Transactions', es: 'Transacciones' },
@@ -222,6 +219,12 @@ export function currentLang() {
   return lang;
 }
 
+// listeners other modules attach to run on every language change
+const onChange = [];
+export function onLangChange(fn) {
+  onChange.push(fn);
+}
+
 export function setLang(next) {
   lang = next;
   document.documentElement.lang = lang;
@@ -229,19 +232,19 @@ export function setLang(next) {
     const entry = strings[el.dataset.i18n];
     if (entry) el.textContent = entry[lang];
   });
-  const toggle = document.getElementById('lang-toggle');
-  if (toggle) {
-    toggle.textContent = lang === 'en' ? 'ES' : 'EN';
-    toggle.setAttribute(
-      'aria-label',
-      lang === 'en' ? 'Cambiar a Español' : 'Switch to English'
-    );
-  }
+  // segmented EN | ES toggle — highlight the active side
+  document.querySelectorAll('#lang-toggle .lang-opt').forEach((btn) => {
+    const active = btn.dataset.lang === lang;
+    btn.classList.toggle('is-active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
+  onChange.forEach((fn) => fn(lang));
 }
 
 export function initI18n() {
-  const toggle = document.getElementById('lang-toggle');
-  if (toggle) {
-    toggle.addEventListener('click', () => setLang(lang === 'en' ? 'es' : 'en'));
-  }
+  document.querySelectorAll('#lang-toggle .lang-opt').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.lang !== lang) setLang(btn.dataset.lang);
+    });
+  });
 }

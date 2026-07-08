@@ -47,8 +47,35 @@
 .section-title {
   font-size: var(--text-title);
   color: var(--navy);
-  max-width: 22ch;
-  margin-top: var(--s-2);
+  max-width: 20ch;
+  margin-top: var(--s-3);
+  position: relative;
+  padding-bottom: 0.35em;
+}
+
+/* ⭐ signature: royal line under every section title.
+   Default (no-JS / reduced-motion) = full line present.
+   Motion on = draws left→right on scroll-in (see motion.js). */
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 2.4em;
+  background: var(--royal);
+  transform-origin: left center;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-on .section-title::after {
+    transform: scaleX(0);
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+  .motion-on .section-title.is-drawn::after {
+    transform: scaleX(1);
+  }
 }
 
 .section-wash {
@@ -248,25 +275,105 @@
   min-height: 48px;
 }
 
-/* ---------- 3 · the edge: two large editorial statements ---------- */
-.edge-block {
+/* ---------- 3 · the edge / what sets us apart — eXp motion, no boxes ---------- */
+.edge-grid {
   margin-top: var(--s-8);
-  max-width: 720px;
+  display: grid;
+  gap: var(--s-12);
+}
+
+@media (min-width: 900px) {
+  .edge-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-8);
+  }
+}
+
+.edge-block {
+  display: flex;
+  flex-direction: column;
+}
+
+/* photo sits above the copy; overflow hidden so the wipe has something to clip */
+.edge-media {
+  overflow: hidden;
+  margin-bottom: var(--s-4);
+}
+
+.edge-photo {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--navy), var(--royal));
+  display: grid;
+  place-items: center;
+}
+
+/* visible placeholder flag — never let a fake photo ship silently */
+.edge-photo::after {
+  content: 'REPLACE — real photo';
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.edge-copy .pillar-num {
+  margin-bottom: var(--s-1);
 }
 
 .edge-statement {
   font-size: var(--text-statement);
   color: var(--navy);
-  max-width: 20ch;
-  margin-top: var(--s-1);
+  max-width: 18ch;
+  position: relative;
+  padding-bottom: 0.18em;
+}
+
+/* hover accent-draw (eXp card feel, no box) */
+.edge-statement::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 1.8em;
+  background: var(--sky);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-quick) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .edge-block:hover .edge-statement::after {
+    transform: scaleX(1);
+  }
 }
 
 .edge-support {
   margin-top: var(--s-2);
+  max-width: 46ch;
   color: rgba(11, 11, 15, 0.75);
 }
 
-/* ---------- 4 · proof: stats + open testimonials ---------- */
+/* image wipe reveal — default open; motion-on starts clipped and opens on scroll-in */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-on .edge-media {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path var(--dur-slow) var(--ease-out);
+  }
+  .motion-on .edge-block.is-revealed .edge-media {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ---------- 4 · proof: broker-answers lead + stats + testimonials ---------- */
+.proof-lead {
+  font-size: var(--text-lead);
+  max-width: 54ch;
+  margin-top: var(--s-4);
+  color: rgba(11, 11, 15, 0.75);
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, auto);

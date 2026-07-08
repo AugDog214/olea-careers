@@ -12,12 +12,41 @@ export function initMotion() {
   if (reduced) return; // static glass, final values, no reveals — CSS handles the rest
 
   gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('motion-on');
 
   // --- smooth scroll (Lenis driving ScrollTrigger) ---
   const lenis = new Lenis({ lerp: 0.12 });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
+
+  // --- ⭐ signature: draw the royal line under each section title ---
+  document.querySelectorAll('.section-title').forEach((title) => {
+    ScrollTrigger.create({
+      trigger: title,
+      start: 'top 82%',
+      once: true,
+      onEnter: () => title.classList.add('is-drawn'),
+    });
+  });
+
+  // --- eXp-style Edge: staggered reveal + image wipe (no boxes) ---
+  document.querySelectorAll('#edge [data-edge]').forEach((block, i) => {
+    gsap.from(block.querySelector('.edge-copy'), {
+      opacity: 0,
+      y: 40,
+      duration: 0.9,
+      ease: 'power3.out',
+      delay: i * 0.12,
+      scrollTrigger: { trigger: block, start: 'top 80%', once: true },
+    });
+    ScrollTrigger.create({
+      trigger: block,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => block.classList.add('is-revealed'),
+    });
+  });
 
   // --- ⭐ signature: specular light-shift across the glass chrome ---
   // A soft light band slides across the header / sticky CTA as you scroll,
@@ -34,8 +63,8 @@ export function initMotion() {
 
   // --- quiet supporting kit ---
 
-  // fade/rise reveals on section furniture
-  document.querySelectorAll('.section .eyebrow, .section-title, .pillar, .edge-block, .testimonial, .included-row, .faq-item, .stats').forEach((el) => {
+  // fade/rise reveals on section furniture (Edge handled separately above)
+  document.querySelectorAll('.section .eyebrow, .section-title, .pillar, .testimonial, .included-row, .faq-item, .stats, .proof-lead').forEach((el) => {
     gsap.from(el, {
       opacity: 0,
       y: 32,
