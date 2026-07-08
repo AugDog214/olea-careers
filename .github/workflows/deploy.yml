@@ -24,7 +24,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # TEMP until careers.myoleagroup.com DNS lands: serve from the repo
+      # subpath. To go custom-domain: delete the env line below and restore
+      # public/CNAME (see GO-LIVE-CHECKLIST.md).
       - run: npm run build
+        env:
+          VITE_BASE: /olea-careers/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

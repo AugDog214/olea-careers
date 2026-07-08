@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
-// Custom domain at subdomain root (careers.myoleagroup.com), so base stays '/'
+// Base path comes from the workflow: '/olea-careers/' while serving from
+// augdog214.github.io, '/' once careers.myoleagroup.com DNS is live.
 export default defineConfig({
-  base: '/',
+  base: process.env.VITE_BASE || '/',
 });
