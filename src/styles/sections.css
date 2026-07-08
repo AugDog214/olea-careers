@@ -666,3 +666,121 @@
   font-size: var(--text-label);
   color: rgba(255, 255, 255, 0.55);
 }
+
+/* ============================================================
+   CENTER ALIGNMENT — all content centered, mobile + desktop.
+   Appended last so it overrides the editorial left-align above.
+   ============================================================ */
+
+/* hero */
+.hero .wrap {
+  text-align: center;
+}
+.hero-sub {
+  margin-inline: auto;
+}
+
+/* section eyebrows + titles */
+.section .eyebrow,
+.section-title {
+  text-align: center;
+}
+.section-title {
+  margin-inline: auto;
+}
+
+/* signature line — centered under the title (still sweeps in from off-screen left) */
+.section-title::after {
+  left: 50%;
+  right: auto;
+  margin-left: -1.6em;
+  width: 3.2em;
+}
+
+/* offer pillars → centered stack (drop the number/statement/support grid) */
+.pillar {
+  display: block;
+  text-align: center;
+}
+.pillar-statement,
+.pillar-support {
+  margin-inline: auto;
+}
+.calc-slot {
+  text-align: center;
+}
+
+/* edge → centered copy; center the hover accent line */
+.edge-copy {
+  text-align: center;
+}
+.edge-statement,
+.edge-support {
+  margin-inline: auto;
+}
+.edge-statement::after {
+  left: 50%;
+  margin-left: -0.9em;
+}
+
+/* proof */
+.proof-lead {
+  text-align: center;
+  margin-inline: auto;
+}
+.stats {
+  justify-content: center;
+  text-align: center;
+}
+.testimonial {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* what's included → centered stack */
+.included-row {
+  display: block;
+  text-align: center;
+}
+.included-row dd {
+  margin-inline: auto;
+}
+.included-callback {
+  text-align: center;
+}
+
+/* faq — centered questions + answers */
+.faq-list {
+  margin-inline: auto;
+}
+.faq-item summary {
+  justify-content: center;
+  gap: 14px;
+}
+.faq-item p {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* final cta + form */
+.contact-sub {
+  text-align: center;
+  margin-inline: auto;
+}
+.lead-form {
+  text-align: center;
+}
+.form-field label {
+  text-align: center;
+}
+.form-submit {
+  justify-self: center;
+}
+
+/* footer */
+.footer-grid {
+  text-align: center;
+}
+.footer-logo {
+  margin-inline: auto;
+}
