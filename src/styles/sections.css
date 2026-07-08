@@ -21,13 +21,12 @@
 
 .hero-title {
   font-size: var(--text-hero);
-  max-width: 16ch;
   margin-top: var(--s-3);
 }
 
 .hero-sub {
   font-size: var(--text-lead);
-  max-width: 52ch;
+  max-width: 60ch;
   margin-top: var(--s-3);
   color: rgba(255, 255, 255, 0.85);
 }
@@ -47,34 +46,34 @@
 .section-title {
   font-size: var(--text-title);
   color: var(--navy);
-  max-width: 20ch;
+  max-width: 32ch;
   margin-top: var(--s-3);
   position: relative;
-  padding-bottom: 0.35em;
+  padding-bottom: 0.4em;
 }
 
-/* ⭐ signature: royal line under every section title.
-   Default (no-JS / reduced-motion) = full line present.
-   Motion on = draws left→right on scroll-in (see motion.js). */
+/* ⭐ signature: royal line under every section title. It sweeps in from
+   OFF the left edge of the screen. The line breaks out to the viewport's
+   left edge, so it visibly travels in from off-screen (body clips overflow-x).
+   Default (no-JS / reduced-motion) = line resting in place, no travel. */
 .section-title::after {
   content: '';
   position: absolute;
-  left: 0;
   bottom: 0;
+  right: calc(100% - 4.5em); /* extends left, past the container gutter */
+  left: calc(-1 * var(--content-pad));
   height: 4px;
-  width: 2.4em;
   background: var(--royal);
-  transform-origin: left center;
-  transform: scaleX(1);
+  transform: translateX(0);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .motion-on .section-title::after {
-    transform: scaleX(0);
-    transition: transform var(--dur-slow) var(--ease-out);
+    transform: translateX(-100vw); /* parked off-screen left */
+    transition: transform 1s var(--ease-out);
   }
   .motion-on .section-title.is-drawn::after {
-    transform: scaleX(1);
+    transform: translateX(0);
   }
 }
 
@@ -126,38 +125,41 @@
 .pillar-statement {
   font-size: var(--text-statement);
   color: var(--navy);
-  max-width: 24ch;
+  max-width: 20ch;
   margin-top: var(--s-1);
 }
 
 .pillar-support {
-  max-width: 56ch;
+  max-width: 60ch;
   margin-top: var(--s-2);
   color: rgba(11, 11, 15, 0.75);
 }
 
-@media (min-width: 900px) {
+/* full-width spread: number · statement · support across the whole screen */
+@media (min-width: 1000px) {
   .pillar {
     display: grid;
-    grid-template-columns: 96px 1fr;
-    column-gap: var(--s-4);
+    grid-template-columns: 110px minmax(18ch, 1.05fr) 1fr;
+    column-gap: var(--s-8);
+    align-items: start;
   }
 
   .pillar-num {
-    padding-top: 10px; /* optically align with the statement's cap height */
+    grid-column: 1;
+    padding-top: 0.55em; /* optically align with the statement's cap height */
   }
 
   .pillar-statement {
     grid-column: 2;
+    grid-row: 1;
     margin-top: 0;
+    max-width: none;
   }
 
   .pillar-support {
-    grid-column: 2;
-  }
-
-  .pillar-num + .pillar-statement {
+    grid-column: 3;
     grid-row: 1;
+    margin-top: 0.4em;
   }
 }
 
@@ -324,7 +326,7 @@
 .edge-statement {
   font-size: var(--text-statement);
   color: var(--navy);
-  max-width: 18ch;
+  max-width: 24ch;
   position: relative;
   padding-bottom: 0.18em;
 }
@@ -351,7 +353,7 @@
 
 .edge-support {
   margin-top: var(--s-2);
-  max-width: 46ch;
+  max-width: 58ch;
   color: rgba(11, 11, 15, 0.75);
 }
 
@@ -369,7 +371,7 @@
 /* ---------- 4 · proof: broker-answers lead + stats + testimonials ---------- */
 .proof-lead {
   font-size: var(--text-lead);
-  max-width: 54ch;
+  max-width: 66ch;
   margin-top: var(--s-4);
   color: rgba(11, 11, 15, 0.75);
 }
@@ -414,7 +416,7 @@
 .testimonial {
   padding-block: var(--s-6);
   border-top: var(--hairline);
-  max-width: 760px;
+  max-width: 68ch;
 }
 
 .testimonial-quote {
@@ -452,15 +454,15 @@
 
 .included-row dd {
   margin-top: var(--s-1);
-  max-width: 56ch;
+  max-width: 70ch;
   color: rgba(11, 11, 15, 0.75);
 }
 
 @media (min-width: 900px) {
   .included-row {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    column-gap: var(--s-6);
+    grid-template-columns: minmax(320px, 1fr) 2fr;
+    column-gap: var(--s-8);
   }
 
   .included-row dd {
@@ -479,7 +481,7 @@
 /* ---------- 6 · faq: hairline accordion ---------- */
 .faq-list {
   margin-top: var(--s-8);
-  max-width: 760px;
+  max-width: 1040px;
 }
 
 .faq-item {

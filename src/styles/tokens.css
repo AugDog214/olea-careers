@@ -62,9 +62,9 @@
   --s-16: 128px;
   --s-20: 160px;
 
-  /* --- layout --- */
-  --content-max: 1200px;
-  --content-pad: clamp(20px, 5vw, 64px);
+  /* --- layout — wide, full-bleed feel (eXp) --- */
+  --content-max: 1680px;
+  --content-pad: clamp(20px, 6vw, 100px);
 
   /* --- liquid glass (chrome ONLY: header bar + sticky CTA) --- */
   --glass-fill: rgba(255, 255, 255, 0.55);
