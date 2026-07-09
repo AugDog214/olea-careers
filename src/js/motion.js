@@ -5,6 +5,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { strings, currentLang, onLangChange } from './i18n.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -100,6 +101,130 @@ export function initMotion() {
     ease: 'none',
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
   });
+
+  // --- v3 · culture: fade/rise copy + gentle photo parallax (one move) ---
+  document.querySelectorAll('[data-culture]').forEach((row) => {
+    gsap.from(row.querySelector('.culture-copy'), {
+      opacity: 0,
+      y: 36,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: row, start: 'top 82%', once: true },
+    });
+    gsap.fromTo(
+      row.querySelector('.culture-photo'),
+      { yPercent: -7 },
+      {
+        yPercent: 7,
+        ease: 'none',
+        scrollTrigger: { trigger: row, start: 'top bottom', end: 'bottom top', scrub: true },
+      }
+    );
+  });
+
+  // --- v3 · offer deck: desktop pinned layer-drop; mobile keeps the CSS
+  //     sticky card-stack (no JS needed there) ---
+  const deck = document.querySelector('[data-deck]');
+  if (deck) {
+    const mmDeck = gsap.matchMedia();
+    mmDeck.add('(min-width: 1000px)', () => {
+      const layers = [...deck.querySelectorAll('[data-deck-layer]')];
+      deck.classList.add('is-deck-pinned');
+      layers.forEach((l, i) => gsap.set(l, { zIndex: layers.length - i, yPercent: 0, opacity: 1 }));
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: deck,
+          start: 'top top+=104',
+          end: () => `+=${(layers.length - 1) * 90}%`,
+          pin: true,
+          scrub: true,
+          anticipatePin: 1,
+        },
+      });
+      // each front layer drops down and away, exposing the next behind it
+      layers.slice(0, -1).forEach((layer, i) => {
+        tl.to(layer, { yPercent: 120, opacity: 0.35, ease: 'power1.in', duration: 1 }, i);
+      });
+
+      return () => {
+        deck.classList.remove('is-deck-pinned');
+        layers.forEach((l) => gsap.set(l, { clearProps: 'all' }));
+      };
+    });
+  }
+
+  // --- v3 · proof: eXp-style scroll-highlight quote (word scrub) ---
+  const quoteEl = document.querySelector('[data-quote]');
+  if (quoteEl) {
+    let quoteTrigger = null;
+    const buildQuote = () => {
+      if (quoteTrigger) {
+        quoteTrigger.kill();
+        quoteTrigger = null;
+      }
+      const words = `“${strings['quote.q'][currentLang()]}”`.split(' ');
+      quoteEl.innerHTML = words.map((w) => `<span class="qw">${w}</span>`).join(' ');
+      const spans = quoteEl.querySelectorAll('.qw');
+      gsap.set(spans, { opacity: 0.18 });
+      const tween = gsap.to(spans, {
+        opacity: 1,
+        stagger: 0.6,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: quoteEl,
+          start: 'top 78%',
+          end: 'bottom 42%',
+          scrub: true,
+        },
+      });
+      quoteTrigger = tween.scrollTrigger;
+    };
+    buildQuote();
+    onLangChange(() => {
+      buildQuote();
+      ScrollTrigger.refresh();
+    });
+  }
+
+  // --- v3 · what's included Option A: sticky-left visual swaps with the
+  //     row in view (desktop only; mobile stays a plain list) ---
+  const incLayout = document.querySelector('[data-inc]');
+  if (incLayout) {
+    const mmInc = gsap.matchMedia();
+    mmInc.add('(min-width: 1000px)', () => {
+      const rows = [...incLayout.querySelectorAll('[data-inc-row]')];
+      const iconSlot = incLayout.querySelector('[data-inc-icon]');
+      const labelSlot = incLayout.querySelector('[data-inc-label]');
+      let current = -1;
+
+      const setActive = (i) => {
+        current = i;
+        rows.forEach((r, j) => r.classList.toggle('is-active', j === i));
+        const row = rows[i];
+        iconSlot.innerHTML = row.querySelector('.inc-ico').outerHTML;
+        labelSlot.textContent = row.querySelector('dt span').textContent;
+        gsap.fromTo([iconSlot, labelSlot], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+      };
+
+      const triggers = rows.map((row, i) =>
+        ScrollTrigger.create({
+          trigger: row,
+          start: 'top 60%',
+          end: 'bottom 60%',
+          onToggle: (self) => self.isActive && setActive(i),
+        })
+      );
+      setActive(0);
+      const relabel = () => current >= 0 && setActive(current);
+      onLangChange(relabel);
+
+      return () => {
+        triggers.forEach((t) => t.kill());
+        rows.forEach((r) => r.classList.remove('is-active'));
+      };
+    });
+  }
 
   // magnetic CTA — pointer devices only
   if (window.matchMedia('(hover: hover)').matches) {

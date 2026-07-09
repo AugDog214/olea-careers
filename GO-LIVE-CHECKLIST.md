@@ -37,6 +37,10 @@ Everything below is a 🧑 HUMAN step (things only you/Heidy control). The code 
 Every one of these is flagged `<!-- REPLACE -->` in the code and cannot ship silently:
 - [ ] **Hero photo** — Heidy or a real SWFL Olea listing (her "Under Contract" post style). Swap in `src/styles/sections.css` → `.hero`.
 - [ ] **Edge section photos** — a real Olea construction project + Heidy/team with clients.
+- [ ] **Offer deck photos (3)** — (1) closing-table handshake/keys, (2) clean desk with one closing statement (the flat fee), (3) the payoff — agent enjoying SWFL life. Warm, real, minimal.
+- [ ] **Heidy headshot** — small circle next to her quote in Proof.
+- [ ] **Culture photos (4)** — (1) candid team laughing at a closing (warm natural light, real joy, not stock), (2) Heidy mentoring an agent 1:1 at a desk, (3) closing-day celebration with keys, (4) community/local SWFL moment.
+- [ ] **Tools panel backdrop** — office/tools-in-use photo behind the icon panel in What's Included (desktop).
 - [ ] **3 testimonials** — real quotes from current Olea agents with names + face photos, hitting: broker access, construction inventory, the fee change in dollars. (EN + ES versions in `src/js/i18n.js`.)
 - [ ] **Production stats** — closed volume / transactions / agents (count-up animation activates automatically once real numbers replace the "—" placeholders).
 - [ ] **OG share image** — 1200×630 `public/assets/og-image.png` (build from the hero photo when it exists).

@@ -16,7 +16,7 @@ export const strings = {
   'ms.about': { en: 'About us', es: 'Nosotros' },
   'ms.reviews': { en: 'Reviews', es: 'Reseñas' },
   'cta.header': { en: 'Talk to Heidy — confidential', es: 'Habla con Heidy — confidencial' },
-  'cta.sticky': { en: 'Talk to Heidy — confidential', es: 'Habla con Heidy — confidencial' },
+  'cta.melt': { en: 'Talk to Heidy', es: 'Habla con Heidy' },
 
   // --- 1 · hero ---
   'hero.eyebrow': {
@@ -77,6 +77,41 @@ export const strings = {
   'edge.e2.p': {
     en: "Southwest Florida's Spanish-speaking buyers and sellers are one of the largest underserved client pools in the state. A bilingual brokerage doesn't just translate — it wins the referrals, the trust, and the repeat business most offices never see.",
     es: 'Los compradores y vendedores hispanohablantes del suroeste de Florida son uno de los mercados más desatendidos del estado. Un brokerage bilingüe no solo traduce — gana los referidos, la confianza y los clientes recurrentes que la mayoría de las oficinas nunca ve.',
+  },
+
+  // --- 4 · proof: Heidy quote (word-split by quote-scrub, no data-i18n) ---
+  'quote.q': {
+    en: "I built The Olea Group for the agents I wish I'd had a broker like when I started — one who answers the phone, hands you real inventory, and lets you keep what you earn. You're not a number here. You're the business.",
+    es: 'Construí The Olea Group para los agentes a los que me hubiera gustado tener una broker así cuando empecé — una que contesta el teléfono, te entrega inventario real y te deja quedarte con lo que ganas. Aquí no eres un número. Eres el negocio.',
+  },
+  'quote.name': { en: 'Heidy Olea', es: 'Heidy Olea' },
+  'quote.role': { en: 'Broker & Owner', es: 'Broker y Propietaria' },
+
+  // --- 4.5 · culture ---
+  'culture.eyebrow': { en: 'Culture', es: 'Cultura' },
+  'culture.title': {
+    en: "It's a business. It should still feel good.",
+    es: 'Es un negocio. Igual debe sentirse bien.',
+  },
+  'culture.r1.h': { en: 'Our people', es: 'Nuestra gente' },
+  'culture.r1.p': {
+    en: 'A small brokerage that actually likes each other — and it shows at every closing.',
+    es: 'Un brokerage pequeño donde la gente de verdad se aprecia — y se nota en cada cierre.',
+  },
+  'culture.r2.h': { en: 'Real mentorship', es: 'Mentoría real' },
+  'culture.r2.p': {
+    en: 'You sit with Heidy, not a training portal. Deals get reviewed side by side.',
+    es: 'Te sientas con Heidy, no con un portal de cursos. Los tratos se revisan lado a lado.',
+  },
+  'culture.r3.h': { en: 'Closing day', es: 'Día de cierre' },
+  'culture.r3.p': {
+    en: 'Keys, photos, the whole thing. Every win gets celebrated like the first one.',
+    es: 'Llaves, fotos, todo. Cada logro se celebra como el primero.',
+  },
+  'culture.r4.h': { en: 'Rooted in SWFL', es: 'Raíces en SWFL' },
+  'culture.r4.p': {
+    en: 'Cape Coral born, bilingual, and built around the neighborhoods we sell.',
+    es: 'Nacidos en Cape Coral, bilingües y construidos alrededor de los vecindarios que vendemos.',
   },
 
   // --- 4 · proof ---

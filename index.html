@@ -181,23 +181,39 @@
           <p class="eyebrow" data-i18n="offer.eyebrow">The offer</p>
           <h2 class="display section-title" data-i18n="offer.title">You do the producing. You keep the money.</h2>
 
-          <ol class="pillars">
-            <li class="pillar">
-              <span class="pillar-num" aria-hidden="true">01</span>
-              <h3 class="display pillar-statement" data-i18n="offer.p1.h">100% of every side is yours.</h3>
-              <p class="pillar-support" data-i18n="offer.p1.p">Every commission you earn is yours to keep. No splits, no franchise cut, no royalty skimmed off the top.</p>
-            </li>
-            <li class="pillar">
-              <span class="pillar-num" aria-hidden="true">02</span>
-              <h3 class="display pillar-statement" data-i18n="offer.p2.h">One flat fee. That's the whole math.</h3>
-              <p class="pillar-support" data-i18n="offer.p2.p">You pay a single flat fee per closed transaction — the same number every time. No caps to chase, no tiers, no surprises on the statement.</p>
-            </li>
-            <li class="pillar">
-              <span class="pillar-num" aria-hidden="true">03</span>
-              <h3 class="display pillar-statement" data-i18n="offer.p3.h">You built the business. Keep what it pays.</h3>
-              <p class="pillar-support" data-i18n="offer.p3.p">Your production is yours. Run the numbers below and see what a real 100% model puts back in your pocket this year.</p>
-            </li>
-          </ol>
+          <!-- Layered parallax deck: each reason is a photo layer; on scroll the
+               front layer drops away revealing the next (desktop, GSAP pin+scrub).
+               Mobile: sticky card-stack for the layered depth feel. Reduced-motion:
+               plain vertical stack. Text sits ON the photo over a scrim — no boxes. -->
+          <div class="deck" data-deck>
+            <!-- REPLACE: real photo — agent receiving keys/handshake at a closing table, warm light -->
+            <article class="deck-layer" data-deck-layer>
+              <div class="deck-photo deck-photo--1" role="img" aria-label="Placeholder — closing-table handshake"></div>
+              <div class="deck-text">
+                <span class="pillar-num" aria-hidden="true">01</span>
+                <h3 class="display deck-statement" data-i18n="offer.p1.h">100% of every side is yours.</h3>
+                <p class="deck-support" data-i18n="offer.p1.p">Every commission you earn is yours to keep. No splits, no franchise cut, no royalty skimmed off the top.</p>
+              </div>
+            </article>
+            <!-- REPLACE: real photo — clean desk with a single closing statement / simple flat-fee moment -->
+            <article class="deck-layer" data-deck-layer>
+              <div class="deck-photo deck-photo--2" role="img" aria-label="Placeholder — one simple closing statement"></div>
+              <div class="deck-text">
+                <span class="pillar-num" aria-hidden="true">02</span>
+                <h3 class="display deck-statement" data-i18n="offer.p2.h">One flat fee. That's the whole math.</h3>
+                <p class="deck-support" data-i18n="offer.p2.p">You pay a single flat fee per closed transaction — the same number every time. No caps to chase, no tiers, no surprises on the statement.</p>
+              </div>
+            </article>
+            <!-- REPLACE: real photo — agent enjoying the payoff (family, boat, SWFL life), aspirational but real -->
+            <article class="deck-layer" data-deck-layer>
+              <div class="deck-photo deck-photo--3" role="img" aria-label="Placeholder — the payoff, SWFL life"></div>
+              <div class="deck-text">
+                <span class="pillar-num" aria-hidden="true">03</span>
+                <h3 class="display deck-statement" data-i18n="offer.p3.h">You built the business. Keep what it pays.</h3>
+                <p class="deck-support" data-i18n="offer.p3.p">Your production is yours. Run the numbers below and see what a real 100% model puts back in your pocket this year.</p>
+              </div>
+            </article>
+          </div>
 
           <!-- Phase 2 mounts the calculator here, collapsed by default -->
           <div class="calc-slot">
@@ -244,6 +260,18 @@
       <!-- ================= 4 · PROOF ================= -->
       <section class="section" id="proof">
         <div class="wrap">
+          <!-- eXp-style scroll-highlight quote: words scrub light-grey → dark as
+               you scroll through. Quote text injected by JS (word-split), keyed
+               'quote.q' in i18n. Reduced-motion: fully dark, no scrub. -->
+          <figure class="quote-scrub">
+            <blockquote class="display heidy-quote" data-quote aria-label="Quote from Heidy Olea"></blockquote>
+            <figcaption class="quote-attrib">
+              <!-- REPLACE: real headshot of Heidy (small circle) -->
+              <span class="quote-headshot" role="img" aria-label="Placeholder — Heidy Olea headshot"></span>
+              <span class="quote-name"><span data-i18n="quote.name">Heidy Olea</span> · <span data-i18n="quote.role">Broker &amp; Owner</span></span>
+            </figcaption>
+          </figure>
+
           <p class="eyebrow" data-i18n="proof.eyebrow">Proof</p>
           <h2 class="display section-title" data-i18n="proof.title">100% doesn't mean alone. Here's the proof.</h2>
           <p class="proof-lead" data-i18n="proof.lead">The fear with every "100%" shop is that you keep the commission and lose the broker. Not here. Heidy answers her own phone, works your contracts, and the agents below will tell you so.</p>
@@ -285,38 +313,111 @@
         </div>
       </section>
 
+      <!-- ================= 4.5 · CULTURE (sell emotion) ================= -->
+      <section class="section section-wash" id="culture">
+        <div class="wrap">
+          <p class="eyebrow" data-i18n="culture.eyebrow">Culture</p>
+          <h2 class="display section-title" data-i18n="culture.title">It's a business. It should still feel good.</h2>
+
+          <div class="culture-rows">
+            <!-- REPLACE: candid team laughing at a closing, warm natural light, real joy not stock -->
+            <article class="culture-row" data-culture>
+              <figure class="culture-media"><div class="culture-photo" role="img" aria-label="Placeholder — team candid, laughing"></div></figure>
+              <div class="culture-copy">
+                <p class="culture-sub" data-i18n="culture.r1.h">Our people</p>
+                <p class="culture-line" data-i18n="culture.r1.p">A small brokerage that actually likes each other — and it shows at every closing.</p>
+              </div>
+            </article>
+            <!-- REPLACE: Heidy mentoring an agent one-on-one at a desk, contracts open, engaged -->
+            <article class="culture-row" data-culture>
+              <figure class="culture-media"><div class="culture-photo" role="img" aria-label="Placeholder — Heidy mentoring one-on-one"></div></figure>
+              <div class="culture-copy">
+                <p class="culture-sub" data-i18n="culture.r2.h">Real mentorship</p>
+                <p class="culture-line" data-i18n="culture.r2.p">You sit with Heidy, not a training portal. Deals get reviewed side by side.</p>
+              </div>
+            </article>
+            <!-- REPLACE: celebration / closing-day moment — keys handed over, cheers, genuine -->
+            <article class="culture-row" data-culture>
+              <figure class="culture-media"><div class="culture-photo" role="img" aria-label="Placeholder — closing-day celebration"></div></figure>
+              <div class="culture-copy">
+                <p class="culture-sub" data-i18n="culture.r3.h">Closing day</p>
+                <p class="culture-line" data-i18n="culture.r3.p">Keys, photos, the whole thing. Every win gets celebrated like the first one.</p>
+              </div>
+            </article>
+            <!-- REPLACE: community / local SWFL — team at a Cape Coral event or on site at a build -->
+            <article class="culture-row" data-culture>
+              <figure class="culture-media"><div class="culture-photo" role="img" aria-label="Placeholder — SWFL community moment"></div></figure>
+              <div class="culture-copy">
+                <p class="culture-sub" data-i18n="culture.r4.h">Rooted in SWFL</p>
+                <p class="culture-line" data-i18n="culture.r4.p">Cape Coral born, bilingual, and built around the neighborhoods we sell.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- ================= 5 · WHAT'S INCLUDED ================= -->
       <section class="section section-wash" id="included">
         <div class="wrap">
           <p class="eyebrow" data-i18n="inc.eyebrow">What's included</p>
           <h2 class="display section-title" data-i18n="inc.title">Everything you need to close. Nothing you don't.</h2>
 
-          <dl class="included-list">
-            <div class="included-row">
-              <dt data-i18n="inc.r1.h">Transaction coordination</dt>
-              <dd data-i18n="inc.r1.p">Contract-to-close handled, so your hours go to clients, not paperwork.</dd>
+          <!-- Option A: sticky-left visual (photo + icon swaps with the row in view,
+               desktop only) · rows scroll on the right. Mobile & reduced-motion:
+               plain stacked list with inline icons. One consistent Lucide icon set. -->
+          <div class="inc-layout" data-inc>
+            <div class="inc-visual" aria-hidden="true" data-inc-visual>
+              <!-- REPLACE: real photo backdrop for the tools panel (office / tools in use) -->
+              <div class="inc-visual-photo"></div>
+              <div class="inc-visual-icon" data-inc-icon></div>
+              <p class="inc-visual-label" data-inc-label></p>
             </div>
-            <div class="included-row">
-              <dt data-i18n="inc.r2.h">Broker & compliance support</dt>
-              <dd data-i18n="inc.r2.p">Direct access to Heidy for contracts, negotiations, and the deals that go sideways.</dd>
-            </div>
-            <div class="included-row">
-              <dt data-i18n="inc.r3.h">CRM & tech stack</dt>
-              <dd data-i18n="inc.r3.p">A working lead-and-follow-up system from day one — no assembling your own tools.</dd>
-            </div>
-            <div class="included-row">
-              <dt data-i18n="inc.r4.h">Marketing & design support</dt>
-              <dd data-i18n="inc.r4.p">Listing marketing, social templates, and brand assets produced in-house.</dd>
-            </div>
-            <div class="included-row">
-              <dt data-i18n="inc.r5.h">Moving truck for your clients</dt>
-              <dd data-i18n="inc.r5.p">Your buyers and sellers use the Olea Group truck free — a closing gift that markets you.</dd>
-            </div>
-            <div class="included-row">
-              <dt data-i18n="inc.r6.h">Qualified leads — the honest version</dt>
-              <dd data-i18n="inc.r6.p">Some agents receive company leads as they're earned — situational, never guaranteed. Anyone promising you a lead faucet is selling something.</dd>
-            </div>
-          </dl>
+
+            <dl class="included-list">
+              <div class="included-row" data-inc-row>
+                <dt>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+                  <span data-i18n="inc.r1.h">Transaction coordination</span>
+                </dt>
+                <dd data-i18n="inc.r1.p">Contract-to-close handled, so your hours go to clients, not paperwork.</dd>
+              </div>
+              <div class="included-row" data-inc-row>
+                <dt>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span data-i18n="inc.r2.h">Broker & compliance support</span>
+                </dt>
+                <dd data-i18n="inc.r2.p">Direct access to Heidy for contracts, negotiations, and the deals that go sideways.</dd>
+              </div>
+              <div class="included-row" data-inc-row>
+                <dt>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+                  <span data-i18n="inc.r3.h">CRM & tech stack</span>
+                </dt>
+                <dd data-i18n="inc.r3.p">A working lead-and-follow-up system from day one — no assembling your own tools.</dd>
+              </div>
+              <div class="included-row" data-inc-row>
+                <dt>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                  <span data-i18n="inc.r4.h">Marketing & design support</span>
+                </dt>
+                <dd data-i18n="inc.r4.p">Listing marketing, social templates, and brand assets produced in-house.</dd>
+              </div>
+              <div class="included-row" data-inc-row>
+                <dt>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                  <span data-i18n="inc.r5.h">Moving truck for your clients</span>
+                </dt>
+                <dd data-i18n="inc.r5.p">Your buyers and sellers use the Olea Group truck free — a closing gift that markets you.</dd>
+              </div>
+              <div class="included-row" data-inc-row>
+                <dt>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  <span data-i18n="inc.r6.h">Qualified leads — the honest version</span>
+                </dt>
+                <dd data-i18n="inc.r6.p">Some agents receive company leads as they're earned — situational, never guaranteed. Anyone promising you a lead faucet is selling something.</dd>
+              </div>
+            </dl>
+          </div>
 
           <p class="included-callback" data-i18n="inc.callback">And you track all of it in your own dashboard.</p>
         </div>
@@ -415,9 +516,25 @@
       </div>
     </footer>
 
-    <div class="sticky-cta">
-      <a class="btn-cta" href="#contact" data-i18n="cta.sticky">Talk to Heidy — confidential</a>
-    </div>
+    <!-- Mobile floating melt CTA — gooey liquid button, bottom-right thumb zone.
+         Hides while the contact form is on screen (no CTA overlap). -->
+    <a class="melt-cta" id="melt-cta" href="#contact" data-melt>
+      <span class="melt-goo" aria-hidden="true">
+        <span class="melt-pill"></span>
+        <span class="melt-blob melt-blob--a"></span>
+        <span class="melt-blob melt-blob--b"></span>
+      </span>
+      <span class="melt-label" data-i18n="cta.melt">Talk to Heidy</span>
+    </a>
+    <svg class="goo-defs" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -11" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
 
     <script type="module" src="/src/main.js"></script>
   </body>

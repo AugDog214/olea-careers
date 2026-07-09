@@ -784,3 +784,282 @@
 .footer-logo {
   margin-inline: auto;
 }
+
+/* ============================================================
+   v3 COMPONENTS — deck, quote scrub, culture, tools Option A
+   ============================================================ */
+
+/* ---------- offer: layered parallax deck ---------- */
+.deck {
+  margin-top: var(--s-8);
+}
+
+/* base = mobile + reduced-motion: sticky card-stack (layered depth, no gestures) */
+.deck-layer {
+  position: sticky;
+  top: 96px;
+  height: min(72svh, 640px);
+  margin-bottom: var(--s-4);
+  overflow: hidden;
+  box-shadow: 0 -18px 48px rgba(10, 26, 58, 0.28);
+}
+
+.deck-photo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, var(--navy), var(--royal));
+  display: grid;
+  place-items: center;
+}
+
+.deck-photo::after {
+  content: 'REPLACE — real photo';
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.deck-photo--2 {
+  background: linear-gradient(150deg, #0d2452, var(--royal));
+}
+
+.deck-photo--3 {
+  background: linear-gradient(150deg, var(--royal), var(--sky));
+}
+
+/* scrim so text on photo always reads (kept when real photos land) */
+.deck-photo::before {
+  content: '';
+  position: absolute;
+  inset: 50% 0 0 0;
+  background: linear-gradient(180deg, rgba(11, 11, 15, 0), rgba(11, 11, 15, 0.6));
+}
+
+.deck-text {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: var(--s-4) var(--s-4) var(--s-6);
+  color: var(--white);
+  text-align: center;
+  z-index: 1;
+}
+
+.deck-text .pillar-num {
+  color: var(--cyan);
+}
+
+.deck-statement {
+  font-size: var(--text-statement);
+  margin-top: var(--s-1);
+}
+
+.deck-support {
+  max-width: 52ch;
+  margin: var(--s-2) auto 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* desktop pinned mode — JS adds .is-deck-pinned and drives the scrub */
+.deck.is-deck-pinned {
+  position: relative;
+  height: calc(100vh - 120px);
+  margin-bottom: var(--s-4);
+}
+
+.deck.is-deck-pinned .deck-layer {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  margin: 0;
+}
+
+/* ---------- proof: eXp scroll-highlight quote ---------- */
+.quote-scrub {
+  padding-block: var(--s-6) var(--s-12);
+  text-align: center;
+}
+
+.heidy-quote {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+  line-height: 1.3;
+  color: var(--navy);
+  max-width: 30ch;
+  margin-inline: auto;
+}
+
+.heidy-quote .qw {
+  display: inline;
+}
+
+.quote-attrib {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+}
+
+.quote-headshot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, var(--royal), var(--sky));
+  flex-shrink: 0;
+}
+
+.quote-name {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 15, 0.65);
+}
+
+/* ---------- culture: alternating emotion rows ---------- */
+.culture-rows {
+  margin-top: var(--s-8);
+  display: grid;
+  gap: var(--s-12);
+}
+
+.culture-row {
+  display: grid;
+  gap: var(--s-4);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .culture-row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-8);
+  }
+
+  /* alternate photo left / photo right down the page */
+  .culture-row:nth-child(even) .culture-media {
+    order: 2;
+  }
+}
+
+.culture-media {
+  overflow: hidden;
+}
+
+.culture-photo {
+  aspect-ratio: 3 / 2;
+  background: linear-gradient(140deg, var(--navy), var(--royal) 70%, var(--sky));
+  display: grid;
+  place-items: center;
+}
+
+.culture-photo::after {
+  content: 'REPLACE — real photo';
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.culture-sub {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+.culture-line {
+  font-size: var(--text-lead);
+  color: rgba(11, 11, 15, 0.8);
+  max-width: 34ch;
+  margin: var(--s-2) auto 0;
+}
+
+/* ---------- what's included: Option A sticky-left visual ---------- */
+.inc-visual {
+  display: none;
+}
+
+.inc-ico {
+  width: 22px;
+  height: 22px;
+  color: var(--royal);
+  flex-shrink: 0;
+}
+
+.included-row dt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (min-width: 1000px) {
+  .motion-on .inc-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--s-8);
+    align-items: start;
+    margin-top: var(--s-8);
+  }
+
+  .motion-on .inc-layout .included-list {
+    margin-top: 0;
+  }
+
+  .motion-on .inc-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-3);
+    position: sticky;
+    top: 120px;
+    height: min(64vh, 560px);
+    overflow: hidden;
+  }
+
+  .inc-visual-photo {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--navy), var(--royal));
+  }
+
+  .inc-visual-icon {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+  }
+
+  .inc-visual-icon svg {
+    width: 84px;
+    height: 84px;
+  }
+
+  .inc-visual-label {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-label);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: center;
+    padding-inline: var(--s-3);
+  }
+
+  .motion-on .included-row {
+    transition: opacity var(--dur-quick) var(--ease-out);
+  }
+
+  .motion-on .included-row:not(.is-active) {
+    opacity: 0.45;
+  }
+}

@@ -360,13 +360,9 @@ a {
   width: 100%;
 }
 
-/* while the mobile menu is open: lock the page + hide the duplicate sticky CTA */
+/* while the mobile menu is open: lock the page */
 body.menu-open {
   overflow: hidden;
-}
-
-body.menu-open .sticky-cta {
-  display: none;
 }
 
 /* ============================================================
@@ -406,39 +402,108 @@ body.menu-open .sticky-cta {
   }
 }
 
-/* --- mobile sticky CTA: bottom bar in the thumb zone --- */
-.sticky-cta {
+/* --- mobile floating melt CTA: gooey liquid button, bottom-right thumb zone --- */
+.melt-cta {
   position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 100;
-  inset: auto 0 0 0;
-  padding: var(--s-2) var(--content-pad);
-  padding-bottom: calc(var(--s-2) + env(safe-area-inset-bottom, 0px));
-  background: var(--glass-fill);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border-top: 1px solid var(--glass-edge);
-  box-shadow: 0 -8px 32px rgba(10, 26, 58, 0.12);
-}
-
-.sticky-cta .btn-cta {
-  width: 100%;
+  display: inline-flex;
+  text-decoration: none;
+  transition: opacity var(--dur-quick) var(--ease-out), transform var(--dur-quick) var(--ease-out);
 }
 
 @media (min-width: 900px) {
-  .sticky-cta {
+  .melt-cta {
+    display: none; /* desktop keeps the header CTA */
+  }
+}
+
+.melt-goo {
+  position: absolute;
+  inset: 0;
+  filter: url(#goo);
+}
+
+.melt-pill {
+  position: absolute;
+  inset: 0;
+  background: var(--royal);
+  border-radius: var(--radius-pill);
+}
+
+.melt-blob {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--royal);
+}
+
+.melt-blob--a {
+  top: -7px;
+  left: 18%;
+  animation: melt-a 5.5s ease-in-out infinite alternate;
+}
+
+.melt-blob--b {
+  bottom: -8px;
+  right: 14%;
+  animation: melt-b 7s ease-in-out infinite alternate;
+}
+
+@keyframes melt-a {
+  from { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(14px, 3px) scale(0.85); }
+  to   { transform: translate(-10px, 2px) scale(1.1); }
+}
+
+@keyframes melt-b {
+  from { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-16px, -3px) scale(1.12); }
+  to   { transform: translate(8px, -1px) scale(0.8); }
+}
+
+.melt-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 14px 24px;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* hidden while the contact form (its own CTA) is on screen, or menu open */
+.melt-cta.is-hidden,
+body.menu-open .melt-cta {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .melt-blob {
     display: none;
   }
+
+  .melt-goo {
+    filter: none;
+  }
 }
 
-/* keep page content clear of the fixed bars */
+.goo-defs {
+  position: absolute;
+}
+
+/* keep page content clear of the fixed header */
 main {
   padding-top: 80px;
-}
-
-@media (max-width: 899px) {
-  body {
-    padding-bottom: 96px;
-  }
 }
 
 /* ============================================================
@@ -461,14 +526,7 @@ main {
    plain static glass.
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
-  /* only the sticky CTA clips its sheen; the header must NOT clip, or it
-     would cut off the dropdown panel that overflows below it */
-  .sticky-cta {
-    overflow: hidden;
-  }
-
-  .site-header::after,
-  .sticky-cta::after {
+  .site-header::after {
     content: '';
     position: absolute;
     inset: 0;
