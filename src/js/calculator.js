@@ -3,15 +3,21 @@
 
 import { currentLang, onLangChange } from './i18n.js';
 
-// ⚠️ CONFIRM #1: fee model is flat per-transaction; EXACT AMOUNT PENDING from
-// Heidy. $495 is a flagged placeholder. Swapping models or amounts = edit here only.
+// ⚠️ CONFIRM #1: both exact amounts are pending from Heidy. Keep them null until
+// confirmed so the calculator cannot publish invented savings.
 export const FEE_MODEL = {
-  type: 'perTransaction',
-  amount: 495, // ⚠️ REPLACE with Heidy's real per-transaction fee
+  monthlyAmount: null,
+  perTransactionAmount: null,
+  monthsPerYear: 12,
 };
 
 export function oleaCost(transactions) {
-  return FEE_MODEL.amount * transactions;
+  if (!feeModelConfigured()) return null;
+  return (FEE_MODEL.monthlyAmount * FEE_MODEL.monthsPerYear) + (FEE_MODEL.perTransactionAmount * transactions);
+}
+
+export function feeModelConfigured() {
+  return Number.isFinite(FEE_MODEL.monthlyAmount) && Number.isFinite(FEE_MODEL.perTransactionAmount);
 }
 
 // EN/ES result strings live here (they need interpolation, so not in the flat map)
@@ -20,6 +26,13 @@ const resultCopy = {
     `At a${split.startsWith('8') ? 'n' : ''} ${split} split you paid <strong>${paid}</strong> to your broker last year. At The Olea Group you'd have paid <strong>${olea}</strong> — you keep <strong>${kept}</strong> more.`,
   es: (paid, olea, kept, split) =>
     `Con un split de ${split} le pagaste <strong>${paid}</strong> a tu broker el año pasado. En The Olea Group habrías pagado <strong>${olea}</strong> — te quedas con <strong>${kept}</strong> más.`,
+};
+
+const pendingFeeCopy = {
+  en: (paid, split) =>
+    `At a${split.startsWith('8') ? 'n' : ''} ${split} split you paid <strong>${paid}</strong> to your broker last year. The Olea Group uses a low monthly fee plus a flat transaction fee, with no caps. Ask Heidy for the exact amounts to finish the comparison.`,
+  es: (paid, split) =>
+    `Con un split de ${split} le pagaste <strong>${paid}</strong> a tu broker el año pasado. The Olea Group usa una cuota mensual baja más una tarifa fija por transacción, sin topes. Pregúntale a Heidy los montos exactos para completar la comparación.`,
 };
 
 const usd = new Intl.NumberFormat('en-US', {
@@ -75,6 +88,14 @@ export function initCalculator() {
     const splitLabel = splitRate === 0.3 ? '70/30' : '80/20';
     const paidToBroker = gci * splitRate;
     const olea = oleaCost(Math.round(tx));
+
+    if (olea === null) {
+      result.innerHTML = pendingFeeCopy[currentLang()](usd.format(paidToBroker), splitLabel);
+      delete result.dataset.kept;
+      cta.hidden = false;
+      return;
+    }
+
     const kept = paidToBroker - olea;
     if (kept <= 0) {
       // edge case: tiny GCI + many transactions — stay honest, show nothing misleading

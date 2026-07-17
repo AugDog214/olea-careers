@@ -479,7 +479,7 @@ body.menu-open {
   color: var(--white);
 }
 
-/* hidden while the contact form (its own CTA) is on screen, or menu open */
+/* hidden over sections with their own primary CTA, or while the menu is open */
 .melt-cta.is-hidden,
 body.menu-open .melt-cta {
   opacity: 0;

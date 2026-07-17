@@ -39,15 +39,28 @@ if (stats && [...stats.querySelectorAll('.stat-value')].every((v) => v.textConte
   stats.style.display = 'none';
 }
 
-// Melt CTA: hide while the contact section (which has its own submit CTA)
-// is on screen, so the two never overlap.
+// Melt CTA: show only through the middle of the page. The hero and contact
+// sections already have primary actions, so a floating duplicate adds noise.
 const melt = document.querySelector('[data-melt]');
+const hero = document.getElementById('hero');
 const contact = document.getElementById('contact');
-if (melt && contact && 'IntersectionObserver' in window) {
-  new IntersectionObserver(
-    ([entry]) => melt.classList.toggle('is-hidden', entry.isIntersecting),
+if (melt && hero && contact && 'IntersectionObserver' in window) {
+  let contactVisible = false;
+  const updateMelt = () => {
+    const heroActive = window.scrollY < hero.offsetHeight * 0.75;
+    melt.classList.toggle('is-hidden', heroActive || contactVisible);
+  };
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      contactVisible = entry.isIntersecting;
+      updateMelt();
+    },
     { threshold: 0.15 }
-  ).observe(contact);
+  );
+  observer.observe(contact);
+  window.addEventListener('scroll', updateMelt, { passive: true });
+  window.addEventListener('resize', updateMelt);
+  updateMelt();
 }
 
 initI18n();

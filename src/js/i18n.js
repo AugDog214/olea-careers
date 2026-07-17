@@ -19,15 +19,11 @@ export const strings = {
   'cta.melt': { en: 'Talk to Heidy', es: 'Habla con Heidy' },
 
   // --- 1 · hero ---
-  'hero.eyebrow': {
-    en: 'For experienced agents · Cape Coral · Fort Myers · all of SWFL',
-    es: 'Para agentes con experiencia · Cape Coral · Fort Myers · todo SWFL',
-  },
   'hero.title1': { en: 'Keep 100%.', es: 'Quédate con el 100%.' },
   'hero.title2': { en: 'Never work alone.', es: 'Nunca solo.' },
   'hero.sub': {
-    en: "The Olea Group is a boutique Cape Coral brokerage built for producing agents: one flat transaction fee, in-house new-construction inventory, a bilingual client market — and a broker who actually answers.",
-    es: 'The Olea Group es un brokerage boutique de Cape Coral hecho para agentes productivos: una sola tarifa fija por transacción, inventario propio de construcción nueva, un mercado bilingüe — y una broker que sí contesta.',
+    en: 'The Olea Group is a boutique brokerage in Cape Coral, Florida, built for independent agents. Agents receive 24/7 office access, exclusive moving-truck access for clients, a bilingual brokerage, a friendly and clean work environment, and user-friendly transaction software.',
+    es: 'The Olea Group es un brokerage boutique en Cape Coral, Florida, creado para agentes independientes. Los agentes tienen acceso a la oficina las 24 horas, acceso exclusivo al camión de mudanza para sus clientes, un brokerage bilingüe, un ambiente de trabajo amable y limpio, y un sistema de transacciones fácil de usar.',
   },
   'cta.hero': { en: 'Schedule a confidential chat', es: 'Agenda una charla confidencial' },
   'hero.micro': {
@@ -41,20 +37,26 @@ export const strings = {
     en: 'You do the producing. You keep the money.',
     es: 'Tú produces. Tú te quedas con el dinero.',
   },
-  'offer.p1.h': { en: '100% of every side is yours.', es: 'El 100% de cada lado es tuyo.' },
+  'offer.p1.h': { en: 'Keep 100% of your commission.', es: 'Quédate con el 100% de tu comisión.' },
   'offer.p1.p': {
-    en: 'Every commission you earn is yours to keep. No splits, no franchise cut, no royalty skimmed off the top.',
-    es: 'Cada comisión que ganas es tuya. Sin splits, sin cuota de franquicia, sin regalías que te descuenten.',
+    en: 'Your production stays yours. There is no commission split taken from each closing.',
+    es: 'Tu producción sigue siendo tuya. No se descuenta un split de comisión en cada cierre.',
   },
-  'offer.p2.h': { en: "One flat fee. That's the whole math.", es: 'Una tarifa fija. Esa es toda la cuenta.' },
+  'offer.p2.h': {
+    en: 'One-on-one mentorship options are available with the broker.',
+    es: 'Hay opciones de mentoría individual con la broker.',
+  },
   'offer.p2.p': {
-    en: 'You pay a single flat fee per closed transaction — the same number every time. No caps to chase, no tiers, no surprises on the statement.',
-    es: 'Pagas una sola tarifa fija por transacción cerrada — el mismo número siempre. Sin topes que perseguir, sin niveles, sin sorpresas en el estado de cuenta.',
+    en: 'Choose paid individual guidance from Heidy when you want more direct mentorship. It is an option, not a required service.',
+    es: 'Elige orientación individual pagada con Heidy cuando quieras una mentoría más directa. Es una opción, no un servicio obligatorio.',
   },
-  'offer.p3.h': { en: 'You built the business. Keep what it pays.', es: 'Tú construiste el negocio. Quédate con lo que paga.' },
+  'offer.p3.h': {
+    en: 'Low monthly fee. Flat transaction fee. No caps.',
+    es: 'Cuota mensual baja. Tarifa fija por transacción. Sin topes.',
+  },
   'offer.p3.p': {
-    en: 'Your production is yours. Run the numbers below and see what a real 100% model puts back in your pocket this year.',
-    es: 'Tu producción es tuya. Calcula abajo y mira lo que un modelo 100% real te devuelve al bolsillo este año.',
+    en: 'Those are the required brokerage costs. CRM, qualified leads, and mentorship remain optional.',
+    es: 'Esos son los costos obligatorios del brokerage. El CRM, los leads calificados y la mentoría siguen siendo opcionales.',
   },
   'calc.toggle': { en: 'Run your numbers ▾', es: 'Calcula tus números ▾' },
   'calc.gci': { en: "Last year's GCI ($)", es: 'GCI del año pasado ($)' },
@@ -65,24 +67,24 @@ export const strings = {
   // --- 3 · the edge ---
   'edge.eyebrow': { en: 'What sets us apart', es: 'Lo que nos distingue' },
   'edge.title': {
-    en: "Two things you can't get at the shop down the street.",
-    es: 'Dos cosas que no consigues en la oficina de enfrente.',
+    en: 'A simpler model. A broader reach.',
+    es: 'Un modelo más simple. Un alcance más amplio.',
   },
-  'edge.e1.h': { en: 'We build the inventory you sell.', es: 'Construimos el inventario que tú vendes.' },
+  'edge.e1.h': { en: 'Independent by design.', es: 'Independiente por diseño.' },
   'edge.e1.p': {
-    en: 'The Olea Group is a real estate and construction company. Our agents list our own new builds and work our builder leads — listings you didn\'t have to farm, door-knock, or buy. Every other "100%" shop hands you a fee schedule; we hand you product.',
-    es: 'The Olea Group es una empresa de bienes raíces y construcción. Nuestros agentes listan nuestras propias construcciones nuevas y trabajan nuestros leads de constructores — listados que no tuviste que cultivar, tocar puertas ni comprar. Las demás oficinas de "100%" te entregan una tabla de tarifas; nosotros te entregamos producto.',
+    en: 'Run your business with 24/7 office access, clear broker and compliance review, practical transaction software, and optional services only when they fit your business.',
+    es: 'Dirige tu negocio con acceso a la oficina las 24 horas, revisión clara de broker y cumplimiento, software práctico de transacciones y servicios opcionales solo cuando encajen con tu negocio.',
   },
-  'edge.e2.h': { en: 'Two languages. Twice the market.', es: 'Dos idiomas. El doble de mercado.' },
+  'edge.e2.h': { en: 'Bilingual by nature.', es: 'Bilingüe por naturaleza.' },
   'edge.e2.p': {
-    en: "Southwest Florida's Spanish-speaking buyers and sellers are one of the largest underserved client pools in the state. A bilingual brokerage doesn't just translate — it wins the referrals, the trust, and the repeat business most offices never see.",
-    es: 'Los compradores y vendedores hispanohablantes del suroeste de Florida son uno de los mercados más desatendidos del estado. Un brokerage bilingüe no solo traduce — gana los referidos, la confianza y los clientes recurrentes que la mayoría de las oficinas nunca ve.',
+    en: 'Heidy is fluent in English and Spanish, and most Olea Group agents also speak both languages. The result is a collaborative, friendly environment built to serve both markets.',
+    es: 'Heidy habla inglés y español con fluidez, y la mayoría de los agentes de The Olea Group también hablan ambos idiomas. El resultado es un ambiente colaborativo y amable preparado para servir a ambos mercados.',
   },
 
   // --- 4 · proof: Heidy quote (word-split by quote-scrub, no data-i18n) ---
   'quote.q': {
-    en: "I built The Olea Group for the agents I wish I'd had a broker like when I started — one who answers the phone, hands you real inventory, and lets you keep what you earn. You're not a number here. You're the business.",
-    es: 'Construí The Olea Group para los agentes a los que me hubiera gustado tener una broker así cuando empecé — una que contesta el teléfono, te entrega inventario real y te deja quedarte con lo que ganas. Aquí no eres un número. Eres el negocio.',
+    en: "I built The Olea Group for independent agents who want a simpler brokerage: keep what you earn, use the practical tools you need, and choose one-on-one guidance when you want it. You're not a number here. You're the business.",
+    es: 'Construí The Olea Group para agentes independientes que quieren un brokerage más simple: quédate con lo que ganas, usa las herramientas prácticas que necesitas y elige orientación individual cuando la quieras. Aquí no eres un número. Eres el negocio.',
   },
   'quote.name': { en: 'Heidy Olea', es: 'Heidy Olea' },
   'quote.role': { en: 'Broker & Owner', es: 'Broker y Propietaria' },
@@ -98,15 +100,15 @@ export const strings = {
     en: 'A small brokerage that actually likes each other — and it shows at every closing.',
     es: 'Un brokerage pequeño donde la gente de verdad se aprecia — y se nota en cada cierre.',
   },
-  'culture.r2.h': { en: 'Real mentorship', es: 'Mentoría real' },
+  'culture.r2.h': { en: 'Mentorship, when you choose it', es: 'Mentoría, cuando tú la eliges' },
   'culture.r2.p': {
-    en: 'You sit with Heidy, not a training portal. Deals get reviewed side by side.',
-    es: 'Te sientas con Heidy, no con un portal de cursos. Los tratos se revisan lado a lado.',
+    en: 'Paid one-on-one mentorship with Heidy is available for agents who want more direct guidance.',
+    es: 'La mentoría individual pagada con Heidy está disponible para agentes que desean orientación más directa.',
   },
   'culture.r3.h': { en: 'Closing day', es: 'Día de cierre' },
   'culture.r3.p': {
-    en: 'Keys, photos, the whole thing. Every win gets celebrated like the first one.',
-    es: 'Llaves, fotos, todo. Cada logro se celebra como el primero.',
+    en: 'As a courtesy, the brokerage shares agent wins and celebrates the work behind them.',
+    es: 'Como cortesía, el brokerage comparte los logros de los agentes y celebra el trabajo detrás de ellos.',
   },
   'culture.r4.h': { en: 'Rooted in SWFL', es: 'Raíces en SWFL' },
   'culture.r4.p': {
@@ -116,10 +118,10 @@ export const strings = {
 
   // --- 4 · proof ---
   'proof.eyebrow': { en: 'Proof', es: 'Resultados' },
-  'proof.title': { en: "100% doesn't mean alone. Here's the proof.", es: 'El 100% no significa estar solo. Aquí está la prueba.' },
+  'proof.title': { en: "Independent doesn't mean unclear.", es: 'Independiente no significa sin claridad.' },
   'proof.lead': {
-    en: 'The fear with every "100%" shop is that you keep the commission and lose the broker. Not here. Heidy answers her own phone, works your contracts, and the agents below will tell you so.',
-    es: 'El miedo con cada oficina de "100%" es que te quedas con la comisión y pierdes al broker. Aquí no. Heidy contesta su propio teléfono, trabaja tus contratos, y los agentes de abajo te lo dirán.',
+    en: 'The brokerage provides broker and compliance review while agents retain control of their day-to-day business. Paid one-on-one mentorship is available when an agent chooses more direct guidance.',
+    es: 'El brokerage brinda revisión de broker y cumplimiento mientras los agentes mantienen el control de su negocio diario. La mentoría individual pagada está disponible cuando un agente elige orientación más directa.',
   },
   'proof.s1.label': { en: 'Closed volume', es: 'Volumen cerrado' },
   'proof.s1.value': { en: '$—M', es: '$—M' },
@@ -127,61 +129,46 @@ export const strings = {
   'proof.s2.value': { en: '—', es: '—' },
   'proof.s3.label': { en: 'Agents', es: 'Agentes' },
   'proof.s3.value': { en: '—', es: '—' },
-  'proof.t1.q': {
-    en: '“[Placeholder — agent quote about calling Heidy and getting an answer the same day.]”',
-    es: '“[Pendiente — cita de un agente sobre llamar a Heidy y recibir respuesta el mismo día.]”',
-  },
-  'proof.t1.n': { en: '— Agent name, The Olea Group', es: '— Nombre del agente, The Olea Group' },
-  'proof.t2.q': {
-    en: '“[Placeholder — agent quote about closing an in-house construction listing.]”',
-    es: '“[Pendiente — cita de un agente sobre cerrar un listado de construcción propia.]”',
-  },
-  'proof.t2.n': { en: '— Agent name, The Olea Group', es: '— Nombre del agente, The Olea Group' },
-  'proof.t3.q': {
-    en: '“[Placeholder — agent quote about switching and what the fee change meant in dollars.]”',
-    es: '“[Pendiente — cita de un agente sobre el cambio y lo que significó en dólares.]”',
-  },
-  'proof.t3.n': { en: '— Agent name, The Olea Group', es: '— Nombre del agente, The Olea Group' },
-
   // --- 5 · what's included ---
   'inc.eyebrow': { en: "What's included", es: 'Qué incluye' },
   'inc.title': {
-    en: "Everything you need to close. Nothing you don't.",
-    es: 'Todo lo que necesitas para cerrar. Nada que no.',
+    en: 'The essentials for independent agents. Options when you want more.',
+    es: 'Lo esencial para agentes independientes. Opciones cuando quieres más.',
   },
-  'inc.r1.h': { en: 'Transaction coordination', es: 'Coordinación de transacciones' },
+  'inc.mls.title': { en: 'MLS access across Florida markets', es: 'Acceso MLS en mercados de Florida' },
+  'inc.r1.h': { en: 'Transaction checklist', es: 'Lista de control de transacciones' },
   'inc.r1.p': {
-    en: 'Contract-to-close handled, so your hours go to clients, not paperwork.',
-    es: 'Del contrato al cierre, resuelto — tus horas van a los clientes, no al papeleo.',
+    en: 'The transaction system includes an easy checklist. Agents remain responsible for managing their own files and deadlines.',
+    es: 'El sistema de transacciones incluye una lista de control sencilla. Los agentes siguen siendo responsables de administrar sus propios archivos y fechas límite.',
   },
-  'inc.r2.h': { en: 'Broker & compliance support', es: 'Soporte de broker y cumplimiento' },
+  'inc.r2.h': { en: 'Broker & compliance review', es: 'Revisión de broker y cumplimiento' },
   'inc.r2.p': {
-    en: 'Direct access to Heidy for contracts, negotiations, and the deals that go sideways.',
-    es: 'Acceso directo a Heidy para contratos, negociaciones y los tratos que se complican.',
+    en: 'Required brokerage oversight stays clear while independent agents manage their own day-to-day business.',
+    es: 'La supervisión obligatoria del brokerage se mantiene clara mientras los agentes independientes administran su negocio diario.',
   },
-  'inc.r3.h': { en: 'CRM & tech stack', es: 'CRM y tecnología' },
+  'inc.r3.h': { en: 'User-friendly CRM option', es: 'Opción de CRM fácil de usar' },
   'inc.r3.p': {
-    en: 'A working lead-and-follow-up system from day one — no assembling your own tools.',
-    es: 'Un sistema de leads y seguimiento funcionando desde el primer día — sin armar tus propias herramientas.',
+    en: 'Choose an optional CRM when you want a simpler way to organize contacts and follow-up.',
+    es: 'Elige un CRM opcional cuando quieras una forma más sencilla de organizar contactos y seguimiento.',
   },
-  'inc.r4.h': { en: 'Marketing & design support', es: 'Soporte de marketing y diseño' },
+  'inc.r4.h': { en: 'Agent wins, shared as a courtesy', es: 'Logros de agentes, compartidos como cortesía' },
   'inc.r4.p': {
-    en: 'Listing marketing, social templates, and brand assets produced in-house.',
-    es: 'Marketing de listados, plantillas para redes y material de marca producido en casa.',
+    en: 'The brokerage may share agent accomplishments. Agents remain responsible for their own marketing and design.',
+    es: 'El brokerage puede compartir los logros de los agentes. Cada agente sigue siendo responsable de su propio marketing y diseño.',
   },
   'inc.r5.h': { en: 'Moving truck for your clients', es: 'Camión de mudanza para tus clientes' },
   'inc.r5.p': {
-    en: 'Your buyers and sellers use the Olea Group truck free — a closing gift that markets you.',
-    es: 'Tus compradores y vendedores usan el camión de Olea Group gratis — un regalo de cierre que te hace publicidad.',
+    en: 'Reserve the Olea Group moving truck for clients, subject to scheduling and availability.',
+    es: 'Reserva el camión de mudanza de The Olea Group para tus clientes, sujeto a programación y disponibilidad.',
   },
-  'inc.r6.h': { en: 'Qualified leads — the honest version', es: 'Leads calificados — la versión honesta' },
+  'inc.r6.h': { en: 'Qualified lead option', es: 'Opción de leads calificados' },
   'inc.r6.p': {
-    en: "Some agents receive company leads as they're earned — situational, never guaranteed. Anyone promising you a lead faucet is selling something.",
-    es: 'Algunos agentes reciben leads de la empresa según se los ganan — situacional, nunca garantizado. Quien te promete una llave de leads te está vendiendo algo.',
+    en: 'Qualified lead access may be available as a paid option. Lead volume is never included or guaranteed.',
+    es: 'El acceso a leads calificados puede estar disponible como opción pagada. El volumen de leads nunca está incluido ni garantizado.',
   },
   'inc.callback': {
-    en: 'And you track all of it in your own dashboard.',
-    es: 'Y todo lo sigues desde tu propio dashboard.',
+    en: 'Core access stays simple. Optional services stay optional.',
+    es: 'El acceso principal se mantiene simple. Los servicios opcionales siguen siendo opcionales.',
   },
 
   // --- 6 · faq ---
@@ -189,28 +176,28 @@ export const strings = {
   'faq.title': { en: "The questions you're already asking.", es: 'Las preguntas que ya te estás haciendo.' },
   'faq.q1': { en: 'What does 100% commission actually mean here?', es: '¿Qué significa realmente el 100% de comisión aquí?' },
   'faq.a1': {
-    en: "You keep your full commission on every closing and pay one flat fee per transaction. No splits, no franchise fees, no royalty math. Ask Heidy for the exact fee in your confidential chat — it's one number, not a rate sheet.",
-    es: 'Te quedas con toda tu comisión en cada cierre y pagas una tarifa fija por transacción. Sin splits, sin cuotas de franquicia, sin matemática de regalías. Pregúntale a Heidy la tarifa exacta en tu charla confidencial — es un solo número, no una tabla.',
+    en: 'You keep your full commission and pay a low monthly fee plus a flat transaction fee. There are no splits, no caps, and no other required brokerage charges. CRM, qualified leads, and one-on-one mentorship are optional.',
+    es: 'Te quedas con toda tu comisión y pagas una cuota mensual baja más una tarifa fija por transacción. No hay splits, topes ni otros cargos obligatorios del brokerage. El CRM, los leads calificados y la mentoría individual son opcionales.',
   },
   'faq.q2': { en: 'Am I locked into a contract?', es: '¿Quedo amarrado a un contrato?' },
   'faq.a2': {
-    en: "No long-term lock-in. If The Olea Group stops earning your business, you can leave — and we'd rather keep you with support than with a contract.",
-    es: 'Sin amarres a largo plazo. Si The Olea Group deja de ganarse tu negocio, te puedes ir — preferimos retenerte con soporte, no con un contrato.',
+    en: 'No long-term lock-in. The model is built for independent agents who want flexibility, not a contract that makes the decision for them.',
+    es: 'No hay amarre a largo plazo. El modelo está creado para agentes independientes que quieren flexibilidad, no un contrato que decida por ellos.',
   },
   'faq.q3': { en: 'How does switching brokerages work?', es: '¿Cómo funciona el cambio de brokerage?' },
   'faq.a3': {
-    en: "In Florida it's a license transfer, not a career event. We handle the paperwork with you, your pending deals are worked out case by case, and most agents are fully moved in days — quietly.",
-    es: 'En Florida es una transferencia de licencia, no un evento de carrera. Manejamos el papeleo contigo, tus tratos pendientes se resuelven caso por caso, y la mayoría de los agentes se muda por completo en días — con discreción.',
+    en: 'Your move is handled as a private, straightforward transition. Heidy will review your current situation and pending business with you before anything changes.',
+    es: 'Tu cambio se maneja como una transición privada y sencilla. Heidy revisará contigo tu situación actual y tus negocios pendientes antes de que algo cambie.',
   },
   'faq.q4': { en: 'Do I get leads?', es: '¿Me dan leads?' },
   'faq.a4': {
-    en: "Honest answer: sometimes. Company and builder leads are assigned situationally — mostly earned by production and responsiveness. They're a perk here, not a promise. No brokerage can guarantee lead flow, including this one.",
-    es: 'Respuesta honesta: a veces. Los leads de la empresa y de constructores se asignan según la situación — se ganan sobre todo con producción y capacidad de respuesta. Aquí son un beneficio, no una promesa. Ningún brokerage puede garantizar flujo de leads, incluido este.',
+    en: 'Leads are not included or guaranteed. A qualified lead option may be available for an additional charge if it fits your business.',
+    es: 'Los leads no están incluidos ni garantizados. Puede haber una opción de leads calificados por un cargo adicional si encaja con tu negocio.',
   },
-  'faq.q5': { en: 'Do you really serve Spanish-speaking clients?', es: '¿De verdad atienden clientes hispanohablantes?' },
+  'faq.q5': { en: 'Is the company really bilingual?', es: '¿La compañía es realmente bilingüe?' },
   'faq.a5': {
-    en: "Yes — the brokerage operates in English and Spanish daily, from first call to closing table. If you're bilingual, your skill finally has a brokerage built around it. If you're not, the in-house team backs you up.",
-    es: 'Sí — el brokerage opera en inglés y español todos los días, desde la primera llamada hasta la mesa de cierre. Si eres bilingüe, tu habilidad por fin tiene un brokerage hecho a su medida. Si no lo eres, el equipo interno te respalda.',
+    en: 'Yes. Our broker is fluent in English and Spanish. Most of our agents also speak both languages, and the brokerage has a collaborative, friendly environment.',
+    es: 'Sí. Nuestra broker habla inglés y español con fluidez. La mayoría de nuestros agentes también hablan ambos idiomas, y el brokerage tiene un ambiente colaborativo y amable.',
   },
 
   // --- 7 · final cta ---

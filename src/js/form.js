@@ -1,8 +1,7 @@
-// Lead form → n8n webhook → Lofty (source-tagged "Agent Recruiting").
-// Provider-agnostic: swap FORM_ENDPOINT for Formspree/Netlify/GHL without
-// touching markup. 🧑 HUMAN: paste the real n8n webhook URL below, then
-// confirm the n8n→Lofty node creates the contact with the right source tag.
-const FORM_ENDPOINT = 'REPLACE_WITH_N8N_WEBHOOK_URL';
+// Lead form → n8n webhook → Gmail + Lofty (source-tagged "Agent Recruiting").
+// 🧑 HUMAN: set VITE_N8N_WEBHOOK_URL, then configure n8n to email every valid
+// submission to theoleagroup@gmail.com and create the source-tagged Lofty contact.
+const FORM_ENDPOINT = (import.meta.env.VITE_N8N_WEBHOOK_URL || '').trim();
 
 /*
 Payload schema (n8n side expects exactly this shape):
@@ -40,6 +39,10 @@ const copy = {
   error: {
     en: "Something went wrong sending your info — nothing was lost. Try again, or call (239) 318-4689.",
     es: 'Algo falló al enviar tu información — no se perdió nada. Intenta de nuevo o llama al (239) 318-4689.',
+  },
+  notConfigured: {
+    en: 'Online delivery is being connected. Please call (239) 318-4689 for a confidential conversation.',
+    es: 'La entrega en línea se está conectando. Llama al (239) 318-4689 para una conversación confidencial.',
   },
   success: {
     en: "Done. Heidy will reach out personally — and your current broker never hears about it.",
@@ -95,6 +98,13 @@ export function initForm() {
     };
 
     const submitBtn = form.querySelector('.form-submit');
+
+    if (!FORM_ENDPOINT) {
+      status.textContent = copy.notConfigured[lang];
+      status.dataset.state = 'error';
+      return;
+    }
+
     status.textContent = copy.sending[lang];
     status.dataset.state = 'sending';
     submitBtn.disabled = true;

@@ -10,7 +10,7 @@ A single-page **agent-recruitment site** for **The Olea Group Real Estate & Cons
 
 **Its only job:** convert experienced licensed agents into booking a confidential chat with Heidy. It is not a brand site, not a home-search site, not a lead-gen site for buyers. The main site (myoleagroup.com, on Lofty) owns buyer/seller. This subdomain owns recruiting. No page targets both — that anti-cannibalization rule is a hard design constraint, not a preference.
 
-Built July 2026 across a 9-phase plan (Phase 0 setup → Phase 8 QA/handoff). All phases complete. Design iterated to **v3**.
+Built July 2026 across a 9-phase plan (Phase 0 setup → Phase 8 QA/handoff). All phases complete. The current local revision incorporates Heidy's July 17 service-model feedback and has not been pushed live.
 
 ---
 
@@ -21,25 +21,25 @@ Built July 2026 across a 9-phase plan (Phase 0 setup → Phase 8 QA/handoff). Al
 | **Local** | `C:/Users/apirr/OneDrive/Desktop/olea-careers/` |
 | **Repo** | `AugDog214/olea-careers` (https://github.com/AugDog214/olea-careers.git) |
 | **Live (temp)** | https://augdog214.github.io/olea-careers/ |
-| **Live (final)** | https://careers.myoleagroup.com — **blocked on one DNS record** |
+| **Live (final)** | https://careers.myoleagroup.com — pending content/integration approval and DNS |
 | **Deploy** | GitHub Actions → GitHub Pages, auto on every push to `main` |
-| **Git state** | clean; HEAD = `d5aca6d` |
+| **Git state** | Local `main` is intentionally ahead of `origin/main`; do not push without August's approval. Use `git status` and `git log -3` for the current commit. |
 
-**Stack:** Vite 6 + vanilla JS (no React, no Tailwind — deliberate), GSAP + ScrollTrigger + Lenis, forms → n8n webhook → Lofty CRM. ~3,100 lines across 10 source files. Zero external network requests at runtime (all fonts self-hosted).
+**Stack:** Vite 6 + vanilla JS (no React, no Tailwind — deliberate), GSAP + ScrollTrigger + Lenis, forms → n8n webhook → Gmail + Lofty CRM. ~3,200 lines across 10 source files. Zero external network requests at runtime (fonts and MLS marks are self-hosted).
 
 ### File map
 
 ```
-index.html               541 lines · 7 sections, one h1, JSON-LD @graph, meta/OG, font preloads
-src/main.js               57 · wiring + header condense + stats-hide + melt-CTA observer
-src/js/i18n.js           292 · ~75-key EN/ES string map, setLang/currentLang/onLangChange
+index.html               545 lines · 7 sections, one h1, JSON-LD @graph, meta/OG, font preloads
+src/main.js               70 · wiring + header condense + stats-hide + melt-CTA visibility
+src/js/i18n.js           279 · EN/ES string map, setLang/currentLang/onLangChange
 src/js/motion.js         244 · all GSAP/Lenis; reduced-motion early-return at the top
-src/js/calculator.js     108 · fee-vs-split math  ⚠️ placeholder fee lives here
-src/js/form.js           119 · validation, UTM capture, honeypot  ⚠️ stub endpoint lives here
+src/js/calculator.js     129 · split comparison; exact monthly/transaction fees stay null until confirmed
+src/js/form.js           129 · validation, UTM capture, honeypot, Vite webhook env config
 src/js/nav.js             47 · mobile menu + MyOleaGroup.com dropdown
 src/styles/tokens.css     87 · palette, fluid type scale, 8px spacing, glass vars, easings
 src/styles/base.css      583 · reset, type roles, glass header, CTAs, reduced-motion kill-switch
-src/styles/sections.css 1065 · every section's layout
+src/styles/sections.css 1115 · every section's layout, including open MLS logo row
 public/fonts/            Season Serif (TRIAL) + Montserrat (variable) + League Spartan, woff2
 public/                  CNAME.hold, robots.txt, sitemap.xml, llms.txt, favicon, assets/
 .github/workflows/deploy.yml
@@ -52,7 +52,7 @@ REVISION-PROMPT.md
 
 hero → offer → edge → proof → included → faq → contact
 
-Order is load-bearing. The converters are **the un-copyable edges** (in-house construction inventory, bilingual market access) plus **broker-answers-the-phone proof** — not the commission split. The split gets you read; the edges get you signed.
+Order is load-bearing. The commission model gets attention; the decision layer is independence with practical access, bilingual reach, clear broker/compliance review, and optional paid services. Do not restore the removed inventory or unlimited-support claims.
 
 ---
 
@@ -84,22 +84,27 @@ These came from August's `anti-slop-design/RULES.md` + `august-system/SKILL.md`.
 
 ## 4. Honesty guardrails (non-negotiable, Heidy's reputation is on the line)
 
-- **Never headline or promise leads.** Leads are situational to some agents, never guaranteed. This language does not appear anywhere and must not be added.
-- **No fee number published on the page.** The FAQ says to ask Heidy for the exact fee. The calculator uses a flagged placeholder.
-- **Testimonials are visible bracketed placeholders.** Nothing fabricated ever shipped.
+- **Never headline or promise leads.** Qualified leads may be a paid option; volume is never included or guaranteed.
+- **No fee number published on the page.** The calculator config uses `null` for both amounts until Heidy confirms them and cannot render invented savings.
+- **Testimonials do not render until real approved quotes, names, and photos exist.**
+- Included oversight is **broker & compliance review**, not unlimited support. CRM, leads, and one-on-one mentorship are optional.
 - **Every missing asset is flagged `<!-- REPLACE -->`** in the code. No silently-shipped stock photos.
 - No home-search/IDX. No off-site CTA links.
 
 ---
 
-## 5. The two placeholders that must change before launch
+## 5. The two configurations that must change before launch
 
 ```js
 // src/js/calculator.js
-const FEE_MODEL = { type: 'perTransaction', amount: 495 /* ⚠️ REPLACE — get real number from Heidy */ };
+const FEE_MODEL = {
+  monthlyAmount: null,
+  perTransactionAmount: null,
+  monthsPerYear: 12,
+};
 
 // src/js/form.js
-const FORM_ENDPOINT = 'REPLACE_WITH_N8N_WEBHOOK_URL';
+const FORM_ENDPOINT = (import.meta.env.VITE_N8N_WEBHOOK_URL || '').trim();
 ```
 
 Form payload (this is the contract the n8n → Lofty node must map):
@@ -108,7 +113,7 @@ name, phone, email, currentBrokerage, reason,
 source: 'Agent Recruiting',
 utm_source, utm_campaign, utm_content, pageUrl, submittedAt
 ```
-Verified end-to-end against a local Node webhook catcher — schema matches exactly.
+The GitHub Actions workflow reads the endpoint from the `N8N_WEBHOOK_URL` repository secret. The n8n workflow must hardcode `theoleagroup@gmail.com` as the notification recipient and also map the contact into Lofty.
 
 ---
 
@@ -132,14 +137,15 @@ Purely additive. The root `@` and `www` records stay pointed at Lofty — this c
 
 Full detail in `GO-LIVE-CHECKLIST.md`.
 
-1. **GoDaddy CNAME** ← the only thing blocking launch (§6 above)
-2. **Real fee from Heidy** → `calculator.js`
-3. **n8n webhook URL** → `form.js`, then build the n8n → Lofty node tagged `source: Agent Recruiting`. ⚠️ Confirm Heidy's Lofty package includes API access. Submit a test lead and confirm it lands with the right tag so her follow-up automations fire.
-4. **Buy the Season Serif webfont license** (VJ Type) — TRIAL files are live right now. **Legal blocker for real launch.** Drop licensed files into `public/fonts/` with the same names.
-5. **Real assets** — hero photo, edge photos, 3 offer-deck photos, Heidy headshot, 4 culture photos, tools backdrop, 3 real testimonials (EN+ES, in `i18n.js`), production stats, 1200×630 og-image, white/knockout logo, office address + email.
-6. **Lofty-side launch** — repoint the Careers nav link from the external licensing school → the subdomain (turns a leak into a funnel); trim the homepage recruiting block to a teaser.
-7. **Search Console** — add `careers.myoleagroup.com` as its own property (subdomains are separate), submit the sitemap.
-8. Optional: GBP "hiring experienced agents" post linking to the subdomain.
+1. **Buy the Season Serif webfont license** (VJ Type) — TRIAL files are live right now. **Legal blocker for real launch.** Drop licensed files into `public/fonts/` with the same names.
+2. **Real monthly and transaction fees from Heidy** → `calculator.js`.
+3. **n8n webhook URL** → GitHub secret `N8N_WEBHOOK_URL`; n8n emails `theoleagroup@gmail.com` and creates/updates the Lofty contact tagged `source: Agent Recruiting`. Confirm both outcomes with one test submission.
+4. **Confirm Heidy's exact MLS memberships.** Visible labels use verified names: Stellar MLS, MIAMI REALTORS, and Florida Gulf Coast MLS. The third mark is Royal Palm Coast Realtor Association from the official SWFL Matrix login.
+5. **Real assets** — hero photo, edge photos, 3 offer-deck photos, Heidy headshot, 4 culture photos, tools backdrop, real testimonials, production stats, 1200×630 og-image, white/knockout logo, office address + email.
+6. **GoDaddy CNAME** after launch approval (§6 above).
+7. **Lofty-side launch** — repoint the Careers nav link from the external licensing school → the subdomain; trim the homepage recruiting block to a teaser.
+8. **Search Console** — add `careers.myoleagroup.com` as its own property and submit the sitemap.
+9. Optional: GBP "hiring experienced agents" post linking to the subdomain.
 
 Two nice automatic behaviors: the **stats row hides itself** while values are `—` placeholders (hollow dashes are worse than absence) and **count-up animation activates by itself** the moment real numbers land.
 
@@ -151,6 +157,6 @@ Two nice automatic behaviors: the **stats row hides itself** while values are `�
 - **Never use `mcp__claude-in-chrome__*`** — CLAUDE.md forbids it. Use the gstack `/browse` skill for all browsing/QA.
 - The hero is `position: sticky; top: 0; z-index: 0` and sections scroll over it — that's why `.section` carries `background: var(--white)` and `.section-wash` needs an explicit `background-color` under its translucent gradient. Don't "simplify" it.
 - Last Lighthouse: **Perf 91 · A11y 100 · Best Practices 100 · SEO 100**, CLS ~0. Got there by converting fonts OTF→woff2 (185KB→63KB), self-hosting everything, and dropping Cormorant + external Google CSS.
-- Verified live on resume (mobile 390 / desktop 1280): one h1, no horizontal scroll, no console errors, 0 external deps, form + calculator present.
+- Verified locally after the July 17 revision (mobile 375 / desktop 1280): one h1, no horizontal scroll, no console errors, EN/ES copy swap, calculator fallback, MLS marks, and safe unconfigured-form behavior.
 
 **Nothing is locked.** When Heidy reacts, bring her notes and iterate. Track decisions in `DECISIONS.md`.

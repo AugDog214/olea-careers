@@ -1,28 +1,23 @@
-# REVISION PROMPT — Olea "Join Us" page v2
+# REVISION PROMPT — Olea "Join Us" page v2 (superseded by July 17 feedback)
 
 **Reference:** join.exprealty.com — huge type, open editorial surface, guided eye, zero repetition.
 **Governing law (unchanged):** anti-slop RULES.md — exact brand hexes, glass on chrome only, one bold moment, 8px grid, sentence case, `prefers-reduced-motion` disables all motion. NO content boxes unless a decision below explicitly overrides it.
 
-The build currently reads like a draft in three spots: duplicated offer/edge, hollow proof, and a paragraph-length hero that's too long to render large. The fixes below are ordered so the type can finally go big.
+Historical revision notes remain here for motion and layout context. Service claims below reflect Heidy's July 17 feedback; do not restore earlier inventory or unlimited-support positioning.
 
 ---
 
 ## A · STRUCTURE & COPY
 
 ### A1 — De-duplicate the Offer vs the Edge (the core fix)
-The two sections overlap: Offer points 01–04 already cover inventory + bilingual, then Edge repeats them. Split cleanly by job:
+The Offer and Edge have separate jobs:
 
-- **THE OFFER = money only.** Three points, nothing else:
-  - `01` Keep 100% of every commission.
-  - `02` One flat fee per closed transaction — no splits, no caps, no royalties.
-  - `03` You built the business. Keep what it pays.
-- **THE EDGE = the two un-copyable advantages** (this is "what sets us apart"):
-  - `01` In-house new-construction inventory (free listings = income).
-  - `02` Bilingual / Hispanic-market reach.
-- **"A broker who answers"** (the fear-disarm) leaves the Offer. It moves to **lead the Proof section** — because "she actually answers" is a claim you *prove* with testimonials, not one you list. It also stays in the hero subhead.
+- **THE OFFER:** keep 100%; optional paid one-on-one mentorship; low monthly fee + flat transaction fee + no caps.
+- **THE EDGE:** independent-agent infrastructure and bilingual reach.
+- **PROOF:** broker and compliance review without implying unlimited supervision. Paid mentorship remains optional.
 
 ### A2 — Hero headline: cut to 2 lines so it can be huge
-Current h1 is a full 3-beat sentence — too long to be big. Shorten to two lines of large serif; the subhead carries SWFL + experienced-agents + the edges. ⚠️ **DECISION — wording** (see decisions block).
+The h1 remains the short two-line money/independence statement. Heidy's longer brokerage description now sits in the supporting paragraph.
 
 ### A3 — Proof: real numbers or cut
 The section renders as `$—M / — / —` and three bracketed quotes. It's the single most important trust block; shipping it hollow is worse than not shipping it. ⚠️ **DECISION** (see block).
@@ -60,8 +55,7 @@ Exact hexes only (royal `#15489F`, sky `#2499D5`, cyan `#3DC5F3`, navy `#0A1A3A`
 
 1. **Hero wording** (must stay short + huge):
    - `Keep 100%. Answer to no one.` — your pick. Punchy, but "answer to no one" accidentally signals *being on your own* — the exact fear the brief says we must disarm ("100% doesn't mean alone").
-   - `Keep 100%. Never work alone.` — money + support; directly disarms the fear.
-   - `100% yours. Plus listings that aren't.` — money + the inventory hook.
+   - `Keep 100%. Never work alone.` — current selection; pair it with independence and optional-service language so it does not promise unlimited support.
 
 2. **Proof section:** send real numbers now / cut it for launch / keep placeholders and wire later.
 
