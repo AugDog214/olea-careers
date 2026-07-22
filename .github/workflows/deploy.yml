@@ -24,20 +24,17 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # TEMP until careers.myoleagroup.com DNS lands: serve from the repo
-      # subpath. To go custom-domain: delete the env line below and restore
-      # public/CNAME (see GO-LIVE-CHECKLIST.md).
-      - name: Verify lead delivery configuration
+      - name: Report lead delivery configuration
         env:
           VITE_N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
         run: |
           if [ -z "$VITE_N8N_WEBHOOK_URL" ]; then
-            echo "N8N_WEBHOOK_URL is required; refusing to deploy a form that cannot deliver leads."
-            exit 1
+            echo "::warning::N8N_WEBHOOK_URL is not configured. The site will deploy with the phone fallback and online lead delivery disabled."
+          else
+            echo "Lead delivery is configured."
           fi
       - run: npm run build
         env:
-          VITE_BASE: /olea-careers/
           VITE_N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
