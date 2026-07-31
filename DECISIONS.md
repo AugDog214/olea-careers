@@ -11,7 +11,11 @@
 - Bilingual: full EN/ES string swap via key→{en,es} map, session-persisted in memory.
 - Fonts fully self-hosted as woff2 (Season Serif TRIAL + Montserrat variable + League Spartan latin/latin-ext) — zero external requests, Cormorant fallback dropped.
 - Never promise leads; qualified leads may be offered as a paid option, but volume is never included or guaranteed.
-- Independent-agent positioning: included oversight is **broker & compliance review**, not unlimited support. Paid one-on-one mentorship is optional.
+- Independent-agent positioning: agents receive broker guidance and required compliance review when needed, not unlimited day-to-day supervision. Paid one-on-one mentorship is optional.
+- The Olea Lead Lab™ provides lead-generation and conversion sessions for agents who actively participate and follow through. Leads are not included or guaranteed.
+- Complimentary benefits include brokerage marketing for agent listings and achievements plus client moving-truck access, subject to scheduling and availability.
+- Bilingual transaction coordination is available as an optional service, subject to scheduling and availability.
+- Brokerage-created transaction templates and transparent sales tracking are included agent tools.
 - No current in-house inventory claim. That hook is cut unless Heidy later supplies verified inventory.
 
 ## OPEN
@@ -29,7 +33,7 @@
 - WebGL/shader heroes, cursor spotlights.
 - Any home-search/IDX functionality.
 - In-house new-construction inventory and builder-lead claims.
-- Included transaction coordination, unlimited broker support, included CRM, and included marketing/design services.
+- Unlimited transaction coordination or broker supervision, and an included CRM.
 
 ## ASSETS IN HAND
 - `public/assets/olea-logo.png` — full-color logo on white/transparent.
