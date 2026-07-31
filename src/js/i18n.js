@@ -107,8 +107,8 @@ export const strings = {
   },
   'culture.r3.h': { en: 'Closing day', es: 'Día de cierre' },
   'culture.r3.p': {
-    en: 'As a courtesy, the brokerage shares agent wins and celebrates the work behind them.',
-    es: 'Como cortesía, el brokerage comparte los logros de los agentes y celebra el trabajo detrás de ellos.',
+    en: 'Complimentary marketing for agent listings and achievements, plus moving-truck access for clients.',
+    es: 'Marketing de cortesía para listados y logros de agentes, más acceso a un camión de mudanza para clientes.',
   },
   'culture.r4.h': { en: 'Rooted in SWFL', es: 'Raíces en SWFL' },
   'culture.r4.p': {
@@ -151,12 +151,12 @@ export const strings = {
     en: 'Choose an optional CRM when you want a simpler way to organize contacts and follow-up.',
     es: 'Elige un CRM opcional cuando quieras una forma más sencilla de organizar contactos y seguimiento.',
   },
-  'inc.r4.h': { en: 'Agent wins, shared as a courtesy', es: 'Logros de agentes, compartidos como cortesía' },
+  'inc.r4.h': { en: 'Complimentary listing and achievement marketing', es: 'Marketing de cortesía para listados y logros' },
   'inc.r4.p': {
-    en: 'The brokerage may share agent accomplishments. Agents remain responsible for their own marketing and design.',
-    es: 'El brokerage puede compartir los logros de los agentes. Cada agente sigue siendo responsable de su propio marketing y diseño.',
+    en: "We share agent listings and achievements through the brokerage's marketing channels.",
+    es: 'Compartimos los listados y logros de los agentes a través de los canales de marketing del brokerage.',
   },
-  'inc.r5.h': { en: 'Moving truck for your clients', es: 'Camión de mudanza para tus clientes' },
+  'inc.r5.h': { en: 'Complimentary moving truck for your clients', es: 'Camión de mudanza de cortesía para tus clientes' },
   'inc.r5.p': {
     en: 'Reserve the Olea Group moving truck for clients, subject to scheduling and availability.',
     es: 'Reserva el camión de mudanza de The Olea Group para tus clientes, sujeto a programación y disponibilidad.',
