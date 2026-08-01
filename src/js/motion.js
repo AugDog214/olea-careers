@@ -10,6 +10,7 @@ import { strings, currentLang, onLangChange } from './i18n.js';
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export function initMotion() {
+  initIncludedInteraction({ useScroll: !reduced });
   if (reduced) return; // static glass, final values, no reveals — CSS handles the rest
 
   gsap.registerPlugin(ScrollTrigger);
@@ -65,7 +66,7 @@ export function initMotion() {
   // --- quiet supporting kit ---
 
   // fade/rise reveals on section furniture (Edge handled separately above)
-  document.querySelectorAll('.section .eyebrow, .section-title, .pillar, .testimonial, .included-row, .faq-item, .stats, .proof-lead').forEach((el) => {
+  document.querySelectorAll('.section .eyebrow, .section-title, .pillar, .testimonial, .faq-item, .stats, .proof-lead').forEach((el) => {
     gsap.from(el, {
       opacity: 0,
       y: 32,
@@ -187,45 +188,6 @@ export function initMotion() {
     });
   }
 
-  // --- v3 · what's included Option A: sticky-left visual swaps with the
-  //     row in view (desktop only; mobile stays a plain list) ---
-  const incLayout = document.querySelector('[data-inc]');
-  if (incLayout) {
-    const mmInc = gsap.matchMedia();
-    mmInc.add('(min-width: 1000px)', () => {
-      const rows = [...incLayout.querySelectorAll('[data-inc-row]')];
-      const iconSlot = incLayout.querySelector('[data-inc-icon]');
-      const labelSlot = incLayout.querySelector('[data-inc-label]');
-      let current = -1;
-
-      const setActive = (i) => {
-        current = i;
-        rows.forEach((r, j) => r.classList.toggle('is-active', j === i));
-        const row = rows[i];
-        iconSlot.innerHTML = row.querySelector('.inc-ico').outerHTML;
-        labelSlot.textContent = row.querySelector('dt span').textContent;
-        gsap.fromTo([iconSlot, labelSlot], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-      };
-
-      const triggers = rows.map((row, i) =>
-        ScrollTrigger.create({
-          trigger: row,
-          start: 'top 60%',
-          end: 'bottom 60%',
-          onToggle: (self) => self.isActive && setActive(i),
-        })
-      );
-      setActive(0);
-      const relabel = () => current >= 0 && setActive(current);
-      onLangChange(relabel);
-
-      return () => {
-        triggers.forEach((t) => t.kill());
-        rows.forEach((r) => r.classList.remove('is-active'));
-      };
-    });
-  }
-
   // magnetic CTA — pointer devices only
   if (window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('.btn-cta').forEach((btn) => {
@@ -241,4 +203,62 @@ export function initMotion() {
       });
     });
   }
+}
+
+function initIncludedInteraction({ useScroll }) {
+  const incLayout = document.querySelector('[data-inc]');
+  if (!incLayout) return;
+
+  const rows = [...incLayout.querySelectorAll('[data-inc-row]')];
+  const background = incLayout.querySelector('[data-inc-bg]');
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  let current = -1;
+
+  const setActive = (index) => {
+    if (index === current) return;
+    current = index;
+    const activeRow = rows[index];
+    const photo = activeRow.dataset.incPhoto || incLayout.dataset.incDefaultPhoto;
+
+    rows.forEach((row, rowIndex) => {
+      const isActive = rowIndex === index;
+      row.classList.toggle('is-active', isActive);
+      row.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    incLayout.classList.add('has-active');
+    incLayout.classList.toggle('has-photo', Boolean(photo));
+    background.style.backgroundImage = photo ? `url("${photo}")` : '';
+    background.style.backgroundPosition = activeRow.dataset.incPosition || '';
+  };
+
+  rows.forEach((row, index) => {
+    row.tabIndex = 0;
+    row.setAttribute('role', 'button');
+    const activate = () => setActive(index);
+    const onKeydown = (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      setActive(index);
+    };
+
+    if (canHover) row.addEventListener('pointerenter', activate);
+    row.addEventListener('click', activate);
+    row.addEventListener('focusin', activate);
+    row.addEventListener('keydown', onKeydown);
+  });
+
+  if (useScroll) {
+    gsap.registerPlugin(ScrollTrigger);
+    rows.forEach((row, index) => {
+      ScrollTrigger.create({
+        trigger: row,
+        start: 'top 58%',
+        end: 'bottom 58%',
+        onToggle: (self) => self.isActive && setActive(index),
+      });
+    });
+  }
+
+  setActive(0);
 }
