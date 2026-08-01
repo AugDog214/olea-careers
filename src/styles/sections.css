@@ -1070,10 +1070,8 @@
   width: calc(100% + clamp(180px, 20vw, 360px));
   height: calc(100svh - 72px);
   min-height: 560px;
+  overflow: hidden;
   background-color: var(--ice);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
   -webkit-mask-image: linear-gradient(
     90deg,
     #000 0,
@@ -1091,9 +1089,29 @@
   opacity: 1;
 }
 
+.inc-stage-layer {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.inc-stage-photo {
+  position: absolute;
+  inset: -6% 0;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1.055);
+  will-change: transform;
+}
+
 .inc-stage-bg::after {
   content: '';
   position: absolute;
+  z-index: 2;
   inset: 0;
   background:
     linear-gradient(
@@ -1145,7 +1163,7 @@
   display: block;
   margin: 0;
   padding: clamp(18px, 2.2vw, 28px) clamp(18px, 2.5vw, 36px);
-  border-top: 1px solid rgba(10, 26, 58, 0.13);
+  border: 0;
   color: var(--navy);
   cursor: pointer;
   opacity: 0.82;
@@ -1155,10 +1173,6 @@
     background-color 180ms var(--ease-out),
     color 180ms var(--ease-out),
     opacity 180ms var(--ease-out);
-}
-
-.inc-layout .included-row:last-child {
-  border-bottom: 1px solid rgba(10, 26, 58, 0.13);
 }
 
 .inc-layout.has-active .included-row:not(.is-active) {
@@ -1220,20 +1234,23 @@
   .inc-layout {
     display: block;
     margin-top: var(--s-6);
-    overflow: hidden;
+    overflow: visible;
   }
 
   .inc-stage-bg {
-    position: relative;
-    top: auto;
+    position: sticky;
+    z-index: 3;
+    top: 72px;
     width: 100%;
-    height: auto;
-    min-height: 0;
-    aspect-ratio: 3 / 2;
+    height: clamp(280px, 42svh, 380px);
+    min-height: 280px;
     background-position: 50% 50%;
-    background-size: cover;
     -webkit-mask-image: none;
     mask-image: none;
+  }
+
+  .inc-stage-photo {
+    inset: -5% 0;
   }
 
   .inc-stage-bg::after {

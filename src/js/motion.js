@@ -210,15 +210,44 @@ function initIncludedInteraction({ useScroll }) {
   if (!incLayout) return;
 
   const rows = [...incLayout.querySelectorAll('[data-inc-row]')];
-  const background = incLayout.querySelector('[data-inc-bg]');
+  const stage = incLayout.querySelector('[data-inc-bg]');
+  const layers = [...incLayout.querySelectorAll('[data-inc-layer]')];
+  const photoSurfaces = layers.map((layer) => layer.querySelector('[data-inc-photo-surface]'));
   const canHover = window.matchMedia('(hover: hover)').matches;
   let current = -1;
+  let currentLayer = 0;
 
-  const setActive = (index) => {
+  const setPhoto = (surface, photo, position) => {
+    surface.style.backgroundImage = photo ? `url("${photo}")` : '';
+    surface.style.backgroundPosition = position || '';
+  };
+
+  const preloadPhotos = () => {
+    rows.forEach((row) => {
+      const photo = row.dataset.incPhoto || incLayout.dataset.incDefaultPhoto;
+      if (!photo) return;
+      const image = new Image();
+      image.src = photo;
+    });
+  };
+
+  const preloadObserver = new IntersectionObserver(
+    (entries, observer) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      preloadPhotos();
+      observer.disconnect();
+    },
+    { rootMargin: '60% 0px' }
+  );
+  preloadObserver.observe(incLayout);
+
+  const setActive = (index, { immediate = false } = {}) => {
     if (index === current) return;
-    current = index;
+    const previous = current;
+    const direction = previous < 0 || index >= previous ? 1 : -1;
     const activeRow = rows[index];
     const photo = activeRow.dataset.incPhoto || incLayout.dataset.incDefaultPhoto;
+    const position = activeRow.dataset.incPosition || '';
 
     rows.forEach((row, rowIndex) => {
       const isActive = rowIndex === index;
@@ -228,8 +257,44 @@ function initIncludedInteraction({ useScroll }) {
 
     incLayout.classList.add('has-active');
     incLayout.classList.toggle('has-photo', Boolean(photo));
-    background.style.backgroundImage = photo ? `url("${photo}")` : '';
-    background.style.backgroundPosition = activeRow.dataset.incPosition || '';
+
+    if (previous < 0 || !useScroll || immediate || layers.length < 2) {
+      setPhoto(photoSurfaces[currentLayer], photo, position);
+      gsap.set(layers, { autoAlpha: 0, yPercent: 0 });
+      gsap.set(layers[currentLayer], { autoAlpha: 1 });
+    } else {
+      const outgoing = layers[currentLayer];
+      const incomingLayer = currentLayer === 0 ? 1 : 0;
+      const incoming = layers[incomingLayer];
+      const distance = window.matchMedia('(max-width: 899px)').matches ? 3.5 : 6.5;
+
+      setPhoto(photoSurfaces[incomingLayer], photo, position);
+      gsap.killTweensOf(layers);
+      gsap.set(outgoing, { autoAlpha: 1, yPercent: 0 });
+      gsap.set(incoming, {
+        autoAlpha: 0,
+        yPercent: direction * distance,
+      });
+
+      gsap.timeline({ defaults: { overwrite: 'auto' } })
+        .to(incoming, {
+          autoAlpha: 1,
+          yPercent: 0,
+          duration: 0.82,
+          ease: 'power3.out',
+        }, 0)
+        .to(outgoing, {
+          autoAlpha: 0,
+          yPercent: direction * -distance * 0.72,
+          duration: 0.7,
+          ease: 'power2.inOut',
+        }, 0.1)
+        .set(outgoing, { yPercent: 0 });
+
+      currentLayer = incomingLayer;
+    }
+
+    current = index;
   };
 
   rows.forEach((row, index) => {
@@ -250,15 +315,48 @@ function initIncludedInteraction({ useScroll }) {
 
   if (useScroll) {
     gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia();
+
+    media.add('(min-width: 900px)', () => gsap.fromTo(
+      photoSurfaces,
+      { yPercent: -3.2 },
+      {
+        yPercent: 3.2,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: incLayout,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.65,
+        },
+      }
+    ));
+
+    media.add('(max-width: 899px)', () => gsap.fromTo(
+      photoSurfaces,
+      { yPercent: -1.8 },
+      {
+        yPercent: 1.8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: incLayout,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.5,
+        },
+      }
+    ));
+
+    const activationPoint = window.matchMedia('(max-width: 899px)').matches ? '75%' : '58%';
     rows.forEach((row, index) => {
       ScrollTrigger.create({
         trigger: row,
-        start: 'top 58%',
-        end: 'bottom 58%',
+        start: `top ${activationPoint}`,
+        end: `bottom ${activationPoint}`,
         onToggle: (self) => self.isActive && setActive(index),
       });
     });
   }
 
-  setActive(0);
+  setActive(0, { immediate: true });
 }
