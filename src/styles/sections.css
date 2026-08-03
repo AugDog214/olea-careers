@@ -1135,6 +1135,8 @@
 
 .inc-layout .included-list {
   --inc-pad-right: clamp(32px, 5vw, 88px);
+  --inc-row-pad-block: clamp(28px, 3vw, 42px);
+  --inc-row-pad-inline: clamp(32px, 3.8vw, 60px);
   position: relative;
   z-index: 1;
   display: flex;
@@ -1160,56 +1162,70 @@
 }
 
 .inc-layout .included-row {
+  position: relative;
+  z-index: 0;
   display: block;
   margin: 0;
-  padding: clamp(18px, 2.2vw, 28px) clamp(18px, 2.5vw, 36px);
+  padding: var(--inc-row-pad-block) var(--inc-row-pad-inline);
   border: 0;
   color: var(--navy);
   cursor: pointer;
   opacity: 0.82;
   outline: none;
   text-align: left;
+  transform: scale(1);
+  transform-origin: right center;
   transition:
     background-color 180ms var(--ease-out),
     color 180ms var(--ease-out),
-    opacity 180ms var(--ease-out);
+    opacity 180ms var(--ease-out),
+    transform 260ms var(--ease-out);
 }
 
 .inc-layout.has-active .included-row:not(.is-active) {
-  opacity: 0.3;
+  opacity: 0.72;
 }
 
 .inc-layout .included-row.is-active {
   --inc-entry: clamp(100px, 12vw, 190px);
   position: relative;
-  z-index: 1;
+  z-index: 4;
   isolation: isolate;
   margin-left: calc(0px - var(--inc-entry));
   margin-right: calc(0px - var(--inc-pad-right));
-  padding-left: calc(clamp(18px, 2.5vw, 36px) + var(--inc-entry));
-  padding-right: calc(clamp(18px, 2.5vw, 36px) + var(--inc-pad-right));
+  padding-left: calc(var(--inc-row-pad-inline) + var(--inc-entry));
+  padding-right: calc(var(--inc-row-pad-inline) + var(--inc-pad-right));
   border-radius: 0;
   background: transparent;
-  color: var(--white);
+  color: var(--navy);
   opacity: 1;
+  transform: scale(1.04);
 }
 
 .inc-layout .included-row.is-active::before {
   content: '';
   position: absolute;
   z-index: -1;
-  inset: -4px 0;
+  inset: -14px 0;
+  border: 1px solid transparent;
   border-radius: 0 8px 8px 0;
-  background: linear-gradient(
-    90deg,
-    rgba(61, 197, 243, 0),
-    rgba(61, 197, 243, 0.48) 16%,
-    rgba(36, 153, 213, 0.88) 32%,
-    rgba(36, 153, 213, 0.96) 62%,
-    rgba(21, 72, 159, 0.98)
-  );
-  filter: blur(4px);
-  clip-path: inset(-8px 0 -8px -12px round 0 8px 8px 0);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.62) 18%,
+      rgba(255, 255, 255, 0.92) 36%,
+      rgba(255, 255, 255, 0.98) 100%
+    ) padding-box,
+    linear-gradient(
+      90deg,
+      rgba(61, 197, 243, 0) 0,
+      rgba(61, 197, 243, 0.28) 16%,
+      rgba(36, 153, 213, 0.46) 48%,
+      rgba(21, 72, 159, 0.58) 100%
+    ) border-box;
+  filter: none;
+  clip-path: none;
   transform: translateZ(0);
   pointer-events: none;
 }
@@ -1226,7 +1242,7 @@
 
 .inc-layout .included-row dd {
   max-width: 62ch;
-  margin: var(--s-1) 0 0;
+  margin: var(--s-2) 0 0;
   color: currentColor;
 }
 
@@ -1276,6 +1292,8 @@
   }
 
   .inc-layout .included-list {
+    --inc-row-pad-block: clamp(22px, 6vw, 30px);
+    --inc-row-pad-inline: var(--content-pad);
     width: 100%;
     min-height: 0;
     padding-block: 0 var(--s-6);
@@ -1307,19 +1325,33 @@
     padding-left: var(--content-pad);
     padding-right: var(--content-pad);
     border-radius: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(61, 197, 243, 0.82),
-      rgba(36, 153, 213, 0.96) 58%,
-      rgba(21, 72, 159, 0.98)
-    );
+    background: transparent;
+    transform: scale(1.025);
   }
 
   .inc-layout .included-row.is-active::before {
-    display: none;
+    display: block;
+    inset: -10px 0;
+    border-radius: 0;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.74),
+        rgba(255, 255, 255, 0.95) 30%,
+        rgba(255, 255, 255, 0.99)
+      ) padding-box,
+      linear-gradient(
+        90deg,
+        rgba(61, 197, 243, 0.22),
+        rgba(36, 153, 213, 0.42) 54%,
+        rgba(21, 72, 159, 0.55)
+      ) border-box;
+    filter: none;
+    clip-path: none;
   }
 
   .inc-layout.has-active .included-row:not(.is-active) {
-    opacity: 0.44;
+    opacity: 0.74;
   }
 }
