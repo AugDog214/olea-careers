@@ -11,7 +11,6 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function initHeroMedia() {
   const video = document.querySelector('[data-hero-video]');
-  const mask = document.querySelector('[data-hero-mask]');
 
   if (video) {
     if (reduced) {
@@ -20,39 +19,6 @@ function initHeroMedia() {
       video.play().catch(() => document.querySelector('.hero')?.classList.add('video-paused'));
     }
   }
-
-  if (!mask) return;
-  const images = (mask.dataset.maskImages || '')
-    .split(',')
-    .map((path) => path.trim())
-    .filter(Boolean);
-  const words = [...mask.querySelectorAll('.hero-word')];
-
-  words.forEach((word) => {
-    const layers = [...word.querySelectorAll('.hero-word-media')];
-    layers.forEach((layer) => {
-      if (images[0]) layer.style.backgroundImage = `url('${images[0]}')`;
-    });
-  });
-
-  if (reduced || images.length < 2) return;
-
-  let activeLayer = 0;
-  let activeImage = 0;
-  window.setInterval(() => {
-    activeImage = (activeImage + 1) % images.length;
-    const nextLayer = activeLayer === 0 ? 1 : 0;
-
-    words.forEach((word) => {
-      const layers = [...word.querySelectorAll('.hero-word-media')];
-      if (layers.length < 2) return;
-      layers[nextLayer].style.backgroundImage = `url('${images[activeImage]}')`;
-      layers[nextLayer].classList.add('is-visible');
-      layers[activeLayer].classList.remove('is-visible');
-    });
-
-    activeLayer = nextLayer;
-  }, 5200);
 }
 
 function initContentVideos() {
