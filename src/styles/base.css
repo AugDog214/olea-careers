@@ -408,6 +408,20 @@ body.menu-open {
   display: none;
 }
 
+.header-cta,
+.mm-cta,
+.hero-cta {
+  color: var(--navy);
+  background: var(--yellow);
+}
+
+.header-cta:hover,
+.mm-cta:hover,
+.hero-cta:hover {
+  color: var(--navy);
+  background: var(--yellow);
+}
+
 @media (min-width: 900px) {
   .header-cta {
     display: inline-flex;

@@ -1,7 +1,7 @@
 # Olea Careers — decision tracker
 
 ## LOCKED
-- Palette sampled from real logo: royal `#15489F`, sky `#2499D5`, cyan `#3DC5F3` (overrides brief's guesses); navy `#0A1A3A` for dark sections; ice/white/ink per brief. No other hues.
+- Palette sampled from real brand assets: royal `#15489F`, sky `#2499D5`, cyan `#3DC5F3` (overrides brief's guesses), yellow `#ECC72B` from the moving-truck lettering; navy `#0A1A3A` for dark sections; ice/white/ink per brief. No other hues.
 - Fonts: The Seasons (display, pending license files → Cormorant Garamond interim), League Spartan (labels/stats), Montserrat (body). One job each.
 - Fee model (CONFIRM #1): **low monthly fee + flat per-transaction fee, no caps**. Both exact dollar amounts are pending. Calculator config stays `null` until Heidy confirms them, so no invented savings can render.
 - DNS (CONFIRM #4): GoDaddy controls myoleagroup.com. One additive CNAME: `careers` → `augdog214.github.io`.

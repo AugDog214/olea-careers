@@ -3,7 +3,7 @@
    Palette sampled from the real logo (logo.png) on 2026-07-05.
    Overrides vs. the brief: royal #013CA4→#15489F, sky #2BB1E7→#2499D5,
    cyan #33C5F3→#3DC5F3. Navy is a derived dark-section color (not in
-   the logo). NO other hues, ever.
+   the logo). Yellow is sampled from the real moving-truck artwork.
    ============================================================ */
 
 /* The Seasons (Season Serif) — ⚠️ TRIAL files for design/dev only.
@@ -31,6 +31,7 @@
   --royal: #15489F;  /* PRIMARY brand blue — wordmark, buttons, key accents */
   --sky:   #2499D5;  /* bright secondary — highlights, hovers */
   --cyan:  #3DC5F3;  /* light accent — gradients, glass tints */
+  --yellow:#ECC72B;  /* CTA accent — sampled from truck lettering */
   --ice:   #C3E0E5;  /* pale blue — glass fills, section washes */
   --white: #FFFFFF;  /* BASE — the site is predominantly white */
   --ink:   #0B0B0F;  /* near-black — body text, hero base */

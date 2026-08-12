@@ -62,7 +62,7 @@ These came from August's `anti-slop-design/RULES.md` + `august-system/SKILL.md`.
 
 - **NO content boxes.** Open editorial surface, eXp-style. No cards, no rounded containers around copy. (When the build plan said "two cards" for The Edge, the no-boxes law won → open numbered blocks.)
 - **Glass/backdrop-filter ONLY** on the header bar and the sticky CTA. Nowhere else.
-- **Exact brand hexes only.** No invented colors — an error state once got a salmon `#ffb3a7` and it was ripped out for white + weight.
+- **Exact brand hexes only.** No invented colors — an error state once got a salmon `#ffb3a7` and it was ripped out for white + weight. The CTA yellow `#ECC72B` is sampled from the real moving-truck lettering.
 - One icon set. One bold moment. 8px grid. Sentence case. Real content only.
 - `prefers-reduced-motion` disables **all** motion, and every piece of content works without JS.
 
@@ -70,7 +70,8 @@ These came from August's `anti-slop-design/RULES.md` + `august-system/SKILL.md`.
 
 ```
 --royal: #15489F   --sky: #2499D5   --cyan: #3DC5F3
---navy:  #0A1A3A (derived)   --ice: #C3E0E5   --white   --ink: #0B0B0F
+--navy:  #0A1A3A (derived)   --yellow: #ECC72B (truck artwork)
+--ice:   #C3E0E5             --white                    --ink: #0B0B0F
 ```
 ⚠️ The original brief specified `#013CA4`. **That was wrong** — sampling the logo proved it. Don't "restore" it.
 
