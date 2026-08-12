@@ -25,7 +25,7 @@
 
 .hero-media {
   z-index: -2;
-  background: url('/assets/olea-truck.png') center / cover;
+  background: url('/assets/hero/hero-poster.webp') center / cover;
 }
 
 .hero-video {

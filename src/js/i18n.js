@@ -123,7 +123,7 @@ export const strings = {
     es: 'El brokerage brinda revisión de broker y cumplimiento mientras los agentes mantienen el control de su negocio diario. La mentoría individual pagada está disponible cuando un agente elige orientación más directa.',
   },
   'proof.voices.eyebrow': { en: 'Agent voices', es: 'Voces de agentes' },
-  'proof.voices.title': { en: 'Hear why agents choose Olea.', es: 'Escucha por quÃ© los agentes eligen Olea.' },
+  'proof.voices.title': { en: 'Hear why agents choose Olea.', es: 'Escucha por qué los agentes eligen Olea.' },
   'proof.voices.team': { en: 'Olea team', es: 'Equipo Olea' },
   'proof.voices.label': { en: 'Agent perspective', es: 'Perspectiva de agente' },
   'proof.s1.label': { en: 'Closed volume', es: 'Volumen cerrado' },
