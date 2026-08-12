@@ -1,10 +1,10 @@
-// Lead form → n8n webhook → Gmail + Lofty (source-tagged "Agent Recruiting").
-// 🧑 HUMAN: set VITE_N8N_WEBHOOK_URL, then configure n8n to email every valid
-// submission to theoleagroup@gmail.com and create the source-tagged Lofty contact.
-const FORM_ENDPOINT = (import.meta.env.VITE_N8N_WEBHOOK_URL || '').trim();
+// Lead form → Google Apps Script → theoleagroup@gmail.com + Google Sheets backup.
+// 🧑 HUMAN: deploy /google-apps-script as a web app, then set its /exec URL in
+// the GOOGLE_APPS_SCRIPT_URL GitHub repository secret.
+const FORM_ENDPOINT = (import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || '').trim();
 
 /*
-Payload schema (n8n side expects exactly this shape):
+Payload schema (Apps Script expects exactly this shape):
 {
   name: string,
   phone: string,
@@ -17,6 +17,8 @@ Payload schema (n8n side expects exactly this shape):
   utm_content: string,
   pageUrl: string,
   submittedAt: string         // ISO 8601
+  formStartedAt: number       // epoch milliseconds
+  requestId: string
 }
 */
 
@@ -58,7 +60,7 @@ export function initForm() {
   // honeypot: invisible to humans, tempting to bots
   const honeypot = document.createElement('input');
   honeypot.type = 'text';
-  honeypot.name = 'website';
+  honeypot.name = 'companyFax';
   honeypot.tabIndex = -1;
   honeypot.autocomplete = 'off';
   honeypot.setAttribute('aria-hidden', 'true');
@@ -70,6 +72,63 @@ export function initForm() {
   status.setAttribute('role', 'status');
   status.setAttribute('aria-live', 'polite');
   form.appendChild(status);
+
+  let formStartedAt = Date.now();
+
+  const submitToGoogle = (payload) => new Promise((resolve, reject) => {
+    const frame = document.createElement('iframe');
+    const transport = document.createElement('form');
+    const frameName = `olea-lead-${payload.requestId}`;
+    let settled = false;
+
+    frame.name = frameName;
+    frame.hidden = true;
+    frame.setAttribute('sandbox', 'allow-forms allow-scripts');
+    frame.setAttribute('aria-hidden', 'true');
+
+    transport.method = 'POST';
+    transport.action = FORM_ENDPOINT;
+    transport.target = frameName;
+    transport.hidden = true;
+
+    Object.entries(payload).forEach(([name, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = String(value ?? '');
+      transport.appendChild(input);
+    });
+
+    const cleanup = () => {
+      window.removeEventListener('message', onMessage);
+      window.clearTimeout(timeoutId);
+      transport.remove();
+      frame.remove();
+    };
+
+    const finish = (callback) => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      callback();
+    };
+
+    const onMessage = (event) => {
+      if (event.source !== frame.contentWindow) return;
+      if (event.data?.type !== 'olea-lead-result' || event.data.requestId !== payload.requestId) return;
+      if (event.data.ok) finish(resolve);
+      else finish(() => reject(new Error(event.data.status || 'Delivery failed')));
+    };
+
+    const timeoutId = window.setTimeout(
+      () => finish(() => reject(new Error('Delivery confirmation timed out'))),
+      30000
+    );
+
+    window.addEventListener('message', onMessage);
+    document.body.append(frame, transport);
+    transport.submit();
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -86,6 +145,7 @@ export function initForm() {
     }
 
     const payload = {
+      requestId: crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`,
       name: data.name.trim(),
       phone: data.phone.trim(),
       email: data.email.trim(),
@@ -95,6 +155,8 @@ export function initForm() {
       ...utm,
       pageUrl: window.location.href,
       submittedAt: new Date().toISOString(),
+      formStartedAt,
+      companyFax: honeypot.value,
     };
 
     const submitBtn = form.querySelector('.form-submit');
@@ -110,15 +172,11 @@ export function initForm() {
     submitBtn.disabled = true;
 
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await submitToGoogle(payload);
       status.textContent = copy.success[lang];
       status.dataset.state = 'success';
       form.reset(); // success only — errors keep the user's input
+      formStartedAt = Date.now();
     } catch {
       status.textContent = copy.error[lang];
       status.dataset.state = 'error';

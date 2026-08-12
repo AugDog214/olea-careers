@@ -6,7 +6,7 @@
 - Fee model (CONFIRM #1): **low monthly fee + flat per-transaction fee, no caps**. Both exact dollar amounts are pending. Calculator config stays `null` until Heidy confirms them, so no invented savings can render.
 - DNS (CONFIRM #4): GoDaddy controls myoleagroup.com. One additive CNAME: `careers` → `augdog214.github.io`.
 - Repo: `AugDog214/olea-careers` → GitHub Pages → careers.myoleagroup.com.
-- Form: `VITE_N8N_WEBHOOK_URL` → n8n webhook (🧑 HUMAN wires n8n to email `theoleagroup@gmail.com` and create/update the Lofty contact).
+- Form: `VITE_GOOGLE_APPS_SCRIPT_URL` → Google Apps Script web app → email `theoleagroup@gmail.com` + Google Sheets backup. Lofty CRM can be connected later.
 - Layout law: open editorial (eXp-style), NO content boxes, glass on header + sticky CTA only, one bold moment (dark photo hero).
 - Bilingual: full EN/ES string swap via key→{en,es} map, session-persisted in memory.
 - Fonts fully self-hosted as woff2 (Season Serif TRIAL + Montserrat variable + League Spartan latin/latin-ext) — zero external requests, Cormorant fallback dropped.
@@ -23,8 +23,8 @@
 - ⚠️ The Seasons webfont LICENSE — TRIAL files (SeasonSerif-TRIAL) are wired in for dev; a paid license is required before go-live. 🧑 HUMAN.
 - Heidy's headshot + real office/team/listing photography (hero photo especially).
 - Testimonials (3–4, focused on independence, compliance clarity, bilingual culture, or the fee model) + production numbers.
-- Lofty package tier — does it include API access? (affects n8n→Lofty node)
-- n8n webhook URL.
+- Lofty package tier — does it include API access? (affects a future CRM integration)
+- Production Google Apps Script `/exec` URL.
 - Confirm Heidy's exact MLS memberships. Visible labels use verified organization/system names: Stellar MLS, MIAMI REALTORS, and Florida Gulf Coast MLS.
 
 ## CUT

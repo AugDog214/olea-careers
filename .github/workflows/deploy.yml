@@ -26,16 +26,16 @@ jobs:
       - run: npm ci
       - name: Report lead delivery configuration
         env:
-          VITE_N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
+          VITE_GOOGLE_APPS_SCRIPT_URL: ${{ secrets.GOOGLE_APPS_SCRIPT_URL }}
         run: |
-          if [ -z "$VITE_N8N_WEBHOOK_URL" ]; then
-            echo "::warning::N8N_WEBHOOK_URL is not configured. The site will deploy with the phone fallback and online lead delivery disabled."
+          if [ -z "$VITE_GOOGLE_APPS_SCRIPT_URL" ]; then
+            echo "::warning::GOOGLE_APPS_SCRIPT_URL is not configured. The site will deploy with the phone fallback and online lead delivery disabled."
           else
-            echo "Lead delivery is configured."
+            echo "Google Apps Script lead delivery is configured."
           fi
       - run: npm run build
         env:
-          VITE_N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
+          VITE_GOOGLE_APPS_SCRIPT_URL: ${{ secrets.GOOGLE_APPS_SCRIPT_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

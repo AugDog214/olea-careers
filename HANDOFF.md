@@ -25,7 +25,7 @@ Built July 2026 across a 9-phase plan (Phase 0 setup → Phase 8 QA/handoff). Al
 | **Deploy** | GitHub Actions → GitHub Pages, auto on every push to `main` |
 | **Git state** | Local `main` is intentionally ahead of `origin/main`; do not push without August's approval. Use `git status` and `git log -3` for the current commit. |
 
-**Stack:** Vite 6 + vanilla JS (no React, no Tailwind — deliberate), GSAP + ScrollTrigger + Lenis, forms → n8n webhook → Gmail + Lofty CRM. ~3,200 lines across 10 source files. Zero external network requests at runtime (fonts and MLS marks are self-hosted).
+**Stack:** Vite 6 + vanilla JS (no React, no Tailwind — deliberate), GSAP + ScrollTrigger + Lenis, forms → Google Apps Script → Gmail + Google Sheets backup. Lofty CRM remains an optional later integration. ~3,200 lines across 10 source files. Runtime is self-hosted except for form submission.
 
 ### File map
 
@@ -35,7 +35,7 @@ src/main.js               70 · wiring + header condense + stats-hide + melt-CTA
 src/js/i18n.js           279 · EN/ES string map, setLang/currentLang/onLangChange
 src/js/motion.js         244 · all GSAP/Lenis; reduced-motion early-return at the top
 src/js/calculator.js     129 · split comparison; exact monthly/transaction fees stay null until confirmed
-src/js/form.js           129 · validation, UTM capture, honeypot, Vite webhook env config
+src/js/form.js           129 · validation, UTM capture, honeypot, response-confirmed Apps Script transport
 src/js/nav.js             47 · mobile menu + MyOleaGroup.com dropdown
 src/styles/tokens.css     87 · palette, fluid type scale, 8px spacing, glass vars, easings
 src/styles/base.css      583 · reset, type roles, glass header, CTAs, reduced-motion kill-switch
@@ -105,16 +105,16 @@ const FEE_MODEL = {
 };
 
 // src/js/form.js
-const FORM_ENDPOINT = (import.meta.env.VITE_N8N_WEBHOOK_URL || '').trim();
+const FORM_ENDPOINT = (import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || '').trim();
 ```
 
-Form payload (this is the contract the n8n → Lofty node must map):
+Form payload (this is the contract the Google Apps Script receiver validates):
 ```
-name, phone, email, currentBrokerage, reason,
+requestId, name, phone, email, currentBrokerage, reason,
 source: 'Agent Recruiting',
-utm_source, utm_campaign, utm_content, pageUrl, submittedAt
+utm_source, utm_campaign, utm_content, pageUrl, submittedAt, formStartedAt
 ```
-The GitHub Actions workflow reads the endpoint from the `N8N_WEBHOOK_URL` repository secret. The n8n workflow must hardcode `theoleagroup@gmail.com` as the notification recipient and also map the contact into Lofty.
+The GitHub Actions workflow reads the endpoint from the `GOOGLE_APPS_SCRIPT_URL` repository secret. The Apps Script hardcodes `theoleagroup@gmail.com` as the recipient, records a Google Sheets backup, and confirms success back to the browser. Setup files and exact human steps live in `google-apps-script/`.
 
 ---
 
@@ -140,7 +140,7 @@ Full detail in `GO-LIVE-CHECKLIST.md`.
 
 1. **Buy the Season Serif webfont license** (VJ Type) — TRIAL files are live right now. **Legal blocker for real launch.** Drop licensed files into `public/fonts/` with the same names.
 2. **Real monthly and transaction fees from Heidy** → `calculator.js`.
-3. **n8n webhook URL** → GitHub secret `N8N_WEBHOOK_URL`; n8n emails `theoleagroup@gmail.com` and creates/updates the Lofty contact tagged `source: Agent Recruiting`. Confirm both outcomes with one test submission.
+3. **Google Apps Script deployment** → follow `google-apps-script/SETUP.md`, then add the production `/exec` URL as GitHub secret `GOOGLE_APPS_SCRIPT_URL`. Confirm both the inbox email and Sheet row with one test submission. Lofty can be connected later.
 4. **Confirm Heidy's exact MLS memberships.** Visible labels use verified names: Stellar MLS, MIAMI REALTORS, and Florida Gulf Coast MLS. The third mark is Royal Palm Coast Realtor Association from the official SWFL Matrix login.
 5. **Real assets** — hero photo, edge photos, 3 offer-deck photos, Heidy headshot, 4 culture photos, tools backdrop, real testimonials, production stats, 1200×630 og-image, white/knockout logo, office address + email.
 6. **GoDaddy CNAME** after launch approval (§6 above).

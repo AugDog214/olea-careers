@@ -8,13 +8,12 @@ Everything below is a 🧑 HUMAN step (things only you/Heidy control). Do not pu
 - [ ] Touch nothing else — the root `@` and `www` records stay pointed at Lofty. This is purely additive and cannot break the main site.
 - [ ] Wait for DNS to resolve (minutes to ~1 hour), then in the repo: Settings → Pages → confirm the domain shows verified and check **Enforce HTTPS** once the cert is issued.
 
-## 2. n8n → Gmail + Lofty lead pipeline
-- [ ] Create an n8n Webhook node (POST). Copy its production URL.
-- [ ] Add the production URL as the GitHub Actions secret `N8N_WEBHOOK_URL`. The workflow exposes it to Vite as `VITE_N8N_WEBHOOK_URL` at build time.
-- [ ] Add a Gmail node that sends every valid submission to **theoleagroup@gmail.com**. Hardcode the recipient inside n8n, not in browser-controlled payload fields.
-- [ ] In n8n, map the payload to a Lofty "create/update contact" call, tagged **source: Agent Recruiting**. Payload fields: `name, phone, email, currentBrokerage, reason, source, utm_source, utm_campaign, utm_content, pageUrl, submittedAt`.
-- [ ] Submit a test lead and confirm both outcomes: the email arrives at `theoleagroup@gmail.com`, and the contact lands in Lofty with the right source tag so Heidy's follow-up automations fire.
-- [ ] ⚠️ Confirm Heidy's Lofty package includes API access (affects how the n8n node connects).
+## 2. Google Apps Script → Gmail + Google Sheets lead pipeline
+- [ ] Follow `google-apps-script/SETUP.md` while signed into the Google account that should own the recruiting leads.
+- [ ] Deploy the script as a web app that executes as the owner and allows access to **Anyone**. Copy the production `/exec` URL, not the `/dev` test URL.
+- [ ] Add the `/exec` URL as the GitHub Actions secret `GOOGLE_APPS_SCRIPT_URL`. The workflow exposes it to Vite as `VITE_GOOGLE_APPS_SCRIPT_URL` at build time.
+- [ ] Submit one real production test. Confirm an email arrives at **theoleagroup@gmail.com** and the same lead appears in the `Agent Recruiting Leads` Sheet tab.
+- [ ] Optional later phase: connect the Sheet or webhook payload to Lofty and tag the contact **source: Agent Recruiting**. Confirm Heidy's Lofty package includes API access first.
 
 ## 3. The Seasons font license (legal — before launch)
 - [ ] The site currently uses **TRIAL** files (SeasonSerif-TRIAL). Purchase a webfont license for Season Serif (VJ Type), then drop the licensed `.otf`/`.woff2` files into `public/fonts/` using the same file names.
