@@ -19,11 +19,10 @@ export const strings = {
   'cta.melt': { en: 'Talk to Heidy', es: 'Habla con Heidy' },
 
   // --- 1 · hero ---
-  'hero.title1': { en: 'Keep 100%.', es: 'Quédate con el 100%.' },
-  'hero.title2': { en: 'Never work alone.', es: 'Nunca solo.' },
+  'hero.title': { en: 'Join us', es: 'Únete a nosotros' },
   'hero.sub': {
-    en: 'The Olea Group is a boutique brokerage in Cape Coral, Florida, built for independent agents. Agents receive 24/7 office access, exclusive moving-truck access for clients, a bilingual brokerage, a friendly and clean work environment, and user-friendly transaction software.',
-    es: 'The Olea Group es un brokerage boutique en Cape Coral, Florida, creado para agentes independientes. Los agentes tienen acceso a la oficina las 24 horas, acceso exclusivo al camión de mudanza para sus clientes, un brokerage bilingüe, un ambiente de trabajo amable y limpio, y un sistema de transacciones fácil de usar.',
+    en: 'The Olea Group is a Boutique brokerage located in Cape Coral Fl built for independent agents: 24/7 office access, exclusive moving truck access for clients, bilingual brokerage, friendly & collaborative work environment, & user friendly transaction software.',
+    es: 'The Olea Group es un brokerage boutique ubicado en Cape Coral, Florida, creado para agentes independientes: acceso a la oficina las 24 horas, acceso exclusivo al camión de mudanza para clientes, brokerage bilingüe, ambiente de trabajo amable y colaborativo, y software de transacciones fácil de usar.',
   },
   'cta.hero': { en: 'Schedule a confidential chat', es: 'Agenda una charla confidencial' },
   'hero.micro': {
@@ -123,6 +122,10 @@ export const strings = {
     en: 'The brokerage provides broker and compliance review while agents retain control of their day-to-day business. Paid one-on-one mentorship is available when an agent chooses more direct guidance.',
     es: 'El brokerage brinda revisión de broker y cumplimiento mientras los agentes mantienen el control de su negocio diario. La mentoría individual pagada está disponible cuando un agente elige orientación más directa.',
   },
+  'proof.voices.eyebrow': { en: 'Agent voices', es: 'Voces de agentes' },
+  'proof.voices.title': { en: 'Hear why agents choose Olea.', es: 'Escucha por quÃ© los agentes eligen Olea.' },
+  'proof.voices.team': { en: 'Olea team', es: 'Equipo Olea' },
+  'proof.voices.label': { en: 'Agent perspective', es: 'Perspectiva de agente' },
   'proof.s1.label': { en: 'Closed volume', es: 'Volumen cerrado' },
   'proof.s1.value': { en: '$—M', es: '$—M' },
   'proof.s2.label': { en: 'Transactions', es: 'Transacciones' },

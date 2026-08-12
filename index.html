@@ -162,15 +162,37 @@
 
     <main id="top">
       <!-- ================= 1 · HERO ================= -->
-      <!-- REPLACE: real photo of Heidy or a SWFL Olea listing as the hero background
-           (matching her "Under Contract" post style). Navy gradient stands in — do NOT
-           ship stock. Swap via .hero { background-image } in sections.css. -->
+      <!-- REPLACE: hero-loop.mp4 with approved Olea footage. The current loop is a
+           motion study made from the real moving-truck photo, never stock footage.
+           Add future word-mask images to data-mask-images as comma-separated paths. -->
       <section class="hero" id="hero">
-        <div class="wrap">
-          <h1 class="display hero-title"><span data-i18n="hero.title1">Keep 100%.</span><br /><span data-i18n="hero.title2">Never work alone.</span></h1>
-          <p class="hero-sub" data-i18n="hero.sub">The Olea Group is a boutique brokerage in Cape Coral, Florida, built for independent agents. Agents receive 24/7 office access, exclusive moving-truck access for clients, a bilingual brokerage, a friendly and clean work environment, and user-friendly transaction software.</p>
-          <a class="btn-cta hero-cta" href="#contact" data-i18n="cta.hero">Schedule a confidential chat</a>
-          <p class="hero-micro" data-i18n="hero.micro">Licensed Florida brokerage · LIC BK 3428799 · Hablamos Español</p>
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/hero/hero-poster.webp" data-hero-video>
+            <source src="/assets/hero/hero-loop.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-scrim"></div>
+        </div>
+
+        <div class="hero-stage">
+          <h1 class="hero-title" data-hero-mask data-mask-images="/assets/hero/olea-mark.png" style="--hero-mask-image: url('/assets/hero/olea-mark.png')">
+            <span class="visually-hidden" data-i18n="hero.title">Join us</span>
+            <span class="hero-word hero-word-join" aria-hidden="true">
+              <span class="hero-word-base">JOIN</span>
+              <span class="hero-word-media is-visible">JOIN</span>
+              <span class="hero-word-media">JOIN</span>
+            </span>
+            <span class="hero-word hero-word-us" aria-hidden="true">
+              <span class="hero-word-base">US</span>
+              <span class="hero-word-media is-visible">US</span>
+              <span class="hero-word-media">US</span>
+            </span>
+          </h1>
+
+          <div class="hero-copy">
+            <p class="hero-sub" data-i18n="hero.sub">The Olea Group is a Boutique brokerage located in Cape Coral Fl built for independent agents: 24/7 office access, exclusive moving truck access for clients, bilingual brokerage, friendly &amp; collaborative work environment, &amp; user friendly transaction software.</p>
+            <a class="btn-cta hero-cta" href="#contact" data-i18n="cta.hero">Schedule a confidential chat</a>
+            <p class="hero-micro" data-i18n="hero.micro">Licensed Florida brokerage · LIC BK 3428799 · Hablamos Español</p>
+          </div>
         </div>
       </section>
 
@@ -292,8 +314,41 @@
             </div>
           </dl>
 
-          <!-- REPLACE: add real agent testimonials only after Heidy supplies approved quotes,
-               names, and photos. Placeholder testimonials are intentionally not rendered. -->
+          <section class="proof-voices" aria-labelledby="proof-voices-title">
+            <div class="proof-voices-heading">
+              <p class="eyebrow" data-i18n="proof.voices.eyebrow">Agent voices</p>
+              <h3 class="display proof-voices-title" id="proof-voices-title" data-i18n="proof.voices.title">Hear why agents choose Olea.</h3>
+            </div>
+
+            <div class="proof-filmstrip">
+              <figure class="proof-film proof-film--lead">
+                <video class="proof-video" data-content-video controls playsinline preload="metadata" poster="/assets/testimonials/annais-office-testimonial.webp" aria-label="Annais shares her experience at The Olea Group">
+                  <source src="/assets/testimonials/annais-office-testimonial.mp4" type="video/mp4" />
+                  <track kind="captions" src="/assets/testimonials/annais-en.vtt" srclang="en" label="English" default />
+                  <track kind="captions" src="/assets/testimonials/annais-es.vtt" srclang="es" label="Español" />
+                </video>
+                <figcaption class="proof-film-caption"><strong>Annais</strong><span data-i18n="proof.voices.label">Agent perspective</span></figcaption>
+              </figure>
+
+              <figure class="proof-film">
+                <video class="proof-video" data-content-video controls playsinline preload="metadata" poster="/assets/testimonials/olea-team-testimonial-02.webp" aria-label="An Olea Group team member shares her experience">
+                  <source src="/assets/testimonials/olea-team-testimonial-02.mp4" type="video/mp4" />
+                  <track kind="captions" src="/assets/testimonials/team-02-es.vtt" srclang="es" label="Español" />
+                  <track kind="captions" src="/assets/testimonials/team-02-en.vtt" srclang="en" label="English" default />
+                </video>
+                <figcaption class="proof-film-caption"><strong data-i18n="proof.voices.team">Olea team</strong><span data-i18n="proof.voices.label">Agent perspective</span></figcaption>
+              </figure>
+
+              <figure class="proof-film">
+                <video class="proof-video" data-content-video controls playsinline preload="metadata" poster="/assets/testimonials/olea-team-testimonial-04.webp" aria-label="An Olea Group team member shares her experience">
+                  <source src="/assets/testimonials/olea-team-testimonial-04.mp4" type="video/mp4" />
+                  <track kind="captions" src="/assets/testimonials/team-04-es.vtt" srclang="es" label="Español" />
+                  <track kind="captions" src="/assets/testimonials/team-04-en.vtt" srclang="en" label="English" default />
+                </video>
+                <figcaption class="proof-film-caption"><strong data-i18n="proof.voices.team">Olea team</strong><span data-i18n="proof.voices.label">Agent perspective</span></figcaption>
+              </figure>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -368,12 +423,18 @@
 
           <!-- Full-bleed feature stage. Rows activate on scroll, hover, focus, or tap. -->
           <div class="inc-layout" data-inc data-inc-default-photo="/assets/features/feature-commission.webp">
-            <div class="inc-stage-bg" aria-hidden="true" data-inc-bg>
-              <div class="inc-stage-layer" data-inc-layer>
+            <div class="inc-stage-bg" data-inc-bg>
+              <div class="inc-stage-layer" data-inc-layer aria-hidden="true">
                 <div class="inc-stage-photo" data-inc-photo-surface></div>
               </div>
-              <div class="inc-stage-layer" data-inc-layer>
+              <div class="inc-stage-layer" data-inc-layer aria-hidden="true">
                 <div class="inc-stage-photo" data-inc-photo-surface></div>
+              </div>
+              <div class="inc-stage-video-wrap" data-inc-video-wrap aria-hidden="true">
+                <video class="inc-stage-video" data-inc-video data-content-video playsinline muted loop preload="none" poster="/assets/videos/olea-moving-truck.webp" tabindex="-1" aria-label="The Olea Group complimentary moving truck in use">
+                  <track kind="captions" src="/assets/videos/olea-moving-truck-en.vtt" srclang="en" label="English" default />
+                  <track kind="captions" src="/assets/videos/olea-moving-truck-es.vtt" srclang="es" label="Español" />
+                </video>
               </div>
             </div>
 
@@ -420,7 +481,7 @@
                 </dt>
                 <dd data-i18n="inc.r6.p">The brokerage shares agent listings and achievements through its marketing channels at no additional charge.</dd>
               </div>
-              <div class="included-row" data-inc-row data-inc-photo="/assets/included-moving-truck.webp">
+              <div class="included-row" data-inc-row data-inc-photo="/assets/videos/olea-moving-truck.webp" data-inc-video="/assets/videos/olea-moving-truck.mp4">
                 <dt>
                   <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
                   <span data-i18n="inc.r7.h">Complimentary client moving truck</span>

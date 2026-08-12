@@ -9,8 +9,91 @@ import { strings, currentLang, onLangChange } from './i18n.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function initHeroMedia() {
+  const video = document.querySelector('[data-hero-video]');
+  const mask = document.querySelector('[data-hero-mask]');
+
+  if (video) {
+    if (reduced) {
+      video.pause();
+    } else {
+      video.play().catch(() => document.querySelector('.hero')?.classList.add('video-paused'));
+    }
+  }
+
+  if (!mask) return;
+  const images = (mask.dataset.maskImages || '')
+    .split(',')
+    .map((path) => path.trim())
+    .filter(Boolean);
+  const words = [...mask.querySelectorAll('.hero-word')];
+
+  words.forEach((word) => {
+    const layers = [...word.querySelectorAll('.hero-word-media')];
+    layers.forEach((layer) => {
+      if (images[0]) layer.style.backgroundImage = `url('${images[0]}')`;
+    });
+  });
+
+  if (reduced || images.length < 2) return;
+
+  let activeLayer = 0;
+  let activeImage = 0;
+  window.setInterval(() => {
+    activeImage = (activeImage + 1) % images.length;
+    const nextLayer = activeLayer === 0 ? 1 : 0;
+
+    words.forEach((word) => {
+      const layers = [...word.querySelectorAll('.hero-word-media')];
+      if (layers.length < 2) return;
+      layers[nextLayer].style.backgroundImage = `url('${images[activeImage]}')`;
+      layers[nextLayer].classList.add('is-visible');
+      layers[activeLayer].classList.remove('is-visible');
+    });
+
+    activeLayer = nextLayer;
+  }, 5200);
+}
+
+function initContentVideos() {
+  const videos = [...document.querySelectorAll('[data-content-video]')];
+  if (!videos.length) return;
+
+  const syncCaptionLanguage = () => {
+    const language = currentLang();
+    videos.forEach((video) => {
+      [...video.textTracks].forEach((track) => {
+        track.mode = track.language === language ? 'showing' : 'disabled';
+      });
+    });
+  };
+
+  videos.forEach((video) => {
+    video.addEventListener('loadedmetadata', syncCaptionLanguage, { once: true });
+    video.addEventListener('play', () => {
+      videos.forEach((other) => {
+        if (other !== video && !other.paused) other.pause();
+      });
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && !entry.target.paused) entry.target.pause();
+      });
+    },
+    { threshold: 0.15 }
+  );
+  videos.forEach((video) => observer.observe(video));
+  syncCaptionLanguage();
+  onLangChange(syncCaptionLanguage);
+}
+
 export function initMotion() {
   initIncludedInteraction({ useScroll: !reduced });
+  initHeroMedia();
+  initContentVideos();
   if (reduced) return; // static glass, final values, no reveals — CSS handles the rest
 
   gsap.registerPlugin(ScrollTrigger);
@@ -94,13 +177,6 @@ export function initMotion() {
         el.textContent = `${prefix}${Math.round(obj.v).toLocaleString()}${suffix}`;
       },
     });
-  });
-
-  // subtle parallax on the hero background
-  gsap.to('.hero', {
-    backgroundPosition: '50% 30%',
-    ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
   });
 
   // --- v3 · culture: fade/rise copy + gentle photo parallax (one move) ---
@@ -213,6 +289,8 @@ function initIncludedInteraction({ useScroll }) {
   const stage = incLayout.querySelector('[data-inc-bg]');
   const layers = [...incLayout.querySelectorAll('[data-inc-layer]')];
   const photoSurfaces = layers.map((layer) => layer.querySelector('[data-inc-photo-surface]'));
+  const videoWrap = incLayout.querySelector('[data-inc-video-wrap]');
+  const stageVideo = incLayout.querySelector('[data-inc-video]');
   const canHover = window.matchMedia('(hover: hover)').matches;
   let current = -1;
   let currentLayer = 0;
@@ -248,6 +326,7 @@ function initIncludedInteraction({ useScroll }) {
     const activeRow = rows[index];
     const photo = activeRow.dataset.incPhoto || incLayout.dataset.incDefaultPhoto;
     const position = activeRow.dataset.incPosition || '';
+    const videoSource = activeRow.dataset.incVideo || '';
 
     rows.forEach((row, rowIndex) => {
       const isActive = rowIndex === index;
@@ -257,6 +336,28 @@ function initIncludedInteraction({ useScroll }) {
 
     incLayout.classList.add('has-active');
     incLayout.classList.toggle('has-photo', Boolean(photo));
+    incLayout.classList.toggle('has-video', Boolean(videoSource));
+
+    if (stageVideo && videoWrap) {
+      if (videoSource) {
+        if (stageVideo.getAttribute('src') !== videoSource) {
+          stageVideo.src = videoSource;
+          stageVideo.load();
+        }
+        stageVideo.controls = true;
+        stageVideo.tabIndex = 0;
+        videoWrap.setAttribute('aria-hidden', 'false');
+        if (useScroll) {
+          stageVideo.muted = true;
+          stageVideo.play().catch(() => {});
+        }
+      } else {
+        stageVideo.pause();
+        stageVideo.controls = false;
+        stageVideo.tabIndex = -1;
+        videoWrap.setAttribute('aria-hidden', 'true');
+      }
+    }
 
     if (previous < 0 || !useScroll || immediate || layers.length < 2) {
       setPhoto(photoSurfaces[currentLayer], photo, position);
