@@ -312,4 +312,7 @@ export function initI18n() {
       if (btn.dataset.lang !== lang) setLang(btn.dataset.lang);
     });
   });
+  // Apply the English source of truth on first paint too; fallback HTML must
+  // never become a second, stale set of recruitment claims.
+  setLang(lang);
 }
