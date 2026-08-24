@@ -454,7 +454,7 @@ body.menu-open {
 .melt-pill {
   position: absolute;
   inset: 0;
-  background: var(--royal);
+  background: var(--yellow);
   border-radius: var(--radius-pill);
 }
 
@@ -463,7 +463,7 @@ body.menu-open {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--royal);
+  background: var(--yellow);
 }
 
 .melt-blob--a {
@@ -502,8 +502,15 @@ body.menu-open {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--navy);
 }
+
+.melt-cta:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.melt-cta:active { transform: scale(0.97); }
 
 /* hidden over sections with their own primary CTA, or while the menu is open */
 .melt-cta.is-hidden,
