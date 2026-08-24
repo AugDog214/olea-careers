@@ -47,8 +47,8 @@ const copy = {
     es: 'La entrega en línea se está conectando. Llama al (239) 318-4689 para una conversación confidencial.',
   },
   success: {
-    en: "Done. Heidy will reach out personally — and your current broker never hears about it.",
-    es: 'Listo. Heidy te contactará personalmente — y tu broker actual nunca se entera.',
+    en: 'Done. The Managing Broker will reach out personally. Your conversation stays private and on your terms.',
+    es: 'Listo. La Broker Administradora se comunicará contigo personalmente. Tu conversación se mantiene privada y en tus propios términos.',
   },
   sending: { en: 'Sending…', es: 'Enviando…' },
 };

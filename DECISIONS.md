@@ -11,11 +11,12 @@
 - Bilingual: full EN/ES string swap via key→{en,es} map, session-persisted in memory.
 - Fonts fully self-hosted as woff2 (Season Serif TRIAL + Montserrat variable + League Spartan latin/latin-ext) — zero external requests, Cormorant fallback dropped.
 - Never promise leads; qualified leads may be offered as a paid option, but volume is never included or guaranteed.
-- Independent-agent positioning: agents receive broker guidance and required compliance review when needed, not unlimited day-to-day supervision. Paid one-on-one mentorship is optional.
-- The Olea Lead Lab™ provides lead-generation and conversion sessions for agents who actively participate and follow through. Leads are not included or guaranteed.
-- Complimentary benefits include brokerage marketing for agent listings and achievements plus client moving-truck access, subject to scheduling and availability.
-- Bilingual transaction coordination is available as an optional service, subject to scheduling and availability.
-- Brokerage-created transaction templates and transparent sales tracking are included agent tools.
+- Independent-agent positioning: agents manage their own day-to-day business. The brokerage provides required broker and compliance review, while paid one-on-one support is optional.
+- A user-friendly CRM and qualified lead option may be available for an additional charge. Neither is included or guaranteed.
+- The brokerage does not provide marketing or design services. As a courtesy, it may share agent listings and wins through its marketing channels.
+- The brokerage does not provide transaction coordinators. The user-friendly transaction system includes an easy checklist to keep agents organized.
+- The office content room and professional conference room are included among the on-site offerings. The conference room provides a comfortable, central Cape Coral setting for meetings and client presentations.
+- Transparent sales tracking is an included agent tool.
 - No current in-house inventory claim. That hook is cut unless Heidy later supplies verified inventory.
 
 ## OPEN
@@ -33,7 +34,7 @@
 - WebGL/shader heroes, cursor spotlights.
 - Any home-search/IDX functionality.
 - In-house new-construction inventory and builder-lead claims.
-- Unlimited transaction coordination or broker supervision, and an included CRM.
+- Unlimited transaction coordination or broker supervision, an included CRM, or included qualified leads.
 
 ## ASSETS IN HAND
 - `public/assets/olea-logo.png` — full-color logo on white/transparent.

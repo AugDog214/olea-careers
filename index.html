@@ -9,6 +9,9 @@
       content="Keep 100% of your commission at The Olea Group, a boutique Cape Coral brokerage with a low monthly fee, flat transaction fee, bilingual reach, 24/7 office access, and optional services."
     />
     <link rel="canonical" href="https://careers.myoleagroup.com/" />
+    <link rel="alternate" hreflang="en" href="https://careers.myoleagroup.com/" />
+    <link rel="alternate" hreflang="es" href="https://careers.myoleagroup.com/?lang=es" />
+    <link rel="alternate" hreflang="x-default" href="https://careers.myoleagroup.com/" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -18,6 +21,8 @@
     <meta property="og:title" content="Join The Olea Group — 100% Commission Brokerage in Cape Coral & Fort Myers" />
     <meta property="og:description" content="A boutique Cape Coral brokerage built for independent agents: 100% commission, a low monthly fee, a flat transaction fee, bilingual reach, and practical access." />
     <meta property="og:image" content="https://careers.myoleagroup.com/assets/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Join The Olea Group — 100% Commission Brokerage in SWFL" />
     <meta name="twitter:description" content="100% commission with a low monthly fee, flat transaction fee, bilingual reach, and practical access for independent SWFL agents." />
@@ -29,43 +34,53 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": ["Organization", "RealEstateAgent"],
-          "@id": "https://careers.myoleagroup.com/#org",
+          "@type": ["RealEstateAgent", "LocalBusiness"],
+          "@id": "https://careers.myoleagroup.com/#organization",
           "name": "The Olea Group Real Estate & Construction, LLC",
-          "url": "https://myoleagroup.com",
+          "alternateName": "The Olea Group",
+          "url": "https://myoleagroup.com/",
+          "sameAs": ["https://careers.myoleagroup.com/", "https://www.facebook.com/myoleagroup", "https://www.instagram.com/myoleagroup"],
           "logo": "https://careers.myoleagroup.com/assets/olea-logo.png",
           "telephone": "+1-239-318-4689",
+          "priceRange": "$$",
+          "description": "Boutique bilingual real estate brokerage in Cape Coral and Fort Myers, FL offering a 100% commission structure, 24/7 office access, practical transaction-system tools, and optional paid one-on-one broker guidance.",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Cape Coral",
-            "addressRegion": "FL",
+            "addressRegion": "FL", "postalCode": "33904",
             "addressCountry": "US"
           },
-          "areaServed": ["Cape Coral FL", "Fort Myers FL", "Lehigh Acres FL", "North Fort Myers FL", "Lee County FL"],
+          "geo": { "@type": "GeoCoordinates", "latitude": 26.5629, "longitude": -81.9495 },
+          "areaServed": [{"@type":"City","name":"Cape Coral"},{"@type":"City","name":"Fort Myers"},{"@type":"City","name":"Lehigh Acres"},{"@type":"City","name":"North Fort Myers"},{"@type":"AdministrativeArea","name":"Lee County"}],
           "knowsLanguage": ["en", "es"],
-          "founder": { "@type": "Person", "name": "Heidy Olea", "jobTitle": "Broker/Owner" }
+          "founder": { "@type": "Person", "name": "Heidy Olea", "jobTitle": "Managing Broker", "description": "Licensed Florida Real Estate Broker (LIC BK 3428799) offering optional one-on-one agent mentorship." }
         },
         {
           "@type": "JobPosting",
-          "title": "Experienced Real Estate Agent — 100% Commission",
-          "description": "The Olea Group Real Estate & Construction (Cape Coral, FL) is hiring experienced, licensed real estate agents. Keep 100% of your commission while paying a low monthly fee and flat transaction fee. Agents receive 24/7 office access, client moving-truck access, bilingual brokerage access, transaction software, broker and compliance review, and optional paid services.",
-          "datePosted": "2026-07-06",
+          "@id": "https://careers.myoleagroup.com/#jobposting-agent",
+          "title": "Licensed Real Estate Agent (100% Commission Model)",
+          "description": "Join The Olea Group in Cape Coral, FL. Keep 100% commission with a low monthly fee and flat transaction fee. Includes 24/7 office access, multi-MLS access, a client moving truck, bilingual broker access, a transaction-system checklist, and optional paid one-on-one guidance.",
+          "identifier": {"@type":"PropertyValue","name":"The Olea Group","value":"FL-AGENT-100"},
+          "datePosted": "2026-08-01",
+          "validThrough": "2027-12-31",
           "employmentType": "CONTRACTOR",
-          "hiringOrganization": { "@id": "https://careers.myoleagroup.com/#org" },
+          "hiringOrganization": { "@id": "https://careers.myoleagroup.com/#organization" },
           "jobLocation": {
             "@type": "Place",
             "address": { "@type": "PostalAddress", "addressLocality": "Cape Coral", "addressRegion": "FL", "addressCountry": "US" }
           },
+          "baseSalary": { "@type": "MonetaryAmount", "currency": "USD", "value": { "@type": "QuantitativeValue", "value": "100", "unitText": "PERCENT_COMMISSION" } },
+          "jobBenefits": ["100% Commission with flat fees and no splits", "24/7 Office Access in Cape Coral", "Complimentary Client Moving Truck", "Access to Stellar MLS, Miami REALTORS, and Florida Gulf Coast MLS", "Bilingual broker access (English & Spanish)", "The Olea Lead Lab training and conversion sessions"],
           "qualifications": "Active Florida real estate license; existing production preferred.",
           "directApply": true
         },
         {
           "@type": "FAQPage",
-          "mainEntity": [
+          "@id": "https://careers.myoleagroup.com/#faq", "mainEntity": [
             {
               "@type": "Question",
               "name": "What does 100% commission actually mean at The Olea Group?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Agents keep their full commission on every closing and pay a low monthly fee plus a flat fee per transaction. There are no commission splits or caps. Optional services are separate." }
+              "acceptedAnswer": { "@type": "Answer", "text": "Agents keep their full commission on every closing and pay a low monthly fee plus a flat fee per transaction. There are no commission splits, caps, or other required brokerage charges. Optional services are separate." }
             },
             {
               "@type": "Question",
@@ -74,13 +89,18 @@
             },
             {
               "@type": "Question",
-              "name": "How does switching brokerages work in Florida?",
-              "acceptedAnswer": { "@type": "Answer", "text": "The Olea Group treats a brokerage change as a private, straightforward transition and reviews each agent's pending business individually." }
+              "name": "Is it easy to make a private move?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. A transition can be private and simple. Heidy will talk through an agent's current situation and pending business before the agent decides anything." }
             },
             {
               "@type": "Question",
               "name": "Do agents get leads?",
               "acceptedAnswer": { "@type": "Answer", "text": "Leads are not included or guaranteed. A qualified lead option may be available for an additional charge." }
+            },
+            {
+              "@type": "Question",
+              "name": "Does The Olea Group provide transaction coordinators?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No. The brokerage does not provide transaction coordinators. Its user-friendly transaction system includes an easy checklist to help agents organize the next steps." }
             },
             {
               "@type": "Question",
@@ -133,7 +153,7 @@
             <button type="button" class="lang-opt is-active" data-lang="en" aria-pressed="true">EN</button>
             <button type="button" class="lang-opt" data-lang="es" aria-pressed="false">ES</button>
           </div>
-          <a class="btn-cta header-cta" href="#contact" data-i18n="cta.header">Talk to Heidy — confidential</a>
+          <a class="btn-cta header-cta" href="#contact" data-i18n="cta.header">Talk to the Managing Broker — confidential</a>
 
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu" data-menu-btn>
             <span></span><span></span><span></span>
@@ -155,7 +175,7 @@
       <a href="https://myoleagroup.com/evaluation" data-i18n="ms.valuation">Home valuation</a>
       <a href="https://myoleagroup.com/about" data-i18n="ms.about">About us</a>
       <a href="https://myoleagroup.com/reviews4-1" data-i18n="ms.reviews">Reviews</a>
-      <a class="btn-cta mm-cta" href="#contact" data-i18n="cta.header">Talk to Heidy — confidential</a>
+      <a class="btn-cta mm-cta" href="#contact" data-i18n="cta.header">Talk to the Managing Broker — confidential</a>
     </nav>
 
     <main id="top">
@@ -173,12 +193,12 @@
         <div class="hero-stage">
           <h1 class="hero-title">
             <span class="visually-hidden" data-i18n="hero.title">Join us</span>
-            <span class="hero-word hero-word-join" aria-hidden="true">JOIN</span>
-            <span class="hero-word hero-word-us" aria-hidden="true">US</span>
+            <span class="hero-word hero-word-join" aria-hidden="true" data-i18n="hero.word.join">JOIN</span>
+            <span class="hero-word hero-word-us" aria-hidden="true" data-i18n="hero.word.us">US</span>
           </h1>
 
           <div class="hero-copy">
-            <p class="hero-sub" data-i18n="hero.sub">The Olea Group is a Boutique brokerage located in Cape Coral Fl built for independent agents: 24/7 office access, exclusive moving truck access for clients, bilingual brokerage, friendly &amp; collaborative work environment, &amp; user friendly transaction software.</p>
+          <p class="hero-sub" data-i18n="hero.sub">The Olea Group is a boutique brokerage in Cape Coral built for independent agents: 24/7 office access, exclusive moving-truck access for clients, a bilingual and collaborative environment, and a user-friendly transaction system with an easy checklist.</p>
             <a class="btn-cta hero-cta" href="#contact" data-i18n="cta.hero">Schedule a confidential chat</a>
             <p class="hero-micro" data-i18n="hero.micro">Licensed Florida brokerage · LIC BK 3428799 · Hablamos Español</p>
           </div>
@@ -210,8 +230,8 @@
               <div class="deck-photo deck-photo--2" role="img" aria-label="Placeholder — one simple closing statement"></div>
               <div class="deck-text">
                 <span class="pillar-num" aria-hidden="true">02</span>
-                <h3 class="display deck-statement" data-i18n="offer.p2.h">One-on-one mentorship options are available with the broker.</h3>
-                <p class="deck-support" data-i18n="offer.p2.p">Choose paid individual guidance from Heidy when you want more direct mentorship. It is an option, not a required service.</p>
+                <h3 class="display deck-statement" data-i18n="offer.p2.h">Optional one-on-one support with the broker.</h3>
+                <p class="deck-support" data-i18n="offer.p2.p">Choose paid individual guidance from the Managing Broker when you want more direct support. It is an option, not a required service.</p>
               </div>
             </article>
             <!-- REPLACE: real photo — agent enjoying the payoff (family, boat, SWFL life), aspirational but real -->
@@ -220,7 +240,7 @@
               <div class="deck-text">
                 <span class="pillar-num" aria-hidden="true">03</span>
                 <h3 class="display deck-statement" data-i18n="offer.p3.h">Low monthly fee. Flat transaction fee. No caps.</h3>
-                <p class="deck-support" data-i18n="offer.p3.p">Those are the required brokerage costs. CRM, qualified leads, and mentorship remain optional.</p>
+                <p class="deck-support" data-i18n="offer.p3.p">Those are the only required brokerage costs. There is nothing else to pay unless you choose an optional CRM, qualified leads, or one-on-one support.</p>
               </div>
             </article>
           </div>
@@ -236,7 +256,7 @@
       <!-- ================= 3 · THE EDGE (what sets us apart) ================= -->
       <section class="section section-wash" id="edge">
         <div class="wrap">
-          <p class="eyebrow" data-i18n="edge.eyebrow">What sets us apart</p>
+          <p class="eyebrow" data-i18n="edge.eyebrow">What makes us different</p>
           <h2 class="display section-title" data-i18n="edge.title">A simpler model. A broader reach.</h2>
 
           <div class="edge-grid">
@@ -248,7 +268,7 @@
               <div class="edge-copy">
                 <span class="pillar-num" aria-hidden="true">01</span>
                 <h3 class="display edge-statement" data-i18n="edge.e1.h">Independent by design.</h3>
-                <p class="edge-support" data-i18n="edge.e1.p">Run your business with 24/7 office access, clear broker and compliance review, practical transaction software, and optional services only when they fit your business.</p>
+                <p class="edge-support" data-i18n="edge.e1.p">Run your business with 24/7 office access, broker and compliance review, a user-friendly transaction system with an easy checklist, and optional services only when they fit your business.</p>
               </div>
             </article>
 
@@ -260,7 +280,7 @@
               <div class="edge-copy">
                 <span class="pillar-num" aria-hidden="true">02</span>
                 <h3 class="display edge-statement" data-i18n="edge.e2.h">Bilingual by nature.</h3>
-                <p class="edge-support" data-i18n="edge.e2.p">Heidy is fluent in English and Spanish, and most Olea Group agents also speak both languages. The result is a collaborative, friendly environment built to serve both markets.</p>
+                <p class="edge-support" data-i18n="edge.e2.p">The Managing Broker is fluent in English and Spanish, and most Olea Group agents also speak both languages. It is a practical advantage for serving both markets.</p>
               </div>
             </article>
           </div>
@@ -276,15 +296,15 @@
           <figure class="quote-scrub">
             <blockquote class="display heidy-quote" data-quote aria-label="Quote from Heidy Olea"></blockquote>
             <figcaption class="quote-attrib">
-              <!-- REPLACE: real headshot of Heidy (small circle) -->
-              <span class="quote-headshot" role="img" aria-label="Placeholder — Heidy Olea headshot"></span>
-              <span class="quote-name"><span data-i18n="quote.name">Heidy Olea</span> · <span data-i18n="quote.role">Broker &amp; Owner</span></span>
+              <!-- Add the approved portrait at /assets/heidy-olea.jpg when supplied. -->
+              <span class="quote-headshot" aria-label="Managing Broker portrait"><span aria-hidden="true">HO</span></span>
+              <span class="quote-name"><span data-i18n="quote.name">Heidy Olea</span> · <span data-i18n="quote.role">Managing Broker</span></span>
             </figcaption>
           </figure>
 
           <p class="eyebrow" data-i18n="proof.eyebrow">Proof</p>
           <h2 class="display section-title" data-i18n="proof.title">Independent doesn't mean unclear.</h2>
-          <p class="proof-lead" data-i18n="proof.lead">The brokerage provides broker and compliance review while agents retain control of their day-to-day business. Paid one-on-one mentorship is available when an agent chooses more direct guidance.</p>
+          <p class="proof-lead" data-i18n="proof.lead">The brokerage provides required broker and compliance review while agents retain control of their day-to-day business. Paid one-on-one support is available only when an agent chooses more direct guidance.</p>
 
           <!-- REPLACE: real production numbers from Heidy (volume, transactions, agents, years).
                data-count hooks are ready for the Phase 4 count-up. -->
@@ -361,7 +381,7 @@
               <figure class="culture-media"><div class="culture-photo" role="img" aria-label="Placeholder — Heidy mentoring one-on-one"></div></figure>
               <div class="culture-copy">
                 <p class="culture-sub" data-i18n="culture.r2.h">Mentorship, when you choose it</p>
-                <p class="culture-line" data-i18n="culture.r2.p">Paid one-on-one mentorship with Heidy is available for agents who want more direct guidance.</p>
+                <p class="culture-line" data-i18n="culture.r2.p">Paid one-on-one support with the Managing Broker is available for agents who choose more direct guidance.</p>
               </div>
             </article>
             <!-- REPLACE: celebration / closing-day moment — keys handed over, cheers, genuine -->
@@ -369,7 +389,7 @@
               <figure class="culture-media"><div class="culture-photo" role="img" aria-label="Placeholder — closing-day celebration"></div></figure>
               <div class="culture-copy">
                 <p class="culture-sub" data-i18n="culture.r3.h">Closing day</p>
-                <p class="culture-line" data-i18n="culture.r3.p">Complimentary marketing for agent listings and achievements, plus moving-truck access for clients.</p>
+                <p class="culture-line" data-i18n="culture.r3.p">We do not provide marketing or design services. As a courtesy, we may share agent listings and wins; clients can also reserve the moving truck.</p>
               </div>
             </article>
             <!-- REPLACE: community / local SWFL — team at a Cape Coral event or on site at a build -->
@@ -387,8 +407,8 @@
       <!-- ================= 5 · WHAT'S INCLUDED ================= -->
       <section class="section section-wash" id="included">
         <div class="wrap">
-          <p class="eyebrow" data-i18n="inc.eyebrow">What's included</p>
-          <h2 class="display section-title" data-i18n="inc.title">Why Agents Choose The Olea Group</h2>
+          <p class="eyebrow" data-i18n="inc.eyebrow">What we offer</p>
+          <h2 class="display section-title" data-i18n="inc.title">A simple brokerage. The tools you choose.</h2>
 
           <div class="mls-access" aria-labelledby="mls-access-title">
             <p class="mls-access-title" id="mls-access-title" data-i18n="inc.mls.title">MLS access across Florida markets</p>
@@ -433,42 +453,42 @@
                   <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
                   <span data-i18n="inc.r1.h">100% commission structure</span>
                 </dt>
-                <dd data-i18n="inc.r1.p">Keep 100% of the commission you earn. A low monthly fee and flat transaction fee apply, with no caps.</dd>
+                <dd data-i18n="inc.r1.p">Keep 100% of the commission you earn. The only required costs are a low monthly fee and a flat transaction fee, with no caps.</dd>
               </div>
               <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-low-fees.webp">
                 <dt>
                   <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
                   <span data-i18n="inc.r2.h">Low monthly fees</span>
                 </dt>
-                <dd data-i18n="inc.r2.p">Simple, predictable monthly pricing with no split or franchise percentage taken from your commission.</dd>
+                <dd data-i18n="inc.r2.p">Simple, predictable pricing with no split or franchise percentage taken from your commission. Nothing else is required unless you choose an optional service.</dd>
               </div>
               <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-mentorship.webp">
                 <dt>
                   <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6"/><path d="m2 10 10-5 10 5-10 5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                  <span data-i18n="inc.r3.h">Mentorship opportunities for new agents</span>
+                  <span data-i18n="inc.r3.h">Optional one-on-one support</span>
                 </dt>
-                <dd data-i18n="inc.r3.p">Paid one-on-one mentorship is available for new agents who want more direct guidance from Heidy.</dd>
+                <dd data-i18n="inc.r3.p">Paid one-on-one support is available for agents who choose more direct guidance from the Managing Broker.</dd>
               </div>
               <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-broker-support.webp">
                 <dt>
-                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  <span data-i18n="inc.r4.h">Broker support when needed</span>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span data-i18n="inc.r4.h">Broker &amp; compliance review</span>
                 </dt>
-                <dd data-i18n="inc.r4.p">Broker guidance and required compliance review are available when a transaction needs attention, while agents manage their own day-to-day business.</dd>
+                <dd data-i18n="inc.r4.p">Independent agents manage their own day-to-day business. The brokerage provides required broker and compliance review, while direct one-on-one support remains a paid option.</dd>
               </div>
               <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-lead-lab.webp">
                 <dt>
                   <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v7.3"/><path d="M14 9.3V2"/><path d="M8.5 2h7"/><path d="m14 9.3 5.5 9.7a2 2 0 0 1-1.74 3H6.24a2 2 0 0 1-1.74-3L10 9.3"/><path d="M6.5 16h11"/></svg>
-                  <span data-i18n="inc.r5.h">The Olea Lead Lab&trade;</span>
+                  <span data-i18n="inc.r5.h">Optional CRM &amp; qualified lead tools</span>
                 </dt>
-                <dd data-i18n="inc.r5.p">Lead-generation and conversion sessions for agents who actively participate, apply the work, and follow through. Leads are not included or guaranteed.</dd>
+                <dd data-i18n="inc.r5.p">Choose a user-friendly CRM and qualified-lead option for an additional charge when they fit your business. Neither is included or guaranteed.</dd>
               </div>
               <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-marketing.webp">
                 <dt>
                   <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-                  <span data-i18n="inc.r6.h">Complimentary agent listing &amp; achievement marketing</span>
+                  <span data-i18n="inc.r6.h">Courtesy promotion for agent wins</span>
                 </dt>
-                <dd data-i18n="inc.r6.p">The brokerage shares agent listings and achievements through its marketing channels at no additional charge.</dd>
+                <dd data-i18n="inc.r6.p">We do not provide marketing or design services. As a courtesy, the brokerage may share agent listings and wins through its marketing channels.</dd>
               </div>
               <div class="included-row" data-inc-row data-inc-photo="/assets/videos/olea-moving-truck.webp" data-inc-video="/assets/videos/olea-moving-truck.mp4">
                 <dt>
@@ -477,12 +497,12 @@
                 </dt>
                 <dd data-i18n="inc.r7.p">Reserve The Olea Group moving truck for clients at no additional charge, subject to scheduling and availability.</dd>
               </div>
-              <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-transaction-coordination.webp">
+              <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-transaction-templates.webp">
                 <dt>
-                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-                  <span data-i18n="inc.r8.h">Optional bilingual transaction coordination</span>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  <span data-i18n="inc.r8.h">Easy transaction-system checklist</span>
                 </dt>
-                <dd data-i18n="inc.r8.p">Bilingual transaction coordination is available as an optional service, subject to scheduling and availability.</dd>
+                <dd data-i18n="inc.r8.p">The brokerage does not provide transaction coordinators. Instead, our user-friendly transaction system gives you an easy checklist to stay organized and see what comes next.</dd>
               </div>
               <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-sales-tracking.webp">
                 <dt>
@@ -491,17 +511,24 @@
                 </dt>
                 <dd data-i18n="inc.r9.p">Clear, current sales tracking gives agents visibility into recorded production and performance.</dd>
               </div>
-              <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-transaction-templates.webp">
+              <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-marketing.webp">
                 <dt>
-                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v13"/><path d="M14 2v6h6"/><path d="M18 22H9a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6l5 5v10a2 2 0 0 1-2 2Z"/><path d="m10 17 2 2 4-4"/></svg>
-                  <span data-i18n="inc.r10.h">Brokerage-created transaction templates</span>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7Z"/><rect width="15" height="14" x="1" y="5" rx="2"/></svg>
+                  <span data-i18n="inc.r10.h">Office content room</span>
                 </dt>
-                <dd data-i18n="inc.r10.p">Templates organize the forms needed for every transaction type, making it easy to know which documents to use.</dd>
+                <dd data-i18n="inc.r10.p">The office content room gives you a place to create polished listing, video, and social content for your business.</dd>
+              </div>
+              <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-transaction-coordination.webp">
+                <dt>
+                  <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                  <span data-i18n="inc.r11.h">Professional conference room</span>
+                </dt>
+                <dd data-i18n="inc.r11.p">Our conference room gives you a professional setting to finalize deals and present to buyers and sellers. It provides a comfortable environment in a central Cape Coral location.</dd>
               </div>
             </dl>
           </div>
 
-          <p class="included-callback" data-i18n="inc.callback">Core access stays simple. Optional services stay optional.</p>
+          <p class="included-callback" data-i18n="inc.callback">Simple essentials. Straightforward options.</p>
         </div>
       </section>
 
@@ -511,28 +538,32 @@
           <p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p>
           <h2 class="display section-title" data-i18n="faq.title">The questions you're already asking.</h2>
 
-          <!-- ⚠️ CONFIRM with Heidy: fee amount, contract terms, switching mechanics.
+          <!-- ⚠️ CONFIRM with Heidy: fee amount and contract terms.
                Drafted answers below are marked where facts are unverified. -->
           <div class="faq-list">
             <details class="faq-item">
               <summary data-i18n="faq.q1">What does 100% commission actually mean here?</summary>
-              <p data-i18n="faq.a1">You keep your full commission and pay a low monthly fee plus a flat transaction fee. There are no splits, no caps, and no other required brokerage charges. CRM, qualified leads, and one-on-one mentorship are optional.</p>
+              <p data-i18n="faq.a1">You keep your full commission and pay a low monthly fee plus a flat transaction fee. There are no splits, no caps, and no other required brokerage charges. You only pay more if you choose an optional CRM, qualified leads, or one-on-one support.</p>
             </details>
             <details class="faq-item">
               <summary data-i18n="faq.q2">Am I locked into a contract?</summary>
               <p data-i18n="faq.a2">No long-term lock-in. The model is built for independent agents who want flexibility, not a contract that makes the decision for them.</p>
             </details>
             <details class="faq-item">
-              <summary data-i18n="faq.q3">How does switching brokerages work?</summary>
-              <p data-i18n="faq.a3">Your move is handled as a private, straightforward transition. Heidy will review your current situation and pending business with you before anything changes.</p>
+              <summary data-i18n="faq.q3">Is it easy to make a private move?</summary>
+              <p data-i18n="faq.a3">Yes. A transition can be private and simple. Heidy will talk through your current situation and pending business with you before you decide anything.</p>
             </details>
             <details class="faq-item">
               <summary data-i18n="faq.q4">Do I get leads?</summary>
               <p data-i18n="faq.a4">Leads are not included or guaranteed. A qualified lead option may be available for an additional charge if it fits your business.</p>
             </details>
             <details class="faq-item">
-              <summary data-i18n="faq.q5">Is the company really bilingual?</summary>
-              <p data-i18n="faq.a5">Yes. Our broker is fluent in English and Spanish. Most of our agents also speak both languages, and the brokerage has a collaborative, friendly environment.</p>
+              <summary data-i18n="faq.q5">Do you provide transaction coordinators?</summary>
+              <p data-i18n="faq.a5">No. The brokerage does not provide transaction coordinators. Our transaction system includes an easy checklist to help you organize the next steps yourself.</p>
+            </details>
+            <details class="faq-item">
+              <summary data-i18n="faq.q6">Is the company really bilingual?</summary>
+              <p data-i18n="faq.a6">Yes. Our broker is fluent in English and Spanish. Most of our agents also speak both languages, and the brokerage has a collaborative, friendly environment.</p>
             </details>
           </div>
         </div>
@@ -543,7 +574,7 @@
         <div class="wrap">
           <p class="eyebrow eyebrow-light" data-i18n="contact.eyebrow">The next step</p>
           <h2 class="display section-title" data-i18n="contact.title">A confidential conversation. That's it.</h2>
-          <p class="contact-sub" data-i18n="contact.sub">No recruiting script, no pressure. Bring your numbers, ask anything, decide on your own timeline. Your current broker never hears about it.</p>
+          <p class="contact-sub" data-i18n="contact.sub">No recruiting script, no pressure. Bring your numbers, ask anything, and decide on your own timeline. Every conversation starts privately.</p>
 
           <form class="lead-form" id="lead-form" novalidate>
             <div class="form-field">
@@ -568,6 +599,7 @@
             </div>
             <button class="btn-cta form-submit" type="submit" data-i18n="form.submit">Schedule my confidential chat</button>
             <p class="form-micro" data-i18n="form.micro">100% confidential. No pressure, no obligation.</p>
+            <p class="form-micro"><a href="mailto:theoleagroup@gmail.com" data-i18n="form.emailNote">Prefer email? theoleagroup@gmail.com</a></p>
           </form>
         </div>
       </section>
@@ -584,6 +616,7 @@
           <!-- REPLACE: office street address + office email from the Lofty site -->
           <p>Cape Coral, FL</p>
           <p><a href="tel:+12393184689">(239) 318-4689</a></p>
+          <p><a href="mailto:theoleagroup@gmail.com">theoleagroup@gmail.com</a></p>
           <p><a href="https://myoleagroup.com">MyOleaGroup.com</a></p>
         </div>
         <div class="footer-info">
@@ -606,7 +639,7 @@
         <span class="melt-blob melt-blob--a"></span>
         <span class="melt-blob melt-blob--b"></span>
       </span>
-      <span class="melt-label" data-i18n="cta.melt">Talk to Heidy</span>
+      <span class="melt-label" data-i18n="cta.melt">Talk to the Managing Broker</span>
     </a>
     <svg class="goo-defs" width="0" height="0" aria-hidden="true" focusable="false">
       <defs>
