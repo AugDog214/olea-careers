@@ -327,12 +327,19 @@
   padding: var(--s-1) 0;
   min-height: 48px;
   cursor: pointer;
+  transition: color 180ms var(--ease-out), transform 180ms var(--ease-out);
 }
+
+.calc-toggle:hover,
+.calc-toggle:focus-visible { color: var(--sky); }
+
+.calc-toggle[aria-expanded='true'] { transform: translateY(1px); }
 
 /* calculator panel — open surface, understated; light-ink fields on white */
 .calc-panel {
   padding-top: var(--s-4);
   max-width: 640px;
+  transform-origin: top center;
 }
 
 .calc-fields {
@@ -1199,6 +1206,11 @@
   height: auto;
   margin: 0;
 }
+
+/* The calculator is an explicit user action, so it always takes priority over
+   the decorative scroll deck. The deck pin is released in JS before expansion. */
+.deck.is-calculator-open { z-index: 0; }
+.calc-slot { position: relative; z-index: 2; background: var(--white); }
 
 /* ---------- proof: eXp scroll-highlight quote ---------- */
 .quote-scrub {

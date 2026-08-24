@@ -185,12 +185,24 @@ export function initMotion() {
           anticipatePin: 1,
         },
       });
+      const toggleCalculator = (event) => {
+        if (event.detail.open) {
+          deck.classList.add('is-calculator-open');
+          tl.scrollTrigger.disable(true);
+        } else {
+          deck.classList.remove('is-calculator-open');
+          tl.scrollTrigger.enable();
+          ScrollTrigger.refresh();
+        }
+      };
+      window.addEventListener('olea:calculator-toggle', toggleCalculator);
       // each front layer drops down and away, exposing the next behind it
       layers.slice(0, -1).forEach((layer, i) => {
         tl.to(layer, { yPercent: 120, opacity: 0.35, ease: 'power1.in', duration: 1 }, i);
       });
 
       return () => {
+        window.removeEventListener('olea:calculator-toggle', toggleCalculator);
         deck.classList.remove('is-deck-pinned');
         layers.forEach((l) => gsap.set(l, { clearProps: 'all' }));
       };
