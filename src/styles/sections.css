@@ -994,6 +994,59 @@
   margin-block: -12px;
 }
 
+/* Desktop keeps social within easy reach while mobile uses the footer row. */
+.social-rail {
+  position: fixed;
+  z-index: 80;
+  right: 0;
+  top: 50%;
+  display: none;
+  overflow: hidden;
+  border-radius: 12px 0 0 12px;
+  background: var(--royal);
+  box-shadow: 0 12px 30px rgba(10, 26, 58, 0.24);
+  transform: translateY(-50%);
+}
+
+.social-rail a {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  color: var(--white);
+  transition: transform 180ms var(--ease-out), background-color 180ms var(--ease-out);
+}
+
+.social-rail a + a { border-top: 1px solid rgba(255, 255, 255, 0.24); }
+.social-rail svg { width: 22px; height: 22px; fill: currentColor; }
+.social-rail a:hover, .social-rail a:focus-visible { background: var(--sky); transform: scale(1.09); }
+
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 18px;
+  margin-bottom: var(--s-4);
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.footer-social span { color: rgba(255, 255, 255, 0.68); }
+
+@media (min-width: 900px) {
+  .social-rail { display: block; }
+  .footer-social { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-rail a { transition: none; }
+  .social-rail a:hover, .social-rail a:focus-visible { transform: none; }
+}
+
 .footer-legal {
   margin-top: var(--s-6);
   padding-top: var(--s-3);
