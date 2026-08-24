@@ -168,7 +168,9 @@ export function initMotion() {
   // --- v3 · offer deck: desktop pinned layer-drop; mobile keeps the CSS
   //     sticky card-stack (no JS needed there) ---
   const deck = document.querySelector('[data-deck]');
-  if (deck) {
+  // The offer cards remain a stable visual stack. A pinned scroll timeline
+  // interfered with the calculator immediately below it on some viewports.
+  if (false && deck) {
     const mmDeck = gsap.matchMedia();
     mmDeck.add('(min-width: 1000px)', () => {
       const layers = [...deck.querySelectorAll('[data-deck-layer]')];

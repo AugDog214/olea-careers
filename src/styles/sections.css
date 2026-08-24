@@ -310,9 +310,11 @@
 
 /* calculator slot — quiet text button, not a component */
 .calc-slot {
-  margin-top: var(--s-6);
-  padding-top: var(--s-4);
-  border-top: var(--hairline);
+  margin-top: var(--s-7);
+  padding: var(--s-5);
+  border: 1px solid rgba(21, 72, 159, 0.18);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--ice), var(--white));
 }
 
 .calc-toggle {
@@ -322,10 +324,11 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--royal);
-  background: none;
-  border: none;
-  padding: var(--s-1) 0;
-  min-height: 48px;
+  background: var(--white);
+  border: 1px solid rgba(21, 72, 159, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 14px 22px;
+  min-height: 52px;
   cursor: pointer;
   transition: color 180ms var(--ease-out), transform 180ms var(--ease-out);
 }
@@ -337,9 +340,21 @@
 
 /* calculator panel — open surface, understated; light-ink fields on white */
 .calc-panel {
-  padding-top: var(--s-4);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  padding-top: 0;
   max-width: 640px;
   transform-origin: top center;
+  transition: max-height 280ms var(--ease-out), opacity 180ms var(--ease-out), transform 280ms var(--ease-out), padding-top 280ms var(--ease-out);
+}
+
+.calc-panel.is-open {
+  max-height: 1200px;
+  opacity: 1;
+  transform: translateY(0);
+  padding-top: var(--s-4);
 }
 
 .calc-fields {
@@ -1127,9 +1142,9 @@
 
 /* base = mobile + reduced-motion: sticky card-stack (layered depth, no gestures) */
 .deck-layer {
-  position: sticky;
-  top: 96px;
-  height: min(72svh, 640px);
+  position: relative;
+  top: auto;
+  height: min(62svh, 560px);
   margin-bottom: var(--s-4);
   overflow: hidden;
   box-shadow: 0 -18px 48px rgba(10, 26, 58, 0.28);
@@ -1210,7 +1225,6 @@
 /* The calculator is an explicit user action, so it always takes priority over
    the decorative scroll deck. The deck pin is released in JS before expansion. */
 .deck.is-calculator-open { z-index: 0; }
-.calc-slot { position: relative; z-index: 2; background: var(--white); }
 
 /* ---------- proof: eXp scroll-highlight quote ---------- */
 .quote-scrub {

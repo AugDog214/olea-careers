@@ -35,22 +35,17 @@ export function initCalculator() {
   panel.addEventListener('input', recalc);
   panel.addEventListener('change', recalc);
 
+  let closeTimer;
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
+    window.clearTimeout(closeTimer);
     toggle.setAttribute('aria-expanded', String(!open));
-    window.dispatchEvent(new CustomEvent('olea:calculator-toggle', { detail: { open: !open } }));
     if (open) {
-      const closing = panel.animate([
-        { opacity: 1, transform: 'translateY(0)' },
-        { opacity: 0, transform: 'translateY(-12px)' },
-      ], { duration: 180, easing: 'ease-in', fill: 'forwards' });
-      closing.onfinish = () => { panel.hidden = true; panel.style.removeProperty('opacity'); panel.style.removeProperty('transform'); };
+      panel.classList.remove('is-open');
+      closeTimer = window.setTimeout(() => { panel.hidden = true; }, 200);
     } else {
       panel.hidden = false;
-      panel.animate([
-        { opacity: 0, transform: 'translateY(-12px)' },
-        { opacity: 1, transform: 'translateY(0)' },
-      ], { duration: 280, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      requestAnimationFrame(() => panel.classList.add('is-open'));
     }
   });
 
