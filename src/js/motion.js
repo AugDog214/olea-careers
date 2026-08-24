@@ -168,9 +168,7 @@ export function initMotion() {
   // --- v3 · offer deck: desktop pinned layer-drop; mobile keeps the CSS
   //     sticky card-stack (no JS needed there) ---
   const deck = document.querySelector('[data-deck]');
-  // The offer cards remain a stable visual stack. A pinned scroll timeline
-  // interfered with the calculator immediately below it on some viewports.
-  if (false && deck) {
+  if (deck) {
     const mmDeck = gsap.matchMedia();
     mmDeck.add('(min-width: 1000px)', () => {
       const layers = [...deck.querySelectorAll('[data-deck-layer]')];
@@ -187,24 +185,12 @@ export function initMotion() {
           anticipatePin: 1,
         },
       });
-      const toggleCalculator = (event) => {
-        if (event.detail.open) {
-          deck.classList.add('is-calculator-open');
-          tl.scrollTrigger.disable(true);
-        } else {
-          deck.classList.remove('is-calculator-open');
-          tl.scrollTrigger.enable();
-          ScrollTrigger.refresh();
-        }
-      };
-      window.addEventListener('olea:calculator-toggle', toggleCalculator);
       // each front layer drops down and away, exposing the next behind it
       layers.slice(0, -1).forEach((layer, i) => {
         tl.to(layer, { yPercent: 120, opacity: 0.35, ease: 'power1.in', duration: 1 }, i);
       });
 
       return () => {
-        window.removeEventListener('olea:calculator-toggle', toggleCalculator);
         deck.classList.remove('is-deck-pinned');
         layers.forEach((l) => gsap.set(l, { clearProps: 'all' }));
       };
