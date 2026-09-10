@@ -13,7 +13,7 @@
 - Never promise leads; qualified leads may be offered as a paid option, but volume is never included or guaranteed.
 - Independent-agent positioning: agents manage their own day-to-day business. The brokerage provides required broker and compliance review, while paid one-on-one support is optional.
 - A user-friendly CRM and qualified lead option may be available for an additional charge. Neither is included or guaranteed.
-- The brokerage does not provide marketing or design services. As a courtesy, it may share agent listings and wins through its marketing channels.
+- On agent request, the brokerage offers complimentary platform exposure for listings and wins on a rotating basis.
 - The brokerage does not provide transaction coordinators. The user-friendly transaction system includes an easy checklist to keep agents organized.
 - The office content room and professional conference room are included among the on-site offerings. The conference room provides a comfortable, central Cape Coral setting for meetings and client presentations.
 - Transparent sales tracking is an included agent tool.

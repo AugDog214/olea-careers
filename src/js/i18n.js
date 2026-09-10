@@ -113,13 +113,13 @@ export const strings = {
   },
   'culture.r3.h': { en: 'Closing day', es: 'Día de cierre' },
   'culture.r3.p': {
-    en: 'We do not provide marketing or design services. As a courtesy, we may share agent listings and wins; clients can also reserve the moving truck.',
-    es: 'No brindamos servicios de marketing ni de diseño. Como cortesía, podemos compartir los listados y logros de los agentes; los clientes también pueden reservar el camión de mudanza.',
+    en: 'When requested, we offer complimentary exposure for agent listings and wins across our platforms on a rotating basis.',
+    es: 'A solicitud del agente, ofrecemos exposición de cortesía para listados y logros en nuestras plataformas, por turnos.',
   },
   'culture.r4.h': { en: 'Rooted in SWFL', es: 'Raíces en SWFL' },
   'culture.r4.p': {
-    en: 'A bilingual brokerage with practical access across Cape Coral, Fort Myers, Lehigh Acres, North Fort Myers, and Lee County.',
-    es: 'Un brokerage bilingüe con acceso práctico en Cape Coral, Fort Myers, Lehigh Acres, North Fort Myers y Lee County.',
+    en: 'A bilingual brokerage with a home base in Cape Coral and an extensive Florida service area.',
+    es: 'Un brokerage bilingüe con una base en Cape Coral y una amplia área de servicio en Florida.',
   },
 
   // --- 4 · proof ---
@@ -171,10 +171,10 @@ export const strings = {
     en: 'Choose a user-friendly CRM and qualified-lead option for an additional charge when they fit your business. Neither is included or guaranteed.',
     es: 'Elige un CRM fácil de usar y una opción de leads calificados por un cargo adicional cuando encajen con tu negocio. Ninguno está incluido ni garantizado.',
   },
-  'inc.r6.h': { en: 'Courtesy promotion for agent wins', es: 'Promoción de cortesía para los logros de agentes' },
+  'inc.r6.h': { en: 'Complimentary exposure for agent wins', es: 'Exposición de cortesía para los logros de agentes' },
   'inc.r6.p': {
-    en: 'We do not provide marketing or design services. As a courtesy, the brokerage may share agent listings and wins through its marketing channels.',
-    es: 'No brindamos servicios de marketing ni de diseño. Como cortesía, el brokerage puede compartir los listados y logros de los agentes a través de sus canales de marketing.',
+    en: 'When requested, we offer complimentary exposure for agent listings and wins across our platforms on a rotating basis.',
+    es: 'A solicitud del agente, ofrecemos exposición de cortesía para listados y logros en nuestras plataformas, por turnos.',
   },
   'inc.r7.h': { en: 'Complimentary client moving truck', es: 'Camión de mudanza de cortesía para clientes' },
   'inc.r7.p': {
@@ -270,8 +270,8 @@ export const strings = {
   'footer.contactH': { en: 'Contact', es: 'Contacto' },
   'footer.areasH': { en: 'Service areas', es: 'Áreas de servicio' },
   'footer.areas': {
-    en: 'Cape Coral · Fort Myers · Lehigh Acres · North Fort Myers · all of Lee County',
-    es: 'Cape Coral · Fort Myers · Lehigh Acres · North Fort Myers · todo Lee County',
+    en: 'Lee County · Hendry County (LaBelle) · Broward & Miami-Dade counties · Sarasota County (North Port) · Charlotte County (Punta Gorda)',
+    es: 'Condado de Lee · Condado de Hendry (LaBelle) · Condados de Broward y Miami-Dade · Condado de Sarasota (North Port) · Condado de Charlotte (Punta Gorda)',
   },
   'footer.license': {
     en: 'Heidy Olea, Managing Broker · LIC BK 3428799',
