@@ -108,7 +108,7 @@
    while US glides left. The media slideshow remains independent. */
 .hero.has-word-motion .hero-word {
   --word-travel: clamp(24px, 5vw, 96px);
-  animation: hero-word-drift-opposing 20s ease-in-out infinite alternate;
+  animation: hero-word-drift-opposing 16s ease-in-out infinite alternate;
   animation-play-state: paused;
 }
 .hero.has-word-motion .hero-word-us { --word-direction: -1; }
