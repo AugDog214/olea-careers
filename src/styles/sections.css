@@ -1407,6 +1407,16 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
+/* Approved photography: preserve the existing media boxes and scroll effects. */
+.real-photo { position: relative; overflow: hidden; }
+.real-photo::after { content: none; }
+.real-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.real-photo--team img { object-position: center 60%; }
+.real-photo--broker img { object-position: center 22%; }
+.edge-photo--independent.real-photo img { object-position: center 15%; }
+.real-photo--celebration img { object-position: center 35%; }
+.real-photo--neighborhood img { object-position: center 55%; }
+
 .culture-sub {
   font-family: var(--font-label);
   font-size: var(--text-label);
