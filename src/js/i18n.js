@@ -26,8 +26,8 @@ export const strings = {
   'hero.word.us': { en: 'US', es: 'HOY' },
   'hero.statement': { en: 'Independent agents. A brokerage that fits.', es: 'Agentes independientes. Una agencia a tu medida.' },
   'hero.sub': {
-    en: 'The Olea Group is a boutique brokerage in Cape Coral, built around your independence.',
-    es: 'The Olea Group es una agencia boutique en Cape Coral, creada para tu independencia.',
+    en: 'The Olea Group is a boutique Cape Coral brokerage for independent agents, with 24/7 office access, a complimentary client moving truck, bilingual support, a collaborative environment, and user-friendly transaction software.',
+    es: 'The Olea Group es una agencia boutique de Cape Coral para agentes independientes, con acceso a la oficina las 24 horas, un camión de mudanza de cortesía para clientes, apoyo bilingüe, un ambiente colaborativo y un sistema de transacciones fácil de usar.',
   },
   'hero.benefits.access': { en: '24/7 office access. A complimentary client moving truck.', es: 'Oficina disponible las 24 horas. Camión de mudanza gratuito para clientes.' },
   'hero.benefits.work': { en: 'Bilingual collaboration. Simple transactions. Clear checklists.', es: 'Colaboración bilingüe. Transacciones sencillas. Listas de verificación claras.' },
