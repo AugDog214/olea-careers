@@ -104,6 +104,19 @@
 
 .motion-on .hero-word { will-change: transform; }
 
+/* Ambient drift lives on the inner words so the scroll-driven outer motion
+   can remain independent and both effects read as one continuous movement. */
+.hero-word-float {
+  display: inline-block;
+  animation: hero-word-drift 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hero-word-drift {
+  from { transform: translate3d(0, -0.012em, 0); }
+  to { transform: translate3d(0, 0.012em, 0); }
+}
+
 .hero-word-join {
   top: 0;
   left: -0.018em;
