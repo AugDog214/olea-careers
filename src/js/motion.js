@@ -72,8 +72,11 @@ export function initMotion() {
     const heroWords = gsap.timeline({
       scrollTrigger: {
         trigger: hero,
-        start: 'top top',
-        end: 'bottom 35%',
+        // Mobile starts at page scroll zero, before the header clears the hero.
+        start: () => window.innerWidth < 900 ? 0 : 'top top',
+        end: () => window.innerWidth < 900
+          ? Math.max(220, hero.offsetHeight * 0.45)
+          : 'bottom 35%',
         scrub: true,
         invalidateOnRefresh: true,
       },

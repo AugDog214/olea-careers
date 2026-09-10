@@ -9,6 +9,7 @@ const copy = {
     open: 'Explore your numbers +', close: 'Close calculator −', inputs: 'Make it your own',
     gci: 'Annual gross commission', tx: 'Closings per year', split: 'Your current split · agent / brokerage',
     fees: 'Your Olea fee quote', disclosure: 'Enter the fees quoted by the Managing Broker. No guesswork, no assumed savings.',
+    feeContact: 'Queries about the monthly fee. Reach out to Heidy to chat about the brokerage.',
     monthly: 'Monthly fee', transaction: 'Fee per transaction', summary: 'YOUR ANNUAL COMPARISON',
     traditional: 'Paid to your current brokerage', olea: 'Olea monthly + transaction fees', difference: 'Potential annual difference',
     empty: 'Let’s fill in the picture', pending: 'Enter your fee quote',
@@ -22,6 +23,7 @@ const copy = {
     open: 'Explora tus números +', close: 'Cerrar calculadora −', inputs: 'Personaliza tu comparación',
     gci: 'Comisión bruta anual', tx: 'Cierres por año', split: 'Tu reparto actual · agente / agencia',
     fees: 'Tu cotización de Olea', disclosure: 'Ingresa las tarifas cotizadas por la Broker Administradora. Sin suposiciones sobre tus ahorros.',
+    feeContact: '¿Preguntas sobre la cuota mensual? Comunícate con Heidy para conversar sobre la agencia.',
     monthly: 'Cuota mensual', transaction: 'Tarifa por transacción', summary: 'TU COMPARACIÓN ANUAL',
     traditional: 'Pagado a tu agencia actual', olea: 'Cuotas y tarifas anuales de Olea', difference: 'Posible diferencia anual',
     empty: 'Completemos el panorama', pending: 'Ingresa tus tarifas',
@@ -51,6 +53,7 @@ export function initCalculator() {
         <fieldset class="calc-split"><legend data-calc-copy="split"></legend><label><input type="radio" name="split" value="0.30" checked />70 / 30</label><label><input type="radio" name="split" value="0.20" />80 / 20</label></fieldset>
       </div>
       <div class="calc-fee-section"><h3 data-calc-copy="fees"></h3><p class="calc-disclosure" data-calc-copy="disclosure"></p>
+      <p class="calc-disclosure"><strong data-calc-copy="feeContact"></strong></p>
       <div class="calc-fees"><label for="c-monthly"><span data-calc-copy="monthly"></span><input id="c-monthly" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00" /></label><label for="c-transaction"><span data-calc-copy="transaction"></span><input id="c-transaction" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00" /></label></div></div>
     </div>
     <div class="calc-summary">
