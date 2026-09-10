@@ -97,6 +97,26 @@
   white-space: nowrap;
 }
 
+/* Opposing, slow headline drift. The media underneath stays stationary. */
+.hero.has-word-motion .hero-word {
+  --word-travel: clamp(24px, 5vw, 96px);
+  animation: hero-word-drift 26s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+.hero.has-word-motion .hero-word-us { --word-direction: -1; }
+.hero.has-word-motion .hero-word-join { --word-direction: 1; }
+.hero.has-word-motion[data-motion-playing='true'] .hero-word { animation-play-state: running; }
+@keyframes hero-word-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(var(--word-travel) * var(--word-direction))); }
+}
+@media (max-width: 899px) {
+  .hero.has-word-motion .hero-word { --word-travel: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero.has-word-motion .hero-word { animation: none; }
+}
+
 .hero-word-join {
   top: 0;
   left: -0.018em;
