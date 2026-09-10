@@ -1281,6 +1281,14 @@
   background: linear-gradient(150deg, var(--royal), var(--sky));
 }
 
+.deck-photo--approved::after { content: none; }
+.deck-photo--approved img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+.deck-photo--1.deck-photo--approved { background: var(--navy); }
+/* Keep the entire producer graphic visible above the card's headline. */
+.deck-photo--1.deck-photo--approved img { top: 12px; height: calc(100% - 210px); object-fit: contain; }
+.deck-photo--2.deck-photo--approved img { object-position: center 42%; }
+.deck-photo--3.deck-photo--approved img { object-position: center 25%; }
+
 /* scrim so text on photo always reads (kept when real photos land) */
 .deck-photo::before {
   content: '';
