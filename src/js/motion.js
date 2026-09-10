@@ -74,10 +74,12 @@ export function initMotion() {
         trigger: hero,
         // Mobile starts at page scroll zero, before the header clears the hero.
         start: () => window.innerWidth < 900 ? 0 : 'top top',
+        // A slightly shorter scroll range keeps the movement soft while
+        // letting the words respond sooner on both phone and desktop.
         end: () => window.innerWidth < 900
-          ? Math.max(220, hero.offsetHeight * 0.45)
-          : 'bottom 35%',
-        scrub: true,
+          ? Math.max(220, hero.offsetHeight * 0.38)
+          : 'bottom 45%',
+        scrub: 0.35,
         invalidateOnRefresh: true,
       },
     });
