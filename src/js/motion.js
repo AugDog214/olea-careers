@@ -6,20 +6,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { strings, currentLang, onLangChange } from './i18n.js';
+import { initHeroMedia } from './hero.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function initHeroMedia() {
-  const video = document.querySelector('[data-hero-video]');
-
-  if (video) {
-    if (reduced) {
-      video.pause();
-    } else {
-      video.play().catch(() => document.querySelector('.hero')?.classList.add('video-paused'));
-    }
-  }
-}
 
 function initContentVideos() {
   const videos = [...document.querySelectorAll('[data-content-video]')];

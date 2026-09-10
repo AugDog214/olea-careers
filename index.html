@@ -39,7 +39,7 @@
           "name": "The Olea Group Real Estate & Construction, LLC",
           "alternateName": "The Olea Group",
           "url": "https://myoleagroup.com/",
-          "sameAs": ["https://careers.myoleagroup.com/", "https://www.facebook.com/myoleagroup", "https://www.instagram.com/myoleagroup"],
+          "sameAs": ["https://careers.myoleagroup.com/", "https://www.facebook.com/myoleagroup", "https://www.instagram.com/theoleagroup/"],
           "logo": "https://careers.myoleagroup.com/assets/olea-logo.png",
           "telephone": "+1-239-318-4689",
           "priceRange": "$$",
@@ -180,14 +180,19 @@
 
     <main id="top">
       <!-- ================= 1 · HERO ================= -->
-      <!-- REPLACE: hero-loop.mp4 with approved Olea footage. The current loop is a
-           motion study made from the real moving-truck photo, never stock footage. -->
+      <!-- Real Olea footage and photos with steady, opacity-only transitions. -->
       <section class="hero" id="hero">
         <div class="hero-media" aria-hidden="true">
-          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/hero/hero-poster.webp" data-hero-video>
-            <source src="/assets/hero/hero-loop.mp4" type="video/mp4" />
+          <video class="hero-video hero-slide is-active" muted playsinline preload="metadata" poster="/assets/hero/olea-event-poster.webp" data-hero-slide data-hero-video>
+            <source src="/assets/hero/olea-event.mp4" type="video/mp4" />
           </video>
+          <img class="hero-slide hero-slide--content" src="/assets/features/office-content-room.webp" alt="" width="1440" height="1682" decoding="async" data-hero-slide />
+          <img class="hero-slide" src="/assets/hero/hero-poster.webp" alt="" decoding="async" data-hero-slide />
           <div class="hero-scrim"></div>
+        </div>
+        <div class="hero-media-controls" hidden>
+          <button type="button" data-hero-pause aria-pressed="false">Pause slideshow</button>
+          <button type="button" data-hero-next data-i18n="hero.next">Next slide</button>
         </div>
 
         <div class="hero-stage">
@@ -252,7 +257,7 @@
       <section class="section section-calc" aria-labelledby="calc-toggle">
         <div class="wrap">
           <div class="calc-slot">
-            <button class="calc-toggle" id="calc-toggle" type="button" aria-expanded="false" aria-controls="calc-panel" data-i18n="calc.toggle">Run your numbers ▾</button>
+            <button class="calc-toggle" id="calc-toggle" type="button" aria-expanded="false" aria-controls="calc-panel" data-i18n="calc.toggle">See how much more you could keep ▾</button>
             <div class="calc-panel" id="calc-panel" hidden></div>
           </div>
         </div>
@@ -280,7 +285,7 @@
             <article class="edge-block" data-edge>
               <!-- REPLACE: real photo of Heidy / team with clients -->
               <figure class="edge-media" data-edge-media>
-                <div class="edge-photo edge-photo--bilingual" role="img" aria-label="Placeholder — Heidy and team with clients"></div>
+                <div class="edge-photo edge-photo--bilingual"><img src="/assets/features/bilingual-welcome.webp" alt="The Olea Group welcomes clients home: Bienvenidos a Casa" width="453" height="568" loading="lazy" /></div>
               </figure>
               <div class="edge-copy">
                 <span class="pillar-num" aria-hidden="true">02</span>
@@ -302,7 +307,7 @@
             <blockquote class="display heidy-quote" data-quote aria-label="Quote from Heidy Olea"></blockquote>
             <figcaption class="quote-attrib">
               <!-- Add the approved portrait at /assets/heidy-olea.jpg when supplied. -->
-              <span class="quote-headshot" aria-label="Managing Broker portrait"><span aria-hidden="true">HO</span></span>
+              <img class="quote-headshot" src="/assets/features/heidy-portrait.webp" alt="Heidy Olea, Managing Broker" width="88" height="88" loading="lazy" />
               <span class="quote-name"><span data-i18n="quote.name">Heidy Olea</span> · <span data-i18n="quote.role">Managing Broker</span></span>
             </figcaption>
           </figure>
@@ -516,7 +521,7 @@
                 </dt>
                 <dd data-i18n="inc.r9.p">Clear, current sales tracking gives agents visibility into recorded production and performance.</dd>
               </div>
-              <div class="included-row" data-inc-row data-inc-photo="/assets/features/feature-marketing.webp">
+              <div class="included-row" data-inc-row data-inc-photo="/assets/features/office-content-room.webp" data-inc-position="center 40%">
                 <dt>
                   <svg class="inc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7Z"/><rect width="15" height="14" x="1" y="5" rx="2"/></svg>
                   <span data-i18n="inc.r10.h">Office content room</span>
@@ -611,7 +616,7 @@
     </main>
 
     <aside class="social-rail" aria-label="Follow The Olea Group">
-      <a href="https://www.instagram.com/myoleagroup/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Olea Group on Instagram">
+      <a href="https://www.instagram.com/theoleagroup/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Olea Group on Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.6a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/></svg>
       </a>
       <a href="https://www.facebook.com/myoleagroup" target="_blank" rel="noopener noreferrer" aria-label="Follow The Olea Group on Facebook">
@@ -642,7 +647,7 @@
       <div class="wrap footer-legal">
         <nav class="footer-social" aria-label="Follow The Olea Group on social media">
           <span>Follow Olea</span>
-          <a href="https://www.instagram.com/myoleagroup/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.instagram.com/theoleagroup/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="https://www.facebook.com/myoleagroup" target="_blank" rel="noopener noreferrer">Facebook</a>
         </nav>
         <p data-i18n="footer.equal">Equal Housing Opportunity. The Olea Group Real Estate &amp; Construction, LLC supports the Fair Housing Act and equal opportunity in housing.</p>
