@@ -1,56 +1,102 @@
-// Commission calculator — quiet, collapsed under the Offer.
-// Self-generated proof: the agent's own numbers make the argument.
-
 import { currentLang, onLangChange } from './i18n.js';
+import '../styles/calculator.css';
 
-const usd = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 0,
-});
+const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+const copy = {
+  en: {
+    eyebrow: 'YOUR NEXT CHAPTER, IN NUMBERS', title: 'Same production. More possibility.',
+    intro: 'Compare your current split with Olea’s low monthly fee + flat transaction fee.',
+    open: 'Explore your numbers +', close: 'Close calculator −', inputs: 'Make it your own',
+    gci: 'Annual gross commission', tx: 'Closings per year', split: 'Your current split · agent / brokerage',
+    fees: 'Your Olea fee quote', disclosure: 'Enter the fees quoted by the Managing Broker. No guesswork, no assumed savings.',
+    monthly: 'Monthly fee', transaction: 'Fee per transaction', summary: 'YOUR ANNUAL COMPARISON',
+    traditional: 'Paid to your current brokerage', olea: 'Olea monthly + transaction fees', difference: 'Potential annual difference',
+    empty: 'Let’s fill in the picture', pending: 'Enter your fee quote',
+    hint: 'Add both Olea fees to see your estimated difference.',
+    note: 'Based on your inputs. Optional paid services and other business expenses are not included. Traditional split assumes no cap.',
+    cta: 'Get your fee quote →', ready: 'Your production, compared side by side.',
+  },
+  es: {
+    eyebrow: 'TU PRÓXIMA ETAPA, EN NÚMEROS', title: 'La misma producción. Más posibilidades.',
+    intro: 'Compara tu reparto actual con la cuota mensual baja + tarifa fija por transacción de Olea.',
+    open: 'Explora tus números +', close: 'Cerrar calculadora −', inputs: 'Personaliza tu comparación',
+    gci: 'Comisión bruta anual', tx: 'Cierres por año', split: 'Tu reparto actual · agente / agencia',
+    fees: 'Tu cotización de Olea', disclosure: 'Ingresa las tarifas cotizadas por la Broker Administradora. Sin suposiciones sobre tus ahorros.',
+    monthly: 'Cuota mensual', transaction: 'Tarifa por transacción', summary: 'TU COMPARACIÓN ANUAL',
+    traditional: 'Pagado a tu agencia actual', olea: 'Cuotas y tarifas anuales de Olea', difference: 'Posible diferencia anual',
+    empty: 'Completemos el panorama', pending: 'Ingresa tus tarifas',
+    hint: 'Agrega ambas tarifas de Olea para ver la diferencia estimada.',
+    note: 'Basado en tus datos. No incluye servicios opcionales ni otros gastos del negocio. El reparto tradicional supone que no hay tope.',
+    cta: 'Solicita tu cotización →', ready: 'Tu producción, comparada lado a lado.',
+  },
+};
 
 export function initCalculator() {
   const toggle = document.getElementById('calc-toggle');
   const panel = document.getElementById('calc-panel');
   if (!toggle || !panel) return;
-
-  panel.innerHTML = `<div class="calc-fields calc-fields--sliders"><label class="calc-range" for="c-gci"><span data-i18n="calc.gci">Annual GCI</span><output id="c-gci-output">$250,000</output><input id="c-gci" type="range" min="50000" max="1000000" step="25000" value="250000" /></label><label class="calc-range" for="c-tx"><span data-i18n="calc.tx">Closed transactions</span><output id="c-tx-output">12</output><input id="c-tx" type="range" min="1" max="50" value="12" /></label><fieldset class="calc-split"><legend data-i18n="calc.split">Your current split</legend><label><input type="radio" name="split" value="0.30" checked /> 70/30</label><label><input type="radio" name="split" value="0.20" /> 80/20</label></fieldset></div><p class="calc-disclosure">For an exact Olea comparison, enter the fee quote you received. Leaving these blank keeps this estimate honest.</p><div class="calc-fees"><label>Monthly fee <input id="c-monthly" inputmode="decimal" placeholder="$" /></label><label>Flat transaction fee <input id="c-transaction" inputmode="decimal" placeholder="$" /></label></div><div class="calc-results" aria-live="polite"><div><span>Your traditional split cost</span><strong id="c-split-cost">$75,000</strong></div><div><span>Your Olea annual fees</span><strong id="c-olea-cost">Add fee quote</strong></div><div><span>Estimated difference</span><strong id="c-savings">Add fee quote</strong></div></div><p class="calc-result" id="c-result"></p><a class="calc-cta" href="#contact" data-i18n="calc.cta">Talk to the Managing Broker about your numbers →</a>`;
+  const slot = toggle.parentElement;
+  const header = document.createElement('div');
+  header.className = 'calc-header';
+  header.innerHTML = `<div class="calc-intro"><p class="calc-eyebrow" data-calc-copy="eyebrow"></p><h2 data-calc-copy="title"></h2><p data-calc-copy="intro"></p></div>`;
+  slot.prepend(header);
+  header.append(toggle);
+  toggle.removeAttribute('data-i18n');
+  panel.innerHTML = `
+    <div class="calc-inputs">
+      <h3 data-calc-copy="inputs"></h3>
+      <div class="calc-fields">
+        <label class="calc-range" for="c-gci"><span data-calc-copy="gci"></span><output id="c-gci-output" for="c-gci"></output><input id="c-gci" type="range" min="50000" max="1000000" step="25000" value="250000" /></label>
+        <label class="calc-range" for="c-tx"><span data-calc-copy="tx"></span><output id="c-tx-output" for="c-tx"></output><input id="c-tx" type="range" min="1" max="50" value="12" /></label>
+        <fieldset class="calc-split"><legend data-calc-copy="split"></legend><label><input type="radio" name="split" value="0.30" checked />70 / 30</label><label><input type="radio" name="split" value="0.20" />80 / 20</label></fieldset>
+      </div>
+      <div class="calc-fee-section"><h3 data-calc-copy="fees"></h3><p class="calc-disclosure" data-calc-copy="disclosure"></p>
+      <div class="calc-fees"><label for="c-monthly"><span data-calc-copy="monthly"></span><input id="c-monthly" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00" /></label><label for="c-transaction"><span data-calc-copy="transaction"></span><input id="c-transaction" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00" /></label></div></div>
+    </div>
+    <div class="calc-summary">
+      <p class="calc-eyebrow" data-calc-copy="summary"></p>
+      <div class="calc-results" aria-live="polite" aria-atomic="true">
+        <div><span data-calc-copy="traditional"></span><strong id="c-split-cost"></strong></div>
+        <div><span data-calc-copy="olea"></span><strong id="c-olea-cost"></strong></div>
+        <div class="calc-difference"><span data-calc-copy="difference"></span><strong id="c-savings"></strong></div>
+      </div>
+      <p class="calc-result" id="c-result"></p>
+      <a class="calc-cta" href="#contact" data-calc-copy="cta"></a>
+      <p class="calc-assumptions" data-calc-copy="note"></p>
+    </div>`;
   const $ = (selector) => panel.querySelector(selector);
-  const parse = (value) => { const clean = String(value).replace(/[$,\s]/g, ''); if (!clean) return null; const n = Number(clean); return Number.isFinite(n) && n >= 0 ? n : null; };
+  const parse = (value) => value.trim() === '' || !Number.isFinite(Number(value)) || Number(value) < 0 ? null : Number(value);
   function recalc() {
-    const gci = Number($('#c-gci').value), tx = Number($('#c-tx').value), split = gci * Number(panel.querySelector('input[name="split"]:checked').value);
+    const text = copy[currentLang()];
+    const gci = Number($('#c-gci').value), tx = Number($('#c-tx').value);
+    const split = gci * Number($('input[name="split"]:checked').value);
     const monthly = parse($('#c-monthly').value), fee = parse($('#c-transaction').value);
-    $('#c-gci-output').textContent = usd.format(gci); $('#c-tx-output').textContent = String(tx); $('#c-split-cost').textContent = usd.format(split);
-    if (monthly === null || fee === null) {
-      const label = currentLang() === 'es' ? 'Agrega la tarifa' : 'Add fee quote';
-      $('#c-olea-cost').textContent = label; $('#c-savings').textContent = label;
-      $('#c-result').textContent = currentLang() === 'es' ? 'Agrega la cuota mensual y la tarifa por transacción para ver la diferencia exacta.' : 'Add the monthly and transaction fee to see the exact difference.';
-      return;
-    }
-    const olea = monthly * 12 + fee * tx;
-    $('#c-olea-cost').textContent = usd.format(olea); $('#c-savings').textContent = usd.format(split - olea);
-    $('#c-result').textContent = currentLang() === 'es' ? 'Esta comparación usa tus números y la tarifa que ingresaste.' : 'This comparison uses your numbers and the fee quote you entered.';
+    $('#c-gci-output').textContent = usd.format(gci);
+    $('#c-tx-output').textContent = String(tx);
+    $('#c-split-cost').textContent = usd.format(split);
+    const ready = monthly !== null && fee !== null;
+    panel.classList.toggle('has-estimate', ready);
+    $('#c-olea-cost').textContent = ready ? usd.format(monthly * 12 + fee * tx) : text.pending;
+    $('#c-savings').textContent = ready ? usd.format(split - monthly * 12 - fee * tx) : text.empty;
+    $('#c-result').textContent = ready ? text.ready : text.hint;
   }
-
+  function translate() {
+    const text = copy[currentLang()];
+    slot.querySelectorAll('[data-calc-copy]').forEach(el => { el.textContent = text[el.dataset.calcCopy]; });
+    toggle.textContent = text[toggle.getAttribute('aria-expanded') === 'true' ? 'close' : 'open'];
+    recalc();
+  }
   panel.addEventListener('input', recalc);
   panel.addEventListener('change', recalc);
-
-  let closeTimer;
   toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    window.clearTimeout(closeTimer);
-    toggle.setAttribute('aria-expanded', String(!open));
-    if (open) {
-      panel.classList.remove('is-open');
-      closeTimer = window.setTimeout(() => { panel.hidden = true; }, 200);
-    } else {
-      panel.hidden = false;
-      requestAnimationFrame(() => panel.classList.add('is-open'));
-    }
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+    panel.classList.toggle('is-open', open);
+    translate();
+    // Notify existing scroll effects about this section's new height.
+    window.dispatchEvent(new Event('resize'));
   });
-
-  // re-render the result in the right language when the site language flips
-  onLangChange(recalc);
-
-  recalc();
+  onLangChange(translate);
+  translate();
 }
