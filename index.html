@@ -196,6 +196,9 @@
           <video class="hero-video hero-slide is-active" muted playsinline preload="metadata" poster="/assets/hero/olea-event-poster.webp" data-hero-slide data-hero-video>
             <source src="/assets/hero/olea-event.mp4" type="video/mp4" />
           </video>
+          <video class="hero-video hero-slide" muted playsinline preload="none" poster="/assets/hero/hero-poster.webp" data-hero-slide data-hero-video>
+            <source src="/assets/hero/arial-b-rolls.mp4" type="video/mp4" />
+          </video>
           <img class="hero-slide hero-slide--content" src="/assets/features/office-content-room.webp" alt="" width="1440" height="1682" decoding="async" data-hero-slide />
           <img class="hero-slide" src="/assets/hero/hero-poster.webp" alt="" decoding="async" data-hero-slide />
           <img class="hero-slide" src="/assets/hero/closing-celebration.webp" alt="" decoding="async" data-hero-slide />
@@ -205,8 +208,8 @@
           <div class="hero-scrim"></div>
         </div>
         <div class="hero-media-controls" hidden>
-          <button type="button" data-hero-pause aria-pressed="false">Pause slideshow</button>
-          <button type="button" data-hero-next data-i18n="hero.next">Next slide</button>
+          <button type="button" class="hero-arrow hero-arrow--prev" data-hero-prev data-i18n="hero.previous" aria-label="Previous slide">←</button>
+          <button type="button" class="hero-arrow hero-arrow--next" data-hero-next data-i18n="hero.next" aria-label="Next slide">→</button>
         </div>
 
         <div class="hero-stage">
@@ -217,7 +220,12 @@
           </h1>
 
           <div class="hero-copy">
-          <p class="hero-sub" data-i18n="hero.sub">The Olea Group is a boutique brokerage in Cape Coral built for independent agents: 24/7 office access, exclusive moving-truck access for clients, a bilingual and collaborative environment, and a user-friendly transaction system with an easy checklist.</p>
+          <h2 class="hero-statement" data-i18n="hero.statement">Independent agents. A brokerage that fits.</h2>
+          <p class="hero-sub" data-i18n="hero.sub">The Olea Group is a boutique brokerage in Cape Coral, built around your independence.</p>
+          <div class="hero-benefits">
+            <p data-i18n="hero.benefits.access">24/7 office access. A complimentary client moving truck.</p>
+            <p data-i18n="hero.benefits.work">Bilingual collaboration. Simple transactions. Clear checklists.</p>
+          </div>
             <a class="btn-cta hero-cta" href="#contact" data-i18n="cta.hero">Schedule a confidential chat</a>
             <p class="hero-micro" data-i18n="hero.micro">Licensed Florida brokerage · LIC BK 3428799 · Hablamos Español</p>
           </div>

@@ -45,22 +45,27 @@
 .hero-media-controls {
   position: absolute;
   z-index: 4;
-  top: 18px;
-  right: var(--content-pad);
+  inset: 0;
   display: flex;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  padding: 0 clamp(12px, 2.5vw, 36px);
 }
 .hero-media-controls[hidden] { display: none; }
 .hero-media-controls button {
-  min-height: 44px;
-  padding: 8px 12px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
   color: white;
   background: rgba(7, 20, 53, .84);
   border: 1px solid rgba(255,255,255,.55);
-  border-radius: 24px;
+  border-radius: 50%;
   font: inherit;
-  font-size: .8rem;
+  font-size: 1.7rem;
+  line-height: 1;
   cursor: pointer;
+  pointer-events: auto;
 }
 .hero-media-controls button:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
 
@@ -73,7 +78,7 @@
 .hero-stage {
   position: relative;
   width: 100%;
-  min-height: calc(100svh - 80px);
+  min-height: max(calc(100svh - 80px), 820px);
   padding: clamp(82px, 10vh, 112px) var(--content-pad) clamp(30px, 4vh, 48px);
 }
 
@@ -116,24 +121,48 @@
   z-index: 2;
   left: var(--content-pad);
   bottom: clamp(20px, 3vh, 32px);
-  width: min(44rem, calc(100vw - (var(--content-pad) * 2)));
+  width: min(42rem, 48%);
   text-align: left;
 }
 
-.hero-sub {
+.hero-copy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -100px -140px -80px calc(-1 * var(--content-pad));
+  background: linear-gradient(90deg, rgba(10, 26, 58, .92), rgba(10, 26, 58, .78) 60%, rgba(10, 26, 58, 0));
+  mask-image: linear-gradient(transparent, #000 24%, #000 85%, transparent);
+  pointer-events: none;
+}
+
+.hero-statement {
+  margin: 0 0 18px;
+  max-width: 22ch;
   font-family: var(--font-label);
   font-weight: 600;
-  font-size: clamp(0.95rem, 1.35vw, 1.18rem);
-  line-height: 1.5;
-  max-width: 62ch;
+  font-size: 2.5rem;
+  line-height: 1.08;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 50ch;
   margin: 0;
   color: #fff;
-  background: rgba(7, 20, 53, 0.84);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 14px;
-  padding: 16px 18px;
-  text-shadow: none;
-  text-shadow: 0 2px 20px rgba(10, 26, 58, 0.62);
+}
+
+.hero-benefits { margin-top: 16px; max-width: 54ch; }
+.hero-benefits p {
+  margin: 4px 0 0;
+  font-size: .9375rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: rgba(255, 255, 255, .88);
 }
 
 .hero-cta {
@@ -149,8 +178,8 @@
 
 @media (max-width: 899px) {
   .hero-stage {
-    min-height: max(calc(100svh - 80px), 680px);
-    padding-inline: var(--content-pad);
+    min-height: calc(100svh - 80px);
+    padding: 680px var(--content-pad) 32px;
   }
 
   .hero-title {
@@ -173,19 +202,20 @@
   }
 
   .hero-copy {
-    bottom: var(--s-3);
-    width: calc(100vw - (var(--content-pad) * 2));
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
   }
 
   .hero-sub {
-    font-size: 0.95rem;
-    line-height: 1.45;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 599px) {
   .hero-stage {
-    min-height: max(calc(100svh - 80px), 640px);
+    padding-top: 420px;
   }
 
   .hero-title {
@@ -202,8 +232,11 @@
   }
 
   .hero-copy {
-    bottom: 22px;
+    bottom: auto;
   }
+
+  .hero-statement { font-size: 2rem; }
+  .hero-copy::before { right: calc(-1 * var(--content-pad)); }
 
   .hero-cta {
     margin-top: var(--s-2);
