@@ -12,9 +12,11 @@ export function initHeroMedia() {
   let visible = true;
   let index = 0;
   let timer;
+  hero.classList.add('has-word-motion');
 
   const sync = () => {
     clearTimeout(timer);
+    hero.dataset.motionPlaying = String(!paused && visible && !document.hidden && !preference.matches);
     videos.forEach(video => video.pause());
     if (paused || !visible || document.hidden) return;
     const active = slides[index];
