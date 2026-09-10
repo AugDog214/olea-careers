@@ -104,17 +104,25 @@
 
 .motion-on .hero-word { will-change: transform; }
 
-/* Ambient drift lives on the inner words so the scroll-driven outer motion
-   can remain independent and both effects read as one continuous movement. */
-.hero-word-float {
-  display: inline-block;
-  animation: hero-word-drift 7s ease-in-out infinite alternate;
-  will-change: transform;
+/* Soft opposing drift complements the scroll response: JOIN glides right,
+   while US glides left. The media slideshow remains independent. */
+.hero.has-word-motion .hero-word {
+  --word-travel: clamp(24px, 5vw, 96px);
+  animation: hero-word-drift-opposing 20s ease-in-out infinite alternate;
+  animation-play-state: paused;
 }
-
-@keyframes hero-word-drift {
-  from { transform: translate3d(0, -0.012em, 0); }
-  to { transform: translate3d(0, 0.012em, 0); }
+.hero.has-word-motion .hero-word-us { --word-direction: -1; }
+.hero.has-word-motion .hero-word-join { --word-direction: 1; }
+.hero.has-word-motion[data-motion-playing='true'] .hero-word { animation-play-state: running; }
+@keyframes hero-word-drift-opposing {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(var(--word-travel) * var(--word-direction))); }
+}
+@media (max-width: 899px) {
+  .hero.has-word-motion .hero-word { --word-travel: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero.has-word-motion .hero-word { animation: none; }
 }
 
 .hero-word-join {
