@@ -100,7 +100,7 @@
 /* Opposing, slow headline drift. The media underneath stays stationary. */
 .hero.has-word-motion .hero-word {
   --word-travel: clamp(24px, 5vw, 96px);
-  animation: hero-word-drift 26s ease-in-out infinite alternate;
+  animation: hero-word-drift 18s ease-in-out infinite alternate;
   animation-play-state: paused;
 }
 .hero.has-word-motion .hero-word-us { --word-direction: -1; }

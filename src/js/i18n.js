@@ -2,6 +2,8 @@
 // The toggle swaps the whole site's copy in place; choice persists for the
 // session only (in-memory, per brief).
 
+import { faqEntries, faqSchema } from './faq-content.js';
+
 export const strings = {
   // --- chrome ---
   'nav.offer': { en: 'The offer', es: 'La oferta' },
@@ -214,8 +216,8 @@ export const strings = {
   },
   'faq.q2': { en: 'Am I locked into a contract?', es: '¿Quedo amarrado a un contrato?' },
   'faq.a2': {
-    en: 'No long-term lock-in. The model is built for independent agents who want flexibility, not a contract that makes the decision for them.',
-    es: 'No hay amarre a largo plazo. El modelo está creado para agentes independientes que quieren flexibilidad, no un contrato que decida por ellos.',
+    en: 'Review the independent-contractor agreement and current fee schedule with the Managing Broker before deciding.',
+    es: 'Revisa el acuerdo de contratista independiente y las tarifas vigentes con la Broker Administradora antes de decidir.',
   },
   'faq.q3': { en: 'Is it easy to make a private move?', es: '¿Es fácil hacer un cambio privado?' },
   'faq.a3': {
@@ -281,6 +283,12 @@ export const strings = {
   },
 };
 
+// One source of truth for both the indexable HTML and translated FAQ content.
+faqEntries.forEach((entry, index) => {
+  strings[`faq.q${index + 1}`] = { en: entry.en[0], es: entry.es[0] };
+  strings[`faq.a${index + 1}`] = { en: entry.en[1], es: entry.es[1] };
+});
+
 let lang = 'en';
 
 export function currentLang() {
@@ -296,6 +304,15 @@ export function onLangChange(fn) {
 export function setLang(next) {
   lang = next;
   document.documentElement.lang = lang;
+  const schemaElement = document.querySelector('script[type="application/ld+json"]');
+  if (schemaElement) {
+    const schema = JSON.parse(schemaElement.textContent);
+    const faq = schema['@graph']?.find(node => node['@type'] === 'FAQPage');
+    if (faq) {
+      faq.mainEntity = faqSchema(lang);
+      schemaElement.textContent = JSON.stringify(schema);
+    }
+  }
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const entry = strings[el.dataset.i18n];
     if (entry) el.textContent = entry[lang];
