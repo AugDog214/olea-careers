@@ -3,6 +3,7 @@ import { initCalculator } from './js/calculator.js';
 import { initForm } from './js/form.js';
 import { initMotion } from './js/motion.js';
 import { initNav } from './js/nav.js';
+import { initFaq } from './js/faq.js';
 
 // Header condenses once the page scrolls past the hero's first beat
 const header = document.getElementById('site-header');
@@ -67,4 +68,5 @@ initI18n();
 initCalculator();
 initNav();
 initForm();
+initFaq();
 initMotion();

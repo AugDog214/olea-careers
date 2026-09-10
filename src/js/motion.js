@@ -60,6 +60,29 @@ export function initMotion() {
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 
+  // The two hero words retain their approved opposing directions, but the
+  // visitor now drives every pixel of movement by scrolling.
+  const hero = document.querySelector('.hero');
+  const joinWord = hero?.querySelector('.hero-word-join');
+  const usWord = hero?.querySelector('.hero-word-us');
+  if (hero && joinWord && usWord) {
+    const wordTravel = () => window.innerWidth < 900
+      ? Math.max(56, window.innerWidth * 0.18)
+      : Math.min(520, Math.max(220, window.innerWidth * 0.32));
+    const heroWords = gsap.timeline({
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: 'bottom 35%',
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+    heroWords
+      .to(joinWord, { x: wordTravel, ease: 'none' }, 0)
+      .to(usWord, { x: () => -wordTravel(), ease: 'none' }, 0);
+  }
+
   // --- ⭐ signature: draw the royal line under each section title ---
   document.querySelectorAll('.section-title').forEach((title) => {
     ScrollTrigger.create({
@@ -104,7 +127,7 @@ export function initMotion() {
   // --- quiet supporting kit ---
 
   // fade/rise reveals on section furniture (Edge handled separately above)
-  document.querySelectorAll('.section .eyebrow, .section-title, .pillar, .testimonial, .faq-item, .stats, .proof-lead').forEach((el) => {
+  document.querySelectorAll('.section .eyebrow, .section-title, .pillar, .testimonial, .stats, .proof-lead').forEach((el) => {
     gsap.from(el, {
       opacity: 0,
       y: 32,

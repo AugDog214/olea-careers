@@ -2,7 +2,7 @@
 // The toggle swaps the whole site's copy in place; choice persists for the
 // session only (in-memory, per brief).
 
-import { faqEntries, faqSchema } from './faq-content.js';
+import { faqEntries, faqGroups, faqSchema } from './faq-content.js';
 
 export const strings = {
   // --- chrome ---
@@ -287,6 +287,9 @@ export const strings = {
 faqEntries.forEach((entry, index) => {
   strings[`faq.q${index + 1}`] = { en: entry.en[0], es: entry.es[0] };
   strings[`faq.a${index + 1}`] = { en: entry.en[1], es: entry.es[1] };
+});
+faqGroups.forEach((group) => {
+  strings[`faq.group.${group.id}`] = group.label;
 });
 
 let lang = 'en';

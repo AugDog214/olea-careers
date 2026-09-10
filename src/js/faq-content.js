@@ -59,6 +59,12 @@ export const faqEntries = [
   },
 ];
 
+export const faqGroups = [
+  { id: 'money', label: { en: 'Money & terms', es: 'Dinero y condiciones' }, indexes: [0, 1, 6] },
+  { id: 'support', label: { en: 'Joining & support', es: 'Ingreso y apoyo' }, indexes: [2, 3, 4, 7, 8, 11] },
+  { id: 'reach', label: { en: 'Office & reach', es: 'Oficina y alcance' }, indexes: [5, 9, 10, 12, 13] },
+];
+
 export function faqSchema(language = 'en') {
   return faqEntries.map(entry => ({ '@type': 'Question', name: entry[language][0], acceptedAnswer: { '@type': 'Answer', text: entry[language][1] } }));
 }

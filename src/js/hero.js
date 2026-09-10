@@ -13,7 +13,6 @@ export function initHeroMedia() {
   let visible = true;
   let index = 0;
   let timer;
-  hero.classList.add('has-word-motion');
 
   const label = () => {
     pause.textContent = strings[paused ? 'hero.resume' : 'hero.pause'][currentLang()];
@@ -23,7 +22,6 @@ export function initHeroMedia() {
     clearTimeout(timer);
     videos.forEach(video => video.pause());
     label();
-    hero.dataset.motionPlaying = String(!paused && visible && !document.hidden && !preference.matches);
     if (paused || !visible || document.hidden) return;
     const active = slides[index];
     const isVideo = active instanceof HTMLVideoElement;
