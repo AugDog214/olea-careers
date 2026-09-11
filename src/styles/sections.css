@@ -106,23 +106,24 @@
 
 /* Soft opposing drift complements the scroll response: JOIN glides right,
    while US glides left. The media slideshow remains independent. */
-.hero.has-word-motion .hero-word {
+.hero-word-float { display: inline-block; }
+.hero.has-word-motion .hero-word-float {
   --word-travel: clamp(24px, 5vw, 96px);
   animation: hero-word-drift-opposing 16s ease-in-out infinite alternate;
   animation-play-state: paused;
 }
 .hero.has-word-motion .hero-word-us { --word-direction: -1; }
 .hero.has-word-motion .hero-word-join { --word-direction: 1; }
-.hero.has-word-motion[data-motion-playing='true'] .hero-word { animation-play-state: running; }
+.hero.has-word-motion[data-motion-playing='true'] .hero-word-float { animation-play-state: running; }
 @keyframes hero-word-drift-opposing {
   from { transform: translateX(0); }
   to { transform: translateX(calc(var(--word-travel) * var(--word-direction))); }
 }
 @media (max-width: 899px) {
-  .hero.has-word-motion .hero-word { --word-travel: 10px; }
+  .hero.has-word-motion .hero-word-float { --word-travel: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero.has-word-motion .hero-word { animation: none; }
+  .hero.has-word-motion .hero-word-float { animation: none; }
 }
 
 .hero-word-join {
