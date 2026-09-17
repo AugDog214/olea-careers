@@ -119,12 +119,10 @@ export function initForm() {
     const onMessage = (event) => {
       if (event.data?.type !== 'olea-lead-result' || event.data.requestId !== payload.requestId) return;
       // The sender is Google's nested HtmlService frame, not this window.
-      // Pin HTTPS origins and the unique request ID; accept only our frame tree.
+      // Pin HTTPS origins and the unique, unguessable request ID. Google's
+      // wrapper depth varies, so a fixed parent-frame comparison is unreliable.
       const trustedGoogleOrigin = /^https:\/\/(?:script\.google\.com|script\.googleusercontent\.com|[a-z0-9-]+-script\.googleusercontent\.com)$/.test(event.origin);
       if (!trustedGoogleOrigin || !event.source) return;
-      try {
-        if (event.source !== frame.contentWindow && event.source.parent !== frame.contentWindow) return;
-      } catch { return; }
       if (event.data.ok === true && ['emailed', 'duplicate'].includes(event.data.status)) finish(resolve);
       else finish(() => reject(new Error(event.data.status || 'Delivery failed')));
     };
