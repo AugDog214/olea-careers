@@ -209,7 +209,7 @@ function resultPage_(requestId, ok, status) {
   const payload = JSON.stringify({ type: 'olea-lead-result', requestId, ok, status }).replace(/</g, '\\u003c');
   const target = JSON.stringify(CONFIG.allowedSiteOrigin);
   return HtmlService.createHtmlOutput(
-    `<!doctype html><meta charset="utf-8"><script>window.parent.postMessage(${payload},${target});<\/script>`
+    `<!doctype html><meta charset="utf-8"><script>window.top.postMessage(${payload},${target});<\/script>`
   ).setTitle('Olea Careers').setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 

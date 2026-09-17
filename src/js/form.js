@@ -83,7 +83,10 @@ export function initForm() {
 
     frame.name = frameName;
     frame.hidden = true;
-    frame.setAttribute('sandbox', 'allow-forms allow-scripts');
+    // Apps Script renders its response in a nested iframe. Keeping the
+    // origin available lets the response bubble a trusted confirmation to
+    // the page instead of timing out inside Google's wrapper.
+    frame.setAttribute('sandbox', 'allow-forms allow-scripts allow-same-origin');
     frame.setAttribute('aria-hidden', 'true');
 
     transport.method = 'POST';
@@ -114,8 +117,11 @@ export function initForm() {
     };
 
     const onMessage = (event) => {
-      if (event.source !== frame.contentWindow) return;
       if (event.data?.type !== 'olea-lead-result' || event.data.requestId !== payload.requestId) return;
+      const trustedGoogleOrigin = /(^|\.)script\.googleusercontent\.com$/.test(
+        new URL(event.origin).hostname
+      ) || event.origin === 'https://script.google.com';
+      if (!trustedGoogleOrigin || event.source !== window) return;
       if (event.data.ok) finish(resolve);
       else finish(() => reject(new Error(event.data.status || 'Delivery failed')));
     };
