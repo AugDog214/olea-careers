@@ -118,11 +118,14 @@ export function initForm() {
 
     const onMessage = (event) => {
       if (event.data?.type !== 'olea-lead-result' || event.data.requestId !== payload.requestId) return;
-      const trustedGoogleOrigin = /(^|\.)script\.googleusercontent\.com$/.test(
-        new URL(event.origin).hostname
-      ) || event.origin === 'https://script.google.com';
-      if (!trustedGoogleOrigin || event.source !== window) return;
-      if (event.data.ok) finish(resolve);
+      // The sender is Google's nested HtmlService frame, not this window.
+      // Pin HTTPS origins and the unique request ID; accept only our frame tree.
+      const trustedGoogleOrigin = /^https:\/\/(?:script\.google\.com|script\.googleusercontent\.com|[a-z0-9-]+-script\.googleusercontent\.com)$/.test(event.origin);
+      if (!trustedGoogleOrigin || !event.source) return;
+      try {
+        if (event.source !== frame.contentWindow && event.source.parent !== frame.contentWindow) return;
+      } catch { return; }
+      if (event.data.ok === true && ['emailed', 'duplicate'].includes(event.data.status)) finish(resolve);
       else finish(() => reject(new Error(event.data.status || 'Delivery failed')));
     };
 
@@ -138,13 +141,14 @@ export function initForm() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (form.querySelector('.form-submit')?.disabled) return;
     const lang = currentLang();
 
     if (honeypot.value) return; // bot — drop silently
 
     const data = Object.fromEntries(new FormData(form).entries());
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '');
-    if (!data.name?.trim() || !data.phone?.trim() || !emailOk) {
+    if ((data.name || '').trim().length < 2 || (data.phone || '').replace(/\D/g, '').length < 7 || !emailOk) {
       status.textContent = copy.invalid[lang];
       status.dataset.state = 'invalid';
       return;
