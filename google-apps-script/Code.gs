@@ -184,7 +184,7 @@ function sendLeadEmail_(lead) {
     to: CONFIG.recipientEmail,
     replyTo: lead.email,
     name: 'Olea Careers',
-    subject: `[Olea Careers] Confidential inquiry from ${subjectName}`,
+    subject: `[NEW Olea Agent Recruitment] From (${subjectName})`,
     body: plainBody,
     htmlBody,
   });
