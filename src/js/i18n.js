@@ -160,10 +160,10 @@ export const strings = {
     en: 'Simple, predictable pricing with no split or franchise percentage taken from your commission. Nothing else is required unless you choose an optional service.',
     es: 'Precios simples y predecibles, sin splits ni porcentajes de franquicia descontados de tu comisión. No se requiere nada más a menos que elijas un servicio opcional.',
   },
-  'inc.r3.h': { en: 'Optional one-on-one support', es: 'Apoyo individual opcional' },
+  'inc.r3.h': { en: "Heidy's Coaching Program", es: 'Programa de coaching de Heidy' },
   'inc.r3.p': {
-    en: 'Paid one-on-one support is available for agents who choose more direct guidance from the Managing Broker.',
-    es: 'El apoyo individual pagado está disponible para los agentes que eligen una orientación más directa de la Broker Administradora.',
+    en: 'Optional, paid one-on-one coaching with Heidy for agents who want focused guidance as they grow their business.',
+    es: 'Coaching individual pagado y opcional con Heidy para agentes que buscan orientación enfocada mientras desarrollan su negocio.',
   },
   'inc.r4.h': { en: 'Broker & compliance review', es: 'Revisión de broker y cumplimiento' },
   'inc.r4.p': {
