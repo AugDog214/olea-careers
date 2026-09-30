@@ -18,8 +18,8 @@ export const faqEntries = [
     es: ['¿The Olea Group proporciona leads inmobiliarios gratis?', 'No. Los leads no están incluidos ni garantizados. Puede haber una opción de leads calificados por un cargo adicional. Los agentes independientes siguen siendo responsables de desarrollar su negocio; consulta disponibilidad, precios y detalles antes de elegir una opción.'],
   },
   {
-    en: ['Does the brokerage provide transaction coordinators?', 'No. The Olea Group does not provide transaction coordinators. The transaction system includes an easy checklist to help agents organize documents and next steps. Agents manage their transactions while the brokerage handles required broker and compliance review.'],
-    es: ['¿La agencia proporciona coordinadores de transacciones?', 'No. The Olea Group no proporciona coordinadores de transacciones. El sistema incluye una lista de verificación sencilla para organizar documentos y próximos pasos. Los agentes gestionan sus transacciones mientras la agencia realiza la revisión requerida de la broker y de cumplimiento.'],
+    en: ['Is a transaction coordinator team available?', 'The brokerage is affiliated with a bilingual transaction coordinator team that offers a low fee per transaction. The resource library includes checklists to help agents organize documents and next steps. Ask the Managing Broker about current availability and scope.'],
+    es: ['¿Hay un equipo de coordinadores de transacciones disponible?', 'El brokerage está afiliado a un equipo bilingüe de coordinadores de transacciones que ofrece una tarifa baja por transacción. La biblioteca de recursos incluye listas de verificación para ayudar a los agentes a organizar documentos y próximos pasos. Consulta al Broker Administrador sobre la disponibilidad y el alcance actuales.'],
   },
   {
     en: ['Is The Olea Group a bilingual real estate brokerage?', 'Yes. Our Managing Broker is fluent in English and Spanish, and most Olea Group agents speak both languages. The brokerage offers a friendly, collaborative environment for agents serving English- and Spanish-speaking clients in Southwest Florida.'],

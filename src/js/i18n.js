@@ -185,10 +185,10 @@ export const strings = {
     en: 'Reserve The Olea Group moving truck for clients at no additional charge, subject to scheduling and availability.',
     es: 'Reserva el camión de mudanza de The Olea Group para clientes sin cargo adicional, sujeto a programación y disponibilidad.',
   },
-  'inc.r8.h': { en: 'Easy transaction-system checklist', es: 'Lista de verificación sencilla en el sistema de transacciones' },
+  'inc.r8.h': { en: 'Easy transactions', es: 'Transacciones sencillas' },
   'inc.r8.p': {
-    en: 'The brokerage does not provide transaction coordinators. Instead, our user-friendly transaction system gives you an easy checklist to stay organized and see what comes next.',
-    es: 'El brokerage no proporciona coordinadores de transacciones. En su lugar, nuestro sistema de transacciones fácil de usar te ofrece una lista de verificación sencilla para mantenerte organizado y saber qué sigue.',
+    en: 'The brokerage is affiliated with a bilingual transaction coordinator team that offers a low fee per transaction. Our resource library and checklists help you stay organized and see what comes next.',
+    es: 'El brokerage está afiliado a un equipo bilingüe de coordinadores de transacciones que ofrece una tarifa baja por transacción. Nuestra biblioteca de recursos y listas de verificación te ayudan a mantenerte organizado y saber qué sigue.',
   },
   'inc.r9.h': { en: 'Up-to-date & transparent sales tracking', es: 'Seguimiento de ventas actualizado y transparente' },
   'inc.r9.p': {
@@ -233,10 +233,10 @@ export const strings = {
     en: 'Leads are not included or guaranteed. A qualified lead option may be available for an additional charge if it fits your business.',
     es: 'Los leads no están incluidos ni garantizados. Puede haber una opción de leads calificados por un cargo adicional si encaja con tu negocio.',
   },
-  'faq.q5': { en: 'Do you provide transaction coordinators?', es: '¿Proporcionan coordinadores de transacciones?' },
+  'faq.q5': { en: 'Is a transaction coordinator team available?', es: '¿Hay un equipo de coordinadores de transacciones disponible?' },
   'faq.a5': {
-    en: 'No. The brokerage does not provide transaction coordinators. Our transaction system includes an easy checklist to help you organize the next steps yourself.',
-    es: 'No. El brokerage no proporciona coordinadores de transacciones. Nuestro sistema de transacciones incluye una lista de verificación sencilla para ayudarte a organizar los próximos pasos por tu cuenta.',
+    en: 'The brokerage is affiliated with a bilingual transaction coordinator team that offers a low fee per transaction. Our resource library and checklists also help agents organize documents and next steps. Ask the Managing Broker about current availability and scope.',
+    es: 'El brokerage está afiliado a un equipo bilingüe de coordinadores de transacciones que ofrece una tarifa baja por transacción. Nuestra biblioteca de recursos y listas de verificación también ayudan a los agentes a organizar documentos y próximos pasos. Consulta al Broker Administrador sobre la disponibilidad y el alcance actuales.',
   },
   'faq.q6': { en: 'Is the company really bilingual?', es: '¿La compañía es realmente bilingüe?' },
   'faq.a6': {

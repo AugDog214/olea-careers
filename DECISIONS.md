@@ -14,7 +14,7 @@
 - Independent-agent positioning: agents manage their own day-to-day business. The brokerage provides required broker and compliance review, while paid one-on-one support is optional.
 - A user-friendly CRM and qualified lead option may be available for an additional charge. Neither is included or guaranteed.
 - On agent request, the brokerage offers complimentary platform exposure for listings and wins on a rotating basis.
-- The brokerage does not provide transaction coordinators. The user-friendly transaction system includes an easy checklist to keep agents organized.
+- The brokerage is affiliated with a bilingual transaction coordinator team offering a low fee per transaction. The resource library includes easy checklists to keep agents organized.
 - The office content room and professional conference room are included among the on-site offerings. The conference room provides a comfortable, central Cape Coral setting for meetings and client presentations.
 - Transparent sales tracking is an included agent tool.
 - No current in-house inventory claim. That hook is cut unless Heidy later supplies verified inventory.
