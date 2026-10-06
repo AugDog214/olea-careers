@@ -1027,6 +1027,20 @@
   .faq-tabs::-webkit-scrollbar { display: none; }
 }
 
+.faq-fact-image { display: block; margin: 0 0 var(--s-5); color: var(--royal); }
+.faq-fact-image img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.faq-fact-image span, .systems-grid a span { display: block; padding-top: 12px; font-size: .875rem; text-decoration: underline; }
+.faq-fact-image:focus-visible, .systems-grid a:focus-visible { outline: 3px solid var(--sky); outline-offset: 6px; }
+.systems-showcase { background: var(--ice, #edf6fc); }
+.systems-intro { max-width: 65ch; margin: 20px auto 36px; }
+.systems-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 64px); max-width: 960px; margin: 0 auto; }
+.systems-grid figure { margin: 0; min-width: 0; }
+.systems-grid h3 { color: var(--navy); font-family: var(--font-label); margin-bottom: 18px; }
+.systems-grid a { display: block; color: var(--royal); }
+.systems-grid img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.systems-caption { margin: 24px auto 0; font-size: .875rem; max-width: 65ch; }
+@media (max-width: 599px) { .systems-grid { grid-template-columns: 1fr; max-width: 400px; } }
+
 /* ---------- 7 · final cta + form ---------- */
 .contact-sub {
   font-size: var(--text-lead);

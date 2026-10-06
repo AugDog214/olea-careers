@@ -45,24 +45,24 @@ export const strings = {
   },
   'offer.p1.h': { en: 'Keep 100% of your commission.', es: 'Quédate con el 100% de tu comisión.' },
   'offer.p1.p': {
-    en: 'Your production stays yours. There is no commission split taken from each closing.',
-    es: 'Tu producción sigue siendo tuya. No se descuenta un split de comisión en cada cierre.',
+    en: 'Choose 100% commission for independent agents, or the 70/30 support plan for your first three residential sales before moving to 100%.',
+    es: 'Elige el 100% de comisión para agentes independientes, o el plan de apoyo 70/30 para tus primeras tres ventas residenciales antes de pasar al 100%.',
   },
   'offer.p2.h': {
     en: 'Optional one-on-one support with the broker.',
     es: 'Apoyo individual opcional con la broker.',
   },
   'offer.p2.p': {
-    en: 'Choose paid individual guidance from the Managing Broker when you want more direct support. It is an option, not a required service.',
-    es: 'Elige orientación individual pagada con la Broker Administradora cuando quieras un apoyo más directo. Es una opción, no un servicio obligatorio.',
+    en: 'Broker guidance is available on both plans. Choose the optional bilingual 30-Day Agent Success Program for structured one-on-one training and mentorship.',
+    es: 'Ambos planes ofrecen orientación de la broker. Elige el Programa de Éxito para Agentes de 30 Días para formación estructurada y mentoría individual bilingüe.',
   },
   'offer.p3.h': {
-    en: 'Low monthly fee. Flat transaction fee. No caps.',
-    es: 'Cuota mensual baja. Tarifa fija por transacción. Sin topes.',
+    en: '$131.84 monthly. Clear transaction fees.',
+    es: '$131.84 al mes. Tarifas de transacción claras.',
   },
   'offer.p3.p': {
-    en: 'Those are the only required brokerage costs. There is nothing else to pay unless you choose an optional CRM, qualified leads, or one-on-one support.',
-    es: 'Esos son los únicos costos obligatorios del brokerage. No hay nada más que pagar a menos que elijas un CRM opcional, leads calificados o apoyo individual.',
+    en: '$99 platform and license holding + $29 E&O insurance + 3% card processing. Due at joining, then on the 1st of each month. Transaction and file review fees apply separately; see the fact sheets below.',
+    es: '$99 por plataforma y afiliación de licencia + $29 de seguro E&O + 3% de procesamiento de tarjeta. Se paga al unirte y el día 1 de cada mes. Las tarifas de transacción y revisión de expediente son independientes; consulta las fichas abajo.',
   },
   'calc.toggle': { en: 'See how much more you could keep ▾', es: 'Descubre cuánto más podrías conservar ▾' },
   'hero.previous': { en: '←', es: '←' },
@@ -130,8 +130,8 @@ export const strings = {
   'proof.eyebrow': { en: 'Proof', es: 'Resultados' },
   'proof.title': { en: "Independent doesn't mean unclear.", es: 'Independiente no significa sin claridad.' },
   'proof.lead': {
-    en: 'The brokerage provides required broker and compliance review while agents retain control of their day-to-day business. Paid one-on-one support is available only when an agent chooses more direct guidance.',
-    es: 'El brokerage brinda la revisión requerida de broker y cumplimiento mientras los agentes mantienen el control de su negocio diario. El apoyo individual pagado está disponible solo cuando un agente elige una orientación más directa.',
+    en: 'Broker and compliance guidance is available on both plans. New agents can choose direct assistance during their first three residential sales, with ongoing one-on-one mentorship available through the optional 30-Day Agent Success Program.',
+    es: 'Ambos planes ofrecen orientación de la broker y de cumplimiento. Los agentes nuevos pueden elegir asistencia directa en sus primeras tres ventas residenciales, y mentoría continua mediante el programa opcional de 30 días.',
   },
   'proof.voices.eyebrow': { en: 'Agent voices', es: 'Voces de agentes' },
   'proof.voices.title': { en: 'Hear why agents choose Olea.', es: 'Escucha por qué los agentes eligen Olea.' },
@@ -152,28 +152,28 @@ export const strings = {
   'inc.mls.title': { en: 'MLS access across Florida markets', es: 'Acceso MLS en mercados de Florida' },
   'inc.r1.h': { en: '100% commission structure', es: 'Estructura de comisión al 100%' },
   'inc.r1.p': {
-    en: 'Keep 100% of the commission you earn. The only required costs are a low monthly fee and a flat transaction fee, with no caps.',
-    es: 'Conserva el 100% de la comisión que generas. Los únicos costos obligatorios son una cuota mensual baja y una tarifa fija por transacción, sin topes.',
+    en: 'Choose the 100% commission plan for independent agents, or a 70/30 support plan for your first three residential sales. Monthly and applicable transaction fees are separate.',
+    es: 'Elige el plan de 100% de comisión para agentes independientes o el plan de apoyo 70/30 para tus primeras tres ventas residenciales. Las cuotas mensuales y tarifas por transacción son independientes.',
   },
   'inc.r2.h': { en: 'Low monthly fees', es: 'Cuotas mensuales bajas' },
   'inc.r2.p': {
-    en: 'Simple, predictable pricing with no split or franchise percentage taken from your commission. Nothing else is required unless you choose an optional service.',
-    es: 'Precios simples y predecibles, sin splits ni porcentajes de franquicia descontados de tu comisión. No se requiere nada más a menos que elijas un servicio opcional.',
+    en: '$131.84 due at joining and monthly thereafter: $99 platform and license holding, $29 E&O insurance, and 3% card processing. The fee is not prorated and renews on the 1st.',
+    es: '$131.84 al unirte y cada mes: $99 por plataforma y afiliación de licencia, $29 de seguro E&O y 3% de procesamiento de tarjeta. No se prorratea y se renueva el día 1.',
   },
-  'inc.r3.h': { en: "Heidy's Coaching Program", es: 'Programa de coaching de Heidy' },
+  'inc.r3.h': { en: '30-Day Agent Success Program', es: 'Programa de Éxito para Agentes de 30 Días' },
   'inc.r3.p': {
-    en: 'Optional, paid one-on-one coaching with Heidy for agents who want focused guidance as they grow their business.',
-    es: 'Coaching individual pagado y opcional con Heidy para agentes que buscan orientación enfocada mientras desarrollan su negocio.',
+    en: 'Optional bilingual one-on-one mentorship with Heidy: structured weekly lessons, assignments, accountability, buyer and seller training, and a certificate of completion. Available separately.',
+    es: 'Mentoría individual bilingüe opcional con Heidy: lecciones semanales, tareas, seguimiento, formación para compradores y vendedores y certificado de finalización. Disponible por separado.',
   },
   'inc.r4.h': { en: 'Broker & compliance review', es: 'Revisión de broker y cumplimiento' },
   'inc.r4.p': {
-    en: 'Independent agents manage their own day-to-day business. The brokerage provides required broker and compliance review, while direct one-on-one support remains a paid option.',
-    es: 'Los agentes independientes manejan su negocio diario. El brokerage brinda la revisión requerida de broker y cumplimiento, mientras que el apoyo individual directo sigue siendo una opción pagada.',
+    en: 'Reach the broker for contract, negotiation, timeline, and compliance questions. Office hours are Monday–Friday, 9 AM–5 PM; text after hours for urgent, time-sensitive matters.',
+    es: 'Contacta a la broker por dudas de contratos, negociaciones, plazos y cumplimiento. El horario es de lunes a viernes de 9 AM a 5 PM; fuera de horario, escribe para asuntos urgentes.',
   },
-  'inc.r5.h': { en: 'Optional CRM & qualified lead tools', es: 'CRM y herramientas de leads calificados opcionales' },
+  'inc.r5.h': { en: 'Back-office tools & resource library', es: 'Herramientas y biblioteca de recursos' },
   'inc.r5.p': {
-    en: 'Choose a user-friendly CRM and qualified-lead option for an additional charge when they fit your business. Neither is included or guaranteed.',
-    es: 'Elige un CRM fácil de usar y una opción de leads calificados por un cargo adicional cuando encajen con tu negocio. Ninguno está incluido ni garantizado.',
+    en: 'Use our transaction platform and mobile app, brokerage forms, templates, video tutorials, and vendor resources. You bring your own clients and build your business your way.',
+    es: 'Usa la plataforma de transacciones y aplicación móvil, formularios, plantillas, videos y recursos de proveedores. Tú traes tus clientes y desarrollas tu negocio a tu manera.',
   },
   'inc.r6.h': { en: 'Complimentary exposure for agent wins', es: 'Exposición de cortesía para los logros de agentes' },
   'inc.r6.p': {
@@ -211,38 +211,15 @@ export const strings = {
   },
 
   // --- 6 · faq ---
-  'faq.eyebrow': { en: 'FAQ', es: 'Preguntas' },
+  'facts.open': { en: 'Open full-size English fact sheet ↗', es: 'Abrir ficha completa en inglés ↗' },
+  'systems.title': { en: 'See the tools in action.', es: 'Mira las herramientas en acción.' },
+  'systems.intro': { en: 'A look inside our back-office system: track sales production and keep transaction documents organized.', es: 'Una mirada a nuestro sistema: sigue la producción y organiza los documentos de tus transacciones.' },
+  'systems.pipeline': { en: 'Sales production & pipeline', es: 'Producción de ventas y pipeline' },
+  'systems.checklist': { en: 'Transaction documents & checklist', es: 'Documentos y lista de verificación' },
+  'systems.caption': { en: 'Supplied system screenshots. Figures and listing details reflect the captured records.', es: 'Capturas del sistema proporcionadas. Las cifras y los detalles reflejan los registros capturados.' },
+  'systems.open': { en: 'View full screenshot ↗', es: 'Ver captura completa ↗' },
+  'faq.eyebrow': { en: 'Facts & questions', es: 'Datos y preguntas' },
   'faq.title': { en: "The questions you're already asking.", es: 'Las preguntas que ya te estás haciendo.' },
-  'faq.q1': { en: 'What does 100% commission actually mean here?', es: '¿Qué significa realmente el 100% de comisión aquí?' },
-  'faq.a1': {
-    en: 'You keep your full commission and pay a low monthly fee plus a flat transaction fee. There are no splits, no caps, and no other required brokerage charges. You only pay more if you choose an optional CRM, qualified leads, or one-on-one support.',
-    es: 'Te quedas con toda tu comisión y pagas una cuota mensual baja más una tarifa fija por transacción. No hay splits, topes ni otros cargos obligatorios del brokerage. Solo pagas más si eliges un CRM opcional, leads calificados o apoyo individual.',
-  },
-  'faq.q2': { en: 'Am I locked into a contract?', es: '¿Quedo amarrado a un contrato?' },
-  'faq.a2': {
-    en: 'Review the independent-contractor agreement and current fee schedule with the Managing Broker before deciding.',
-    es: 'Revisa el acuerdo de contratista independiente y las tarifas vigentes con la Broker Administradora antes de decidir.',
-  },
-  'faq.q3': { en: 'Is it easy to make a private move?', es: '¿Es fácil hacer un cambio privado?' },
-  'faq.a3': {
-    en: 'Yes. A transition can be private and simple. The Managing Broker will talk through your current situation and pending business with you before you decide anything.',
-    es: 'Sí. Una transición puede ser privada y sencilla. La Broker Administradora hablará contigo sobre tu situación actual y negocios pendientes antes de que decidas algo.',
-  },
-  'faq.q4': { en: 'Do I get leads?', es: '¿Me dan leads?' },
-  'faq.a4': {
-    en: 'Leads are not included or guaranteed. A qualified lead option may be available for an additional charge if it fits your business.',
-    es: 'Los leads no están incluidos ni garantizados. Puede haber una opción de leads calificados por un cargo adicional si encaja con tu negocio.',
-  },
-  'faq.q5': { en: 'Is a transaction coordinator team available?', es: '¿Hay un equipo de coordinadores de transacciones disponible?' },
-  'faq.a5': {
-    en: 'The brokerage is affiliated with a bilingual transaction coordinator team that offers a low fee per transaction. Our resource library and checklists also help agents organize documents and next steps. Ask the Managing Broker about current availability and scope.',
-    es: 'El brokerage está afiliado a un equipo bilingüe de coordinadores de transacciones que ofrece una tarifa baja por transacción. Nuestra biblioteca de recursos y listas de verificación también ayudan a los agentes a organizar documentos y próximos pasos. Consulta al Broker Administrador sobre la disponibilidad y el alcance actuales.',
-  },
-  'faq.q6': { en: 'Is the company really bilingual?', es: '¿La compañía es realmente bilingüe?' },
-  'faq.a6': {
-    en: 'Yes. Our broker is fluent in English and Spanish. Most of our agents also speak both languages, and the brokerage has a collaborative, friendly environment.',
-    es: 'Sí. Nuestra broker habla inglés y español con fluidez. La mayoría de nuestros agentes también hablan ambos idiomas, y el brokerage tiene un ambiente colaborativo y amable.',
-  },
 
   // --- 7 · final cta ---
   'contact.eyebrow': { en: 'The next step', es: 'El siguiente paso' },

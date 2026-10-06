@@ -1,68 +1,161 @@
-// Shared by Vite's static HTML/JSON-LD output and the EN/ES language toggle.
-// Brokerage policies come from the owner, not competitor benefit claims.
+// Owner-supplied October 2026 fact sheets; shared by static HTML, schema and EN/ES copy.
 export const faqEntries = [
   {
-    en: ['What does 100% commission mean at The Olea Group?', 'You keep your full commission and pay a low monthly fee plus a flat fee per transaction. There is no brokerage commission split or cap. Additional brokerage services, such as a CRM, qualified-lead tools, or one-on-one guidance, are optional and paid separately. Ask the Managing Broker for the current fee quote before joining.'],
-    es: ['¿Qué significa el 100% de comisión en The Olea Group?', 'Conservas toda tu comisión y pagas una cuota mensual baja más una tarifa fija por transacción. No hay reparto de comisión con la agencia ni tope. Los servicios adicionales, como CRM, herramientas de leads calificados o asesoría individual, son opcionales y se pagan por separado. Solicita la cotización vigente a la Broker Administradora antes de unirte.'],
+    "en": [
+      "How much will it cost me to join?",
+      "$131.84 is due when you join: $99 for the platform and brokerage license holding, $29 for mandatory E&O insurance, plus a 3% card processing fee. This is also the monthly amount, is not prorated, and is automatically charged on the 1st of each month thereafter."
+    ],
+    "es": [
+      "¿Cuánto cuesta unirme?",
+      "Al unirte pagas $131.84: $99 por la plataforma y afiliación de licencia a la agencia, $29 por el seguro obligatorio de errores y omisiones, más un 3% de procesamiento de tarjeta. Esta también es la cuota mensual, no se prorratea y se cobra automáticamente el día 1 de cada mes."
+    ],
+    "image": "/assets/facts/question-01.jpg"
   },
   {
-    en: ['What agreement and fees should I review before joining?', 'Review the independent-contractor agreement and current fee schedule with the Managing Broker before deciding. Confirm payment timing, optional-service charges, and any notice or termination terms in writing. The published brokerage model is a low monthly fee plus a flat transaction fee; do not assume contract terms from a recruiting page.'],
-    es: ['¿Qué acuerdo y tarifas debo revisar antes de unirme?', 'Revisa el acuerdo de contratista independiente y las tarifas vigentes con la Broker Administradora antes de decidir. Confirma por escrito los plazos de pago, cargos de servicios opcionales y condiciones de aviso o terminación. El modelo publicado es una cuota mensual baja más una tarifa fija por transacción; no supongas condiciones contractuales a partir de una página de reclutamiento.'],
+    "en": [
+      "How much commission do I keep?",
+      "Experienced, independent agents can choose the 100% commission plan. New agents can choose a 70/30 support plan for their first three residential sales, with direct broker assistance. After those three transactions, they may move to 100% commission. The monthly and applicable transaction fees are separate from the commission split."
+    ],
+    "es": [
+      "¿Qué porcentaje de comisión conservo?",
+      "Los agentes independientes con experiencia pueden elegir el plan de 100% de comisión. Los agentes nuevos pueden elegir el plan de apoyo 70/30 para sus primeras tres ventas residenciales, con asistencia directa de la broker. Después pueden pasar al 100% de comisión. Las cuotas mensuales y tarifas aplicables por transacción son independientes del reparto de comisión."
+    ],
+    "image": "/assets/facts/question-02.jpg"
   },
   {
-    en: ['How can I switch brokerages privately in Cape Coral or Fort Myers?', 'Start with a confidential conversation with the Managing Broker. Discuss your current agreement, active listings, and pending transactions before making changes. Your transition can then be planned around your situation; the treatment of existing business must be reviewed rather than assumed.'],
-    es: ['¿Cómo puedo cambiar de agencia de forma privada en Cape Coral o Fort Myers?', 'Empieza con una conversación confidencial con la Broker Administradora. Habla sobre tu acuerdo actual, propiedades en venta y transacciones pendientes antes de hacer cambios. Así se puede planificar la transición según tu situación; el manejo de los negocios existentes debe revisarse, no suponerse.'],
+    "en": [
+      "What are the transaction fees, and what do they include?",
+      "Residential sales: $499 per sale. Land sales: $299 when the sale price is below $100,000, or $499 at $100,000 or above. These fees include administration, technology, and unlimited storage for five years. A $50 file review fee per transaction covers detailed review and checking that documents are provided before closing. Rentals have a separate fee structure and no compliance review fee; ask the broker to confirm the rental allocation. Transaction fees are paid by the buyer or seller; agents are responsible for informing them and arranging the charge at closing."
+    ],
+    "es": [
+      "¿Cuáles son las tarifas por transacción y qué incluyen?",
+      "Ventas residenciales: $499 por venta. Terrenos: $299 si el precio es menor de $100,000, o $499 a partir de $100,000. Incluyen administración, tecnología y almacenamiento ilimitado por cinco años. La revisión de expediente cuesta $50 por transacción e incluye revisión detallada y verificación de documentos antes del cierre. Los alquileres tienen una estructura distinta y no pagan revisión de cumplimiento; consulta con la broker cómo se distribuye esa tarifa. El comprador o vendedor paga las tarifas de transacción; el agente debe informarles y gestionar el cobro al cierre."
+    ],
+    "image": "/assets/facts/question-03.jpg"
   },
   {
-    en: ['Does The Olea Group provide free real estate leads?', 'No. Leads are not included or guaranteed. A qualified-lead option may be available for an additional charge. Independent agents remain responsible for building their business; discuss availability, pricing, and the specific service before choosing an option.'],
-    es: ['¿The Olea Group proporciona leads inmobiliarios gratis?', 'No. Los leads no están incluidos ni garantizados. Puede haber una opción de leads calificados por un cargo adicional. Los agentes independientes siguen siendo responsables de desarrollar su negocio; consulta disponibilidad, precios y detalles antes de elegir una opción.'],
+    "en": [
+      "What kind of support do I actually get?",
+      "The 100% commission plan includes brokerage and compliance guidance, broker involvement when needed, and access to systems, tools, and resources. The 70/30 support plan adds direct broker help with contracts, negotiations, and transaction questions during your first three residential sales. Ongoing one-on-one coaching is available separately through the bilingual 30-Day Agent Success Program, with structured guidance and accountability."
+    ],
+    "es": [
+      "¿Qué tipo de apoyo recibo?",
+      "El plan de 100% de comisión incluye orientación de la agencia y de cumplimiento, participación de la broker cuando sea necesaria y acceso a sistemas, herramientas y recursos. El plan 70/30 añade ayuda directa con contratos, negociaciones y dudas durante tus primeras tres ventas residenciales. El Programa de Éxito para Agentes de 30 Días ofrece por separado mentoría individual bilingüe, orientación estructurada y seguimiento."
+    ],
+    "image": "/assets/facts/question-04.jpg"
   },
   {
-    en: ['Is a transaction coordinator team available?', 'The brokerage is affiliated with a bilingual transaction coordinator team that offers a low fee per transaction. The resource library includes checklists to help agents organize documents and next steps. Ask the Managing Broker about current availability and scope.'],
-    es: ['¿Hay un equipo de coordinadores de transacciones disponible?', 'El brokerage está afiliado a un equipo bilingüe de coordinadores de transacciones que ofrece una tarifa baja por transacción. La biblioteca de recursos incluye listas de verificación para ayudar a los agentes a organizar documentos y próximos pasos. Consulta al Broker Administrador sobre la disponibilidad y el alcance actuales.'],
+    "en": [
+      "What tools and resources do I get?",
+      "Access includes a back-office transaction platform and mobile app, forms and templates, participation in Stellar, Miami, and Gulf Coast MLSs, E&O coverage, office and meeting spaces, a content room, and a complimentary client moving truck subject to availability. You can request complimentary listing and branding exposure on a rotating basis. Sales production updates help you track closed volume throughout the year. Association and MLS dues are paid separately."
+    ],
+    "es": [
+      "¿Qué herramientas y recursos recibo?",
+      "Tienes acceso a una plataforma de transacciones y aplicación móvil, formularios y plantillas, participación en Stellar, Miami y Gulf Coast MLS, cobertura de errores y omisiones, oficina y salas de reuniones, sala de contenido y camión de mudanzas para clientes sujeto a disponibilidad. Puedes solicitar exposición de listados y marca por turnos. Las actualizaciones de producción permiten seguir el volumen cerrado durante el año. Las cuotas de asociaciones y MLS se pagan por separado."
+    ],
+    "image": "/assets/facts/question-05.jpg"
   },
   {
-    en: ['Is The Olea Group a bilingual real estate brokerage?', 'Yes. Our Managing Broker is fluent in English and Spanish, and most Olea Group agents speak both languages. The brokerage offers a friendly, collaborative environment for agents serving English- and Spanish-speaking clients in Southwest Florida.'],
-    es: ['¿The Olea Group es una agencia inmobiliaria bilingüe?', 'Sí. Nuestra Broker Administradora habla inglés y español con fluidez, y la mayoría de los agentes también hablan ambos idiomas. La agencia ofrece un ambiente amable y colaborativo para quienes atienden a clientes de habla inglesa y española en el suroeste de Florida.'],
+    "en": [
+      "If I’m new, who’s going to teach me?",
+      "Onboarding includes a welcome email, back-office access, step-by-step video tutorials, and setup resources. MLS and industry training comes through your local association. New agents can use the 70/30 support plan for their first three residential transactions; you bring your own clients. For deeper, hands-on training, the optional 30-Day Agent Success Program offers one-on-one mentorship, weekly lessons, assignments, accountability, buyer and seller guidance, and a completion certificate."
+    ],
+    "es": [
+      "Si soy nuevo, ¿quién me enseña?",
+      "La bienvenida incluye un correo, acceso al sistema, videos paso a paso y recursos de configuración. La formación MLS y del sector se ofrece por la asociación local. Los agentes nuevos pueden usar el plan 70/30 para sus primeras tres transacciones residenciales y traen sus propios clientes. Para formación práctica más completa, el Programa de Éxito para Agentes de 30 Días ofrece mentoría individual, lecciones semanales, tareas, seguimiento, orientación para compradores y vendedores y certificado de finalización."
+    ],
+    "image": "/assets/facts/question-06.jpg"
   },
   {
-    en: ['How do I compare a 100% commission model with a 70/30 or 80/20 split?', 'Compare annual brokerage costs using the same production. Under a 70/30 split, the brokerage share is 30% of gross commission; under 80/20 it is 20%. For Olea, calculate 12 monthly fees plus the flat fee multiplied by your annual closings. Our calculator uses your fee quote. Include any caps, optional services, and other expenses when making your final decision; savings are not guaranteed.'],
-    es: ['¿Cómo comparo el modelo de 100% de comisión con un reparto 70/30 u 80/20?', 'Compara los costos anuales con la misma producción. En un reparto 70/30, la agencia recibe el 30% de la comisión bruta; en un 80/20, recibe el 20%. Para Olea, suma 12 cuotas mensuales más la tarifa fija multiplicada por tus cierres anuales. La calculadora usa tu cotización. Considera topes, servicios opcionales y otros gastos al decidir; no se garantizan ahorros.'],
+    "en": [
+      "Can I reach my broker when something important happens?",
+      "Yes. Contact the broker by text, call, or email for contract, negotiation, timeline, title, inspection, appraisal, and compliance questions. Office hours are Monday–Friday, 9 AM–5 PM. Text for urgent, time-sensitive matters after hours. Broker support is available on both the 100% and 70/30 plans. More extensive ongoing mentorship is available through the optional 30-Day Agent Success Program. An association legal hotline is available for attorney matters."
+    ],
+    "es": [
+      "¿Puedo contactar a mi broker cuando pasa algo importante?",
+      "Sí. Puedes escribir, llamar o enviar un correo por dudas de contratos, negociaciones, plazos, título, inspección, tasación y cumplimiento. El horario es de lunes a viernes de 9 AM a 5 PM. Fuera de horario, envía un mensaje para asuntos urgentes que no puedan esperar. Ambos planes, 100% y 70/30, tienen apoyo de la broker. La mentoría continua más amplia está disponible mediante el programa opcional de 30 días. La asociación ofrece una línea legal para asuntos que requieren abogado."
+    ],
+    "image": "/assets/facts/question-07.jpg"
   },
   {
-    en: ['Is one-on-one broker mentorship included?', 'One-on-one guidance from the Managing Broker is an optional paid service, not unlimited support included in the base model. Required broker and compliance review is separate from individual coaching. Discuss the scope, availability, and price of mentorship before opting in.'],
-    es: ['¿La mentoría individual con la broker está incluida?', 'La asesoría individual de la Broker Administradora es un servicio opcional de pago, no apoyo ilimitado incluido en el modelo base. La revisión requerida de la broker y de cumplimiento es distinta de la mentoría personal. Consulta alcance, disponibilidad y precio antes de contratarla.'],
+    "en": [
+      "Do you offer leads, training, office space, and systems?",
+      "We provide the essential tools, space, and systems for your business. Agents bring their own clients; the brokerage does not provide leads. Training includes association courses, periodic office or Zoom workshops, and the optional 30-Day Agent Success Program. Office access, collaborative English or Spanish agent groups, back-office tools, forms, templates, vendor resources, and an association legal hotline help you run your business your way."
+    ],
+    "es": [
+      "¿Ofrecen leads, formación, oficina y sistemas?",
+      "Ofrecemos herramientas, espacio y sistemas para tu negocio. Los agentes traen sus propios clientes; la agencia no proporciona leads. La formación incluye cursos de la asociación, talleres periódicos en oficina o por Zoom y el programa opcional de 30 días. El acceso a oficina, grupos de agentes en inglés o español, herramientas, formularios, plantillas, recursos de proveedores y línea legal de la asociación te ayudan a dirigir tu negocio."
+    ],
+    "image": "/assets/facts/question-08.jpg"
   },
   {
-    en: ['Is a real estate CRM included or optional?', 'A user-friendly CRM is an optional service available for an additional charge. Qualified-lead tools are also optional. Ask which tools are currently offered and how each is priced; neither a CRM subscription nor leads should be assumed to be included in the base brokerage fees.'],
-    es: ['¿El CRM inmobiliario está incluido o es opcional?', 'Un CRM fácil de usar es un servicio opcional con un cargo adicional. Las herramientas de leads calificados también son opcionales. Pregunta qué herramientas se ofrecen y cómo se cobra cada una; no debes suponer que la suscripción al CRM o los leads están incluidos en las tarifas base.'],
+    "en": [
+      "What MLSs and areas can I work in?",
+      "The brokerage participates in Miami, Stellar, and Gulf Coast MLSs through the associations. Choose the neighborhoods, cities, or counties that fit your goals, including our extensive service area across Lee, Hendry, Broward, Miami-Dade, Sarasota, and Charlotte counties. MLS training comes through your association; membership dues and eligibility depend on the MLSs and services you choose."
+    ],
+    "es": [
+      "¿En qué MLS y zonas puedo trabajar?",
+      "La agencia participa en Miami, Stellar y Gulf Coast MLS a través de las asociaciones. Elige los vecindarios, ciudades o condados que se ajusten a tus objetivos, incluyendo Lee, Hendry, Broward, Miami-Dade, Sarasota y Charlotte. La asociación proporciona formación MLS; las cuotas y requisitos dependen de los MLS y servicios que elijas."
+    ],
+    "image": "/assets/facts/question-09.jpg"
   },
   {
-    en: ['What office spaces can Olea agents use in Cape Coral?', 'Agents have 24/7 office access in Cape Coral. The office includes a content room for creating video and social content, plus a professional conference room for client presentations and meetings. Ask about scheduling and room availability when planning a visit or session.'],
-    es: ['¿Qué espacios de oficina pueden usar los agentes de Olea en Cape Coral?', 'Los agentes tienen acceso a la oficina de Cape Coral las 24 horas. Hay una sala de contenido para crear videos y publicaciones, y una sala de conferencias profesional para presentaciones y reuniones con clientes. Consulta horarios de reserva y disponibilidad al planificar una visita o sesión.'],
+    "en": [
+      "Are there hidden fees?",
+      "Brokerage costs are disclosed upfront. Association and MLS fees are separate and paid through the associations; they vary with your memberships and services. Agents pay their own marketing and branding costs, including business cards, name tags, and shirts. Vendor resources are available to help you order these. Choose the MLSs and optional services that fit your business."
+    ],
+    "es": [
+      "¿Hay cargos ocultos?",
+      "Los costos de la agencia se informan por adelantado. Las cuotas de asociaciones y MLS son independientes y se pagan a través de las asociaciones; varían según las membresías y servicios. Los agentes pagan su marketing y marca, como tarjetas, identificaciones y camisetas, con recursos de proveedores disponibles. Elige los MLS y servicios opcionales que se adapten a tu negocio."
+    ],
+    "image": "/assets/facts/question-10.jpg"
   },
   {
-    en: ['Which MLS systems does The Olea Group offer access to?', 'The brokerage offers access to Stellar MLS, Miami REALTORS, and Florida Gulf Coast MLS. Discuss the memberships, eligibility, and any applicable third-party dues needed for the markets you plan to serve. Brokerage access should not be read as a promise that every outside membership cost is included.'],
-    es: ['¿A qué sistemas MLS ofrece acceso The Olea Group?', 'La agencia ofrece acceso a Stellar MLS, Miami REALTORS y Florida Gulf Coast MLS. Consulta las membresías, requisitos y posibles cuotas de terceros para los mercados donde deseas trabajar. El acceso de la agencia no implica que estén incluidos todos los costos de membresías externas.'],
+    "en": [
+      "Is a transaction coordinator team available?",
+      "The brokerage is affiliated with a bilingual transaction coordinator team that offers a low fee per transaction. Our resource library and checklists help you organize documents and next steps."
+    ],
+    "es": [
+      "¿Hay un equipo de coordinadores de transacciones disponible?",
+      "La agencia está afiliada a un equipo bilingüe de coordinadores de transacciones que ofrece una tarifa baja por transacción. Nuestra biblioteca de recursos y listas de verificación ayudan a organizar documentos y próximos pasos."
+    ]
   },
   {
-    en: ['How can agents request exposure for listings and wins?', 'When requested, the brokerage offers complimentary exposure for agent listings and wins across its platforms on a rotating basis. Agents can use the office content room to create their own content and remain responsible for their business marketing.'],
-    es: ['¿Cómo pueden los agentes solicitar exposición para sus listados y logros?', 'A solicitud del agente, la agencia ofrece exposición de cortesía para listados y logros en sus plataformas, por turnos. Los agentes pueden usar la sala de contenido para crear sus publicaciones y siguen siendo responsables del marketing de su negocio.'],
+    "en": [
+      "How can I switch brokerages privately?",
+      "Start with a confidential conversation with the Managing Broker. Discuss your current agreement, active listings, and pending transactions so your transition can be planned around your situation."
+    ],
+    "es": [
+      "¿Cómo puedo cambiar de agencia de forma privada?",
+      "Empieza con una conversación confidencial con la Broker Administradora. Habla sobre tu acuerdo actual, listados y transacciones pendientes para planificar la transición según tu situación."
+    ]
   },
   {
-    en: ['Which Florida communities does The Olea Group serve?', 'The Olea Group is based in Cape Coral and serves an extensive Florida area: Lee County, Hendry County including LaBelle, Broward and Miami-Dade counties, Sarasota County including North Port, and Charlotte County including Punta Gorda. A confidential recruiting conversation can help you discuss how your local business fits the brokerage’s independent-agent model.'],
-    es: ['¿Qué comunidades de Florida atiende The Olea Group?', 'The Olea Group tiene su sede en Cape Coral y atiende una amplia zona de Florida: el condado de Lee, el condado de Hendry incluyendo LaBelle, los condados de Broward y Miami-Dade, el condado de Sarasota incluyendo North Port y el condado de Charlotte incluyendo Punta Gorda. Una conversación confidencial puede ayudarte a evaluar cómo encaja tu negocio local en el modelo de agentes independientes.'],
+    "en": [
+      "Is The Olea Group bilingual?",
+      "Yes. The Managing Broker speaks English and Spanish, and most Olea agents speak both languages. You can choose English or Spanish agent groups for collaboration and support."
+    ],
+    "es": [
+      "¿The Olea Group es bilingüe?",
+      "Sí. La Broker Administradora habla inglés y español, y la mayoría de los agentes también hablan ambos idiomas. Puedes elegir grupos de agentes en inglés o español para colaborar y recibir apoyo."
+    ]
   },
   {
-    en: ['Can my clients use The Olea Group moving truck?', 'Agents can reserve the brokerage’s moving truck for clients at no additional charge, subject to scheduling and availability. Confirm the reservation and use requirements with the brokerage before promising the truck for a specific moving date.'],
-    es: ['¿Mis clientes pueden usar el camión de mudanzas de The Olea Group?', 'Los agentes pueden reservar el camión de la agencia para sus clientes sin cargo adicional, sujeto a horarios y disponibilidad. Confirma la reserva y los requisitos de uso con la agencia antes de prometerlo para una fecha específica.'],
-  },
+    "en": [
+      "Can my clients use the moving truck?",
+      "Agents can reserve the brokerage’s moving truck for clients at no additional charge, subject to scheduling and availability."
+    ],
+    "es": [
+      "¿Mis clientes pueden usar el camión de mudanzas?",
+      "Los agentes pueden reservar el camión de la agencia para clientes sin cargo adicional, sujeto a horarios y disponibilidad."
+    ]
+  }
 ];
 
 export const faqGroups = [
-  { id: 'money', label: { en: 'Money & terms', es: 'Dinero y condiciones' }, indexes: [0, 1, 6] },
-  { id: 'support', label: { en: 'Joining & support', es: 'Ingreso y apoyo' }, indexes: [2, 3, 4, 7, 8, 11] },
-  { id: 'reach', label: { en: 'Office & reach', es: 'Oficina y alcance' }, indexes: [5, 9, 10, 12, 13] },
+  { id: 'money', label: { en: 'Money & terms', es: 'Dinero y condiciones' }, indexes: [0, 1, 2, 9] },
+  { id: 'support', label: { en: 'Joining & support', es: 'Ingreso y apoyo' }, indexes: [3, 5, 6, 7, 10, 11] },
+  { id: 'reach', label: { en: 'Tools & markets', es: 'Herramientas y mercados' }, indexes: [4, 8, 12, 13] },
 ];
 
 export function faqSchema(language = 'en') {

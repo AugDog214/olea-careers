@@ -9,7 +9,8 @@ const renderFaq = () => {
   const panels = faqGroups.map((group) => {
     const items = group.indexes.map((entryIndex) => {
       const entry = faqEntries[entryIndex];
-      return `<details class="faq-item"><summary data-i18n="faq.q${entryIndex + 1}">${escapeHtml(entry.en[0])}</summary><p data-i18n="faq.a${entryIndex + 1}">${escapeHtml(entry.en[1])}</p></details>`;
+      const image = entry.image ? `<a class="faq-fact-image" href="${entry.image}" target="_blank" rel="noopener"><img src="${entry.image}" alt="${escapeHtml(entry.en[0])} — English fact sheet" loading="lazy" decoding="async" /><span data-i18n="facts.open">Open full-size English fact sheet ↗</span></a>` : '';
+      return `<details class="faq-item"><summary data-i18n="faq.q${entryIndex + 1}">${escapeHtml(entry.en[0])}</summary><p data-i18n="faq.a${entryIndex + 1}">${escapeHtml(entry.en[1])}</p>${image}</details>`;
     }).join('');
     return `<section class="faq-panel" id="faq-panel-${group.id}" role="tabpanel" aria-labelledby="faq-tab-${group.id}" data-faq-panel="${group.id}"><h3 class="faq-group-title" data-i18n="faq.group.${group.id}">${escapeHtml(group.label.en)}</h3><div class="faq-panel-grid">${items}</div></section>`;
   }).join('');
