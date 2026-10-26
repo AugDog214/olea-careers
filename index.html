@@ -611,26 +611,26 @@
           <h2 class="display section-title" data-i18n="contact.title">A confidential conversation. That's it.</h2>
           <p class="contact-sub" data-i18n="contact.sub">No recruiting script, no pressure. Bring your numbers, ask anything, and decide on your own timeline. Every conversation starts privately.</p>
 
-          <form class="lead-form" id="lead-form" novalidate>
+          <form class="lead-form" id="lead-form" method="post" novalidate>
             <div class="form-field">
               <label for="f-name" data-i18n="form.name">Name</label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required />
+              <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required />
             </div>
             <div class="form-field">
               <label for="f-phone" data-i18n="form.phone">Phone</label>
-              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" required />
             </div>
             <div class="form-field">
               <label for="f-email" data-i18n="form.email">Email</label>
-              <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required />
+              <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="160" required />
             </div>
             <div class="form-field">
               <label for="f-brokerage" data-i18n="form.brokerage">Current brokerage (optional)</label>
-              <input id="f-brokerage" name="currentBrokerage" type="text" autocomplete="organization" />
+              <input id="f-brokerage" name="currentBrokerage" type="text" autocomplete="organization" maxlength="160" />
             </div>
             <div class="form-field form-field-full">
               <label for="f-reason" data-i18n="form.reason">What's the #1 reason you're considering a move?</label>
-              <textarea id="f-reason" name="reason" rows="3"></textarea>
+              <textarea id="f-reason" name="reason" rows="3" maxlength="2000"></textarea>
             </div>
             <button class="btn-cta form-submit" type="submit" data-i18n="form.submit">Schedule my confidential chat</button>
             <p class="form-micro" data-i18n="form.micro">100% confidential. No pressure, no obligation.</p>
