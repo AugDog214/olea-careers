@@ -77,7 +77,8 @@ test('valid recruiting inquiry is saved, emailed, and confirmed', () => {
   assert.deepEqual(h.statuses, ['Emailed']);
   assert(result.html.includes('"status":"emailed"'));
   assert(result.html.includes(p.requestId));
-  assert(result.html.includes('https://careers.myoleagroup.com'));
+  const targetArgument = result.html.match(/,("[^"]+")\);<\/script>$/)?.[1];
+  assert.equal(JSON.parse(targetArgument), 'https://careers.myoleagroup.com');
   assert.equal(h.isLocked(), false);
 });
 
