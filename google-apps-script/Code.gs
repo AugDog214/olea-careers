@@ -80,34 +80,42 @@ function doPost(event) {
       sheet.getRange(row, 2).setValue('Emailed');
       cache.put(duplicateKey, '1', CONFIG.duplicateWindowSeconds);
     } catch (error) {
-      sheet.getRange(row, 2).setValue(`Saved; email failed: ${clean_(error.message, 180)}`);
+      sheet.getRange(row, 2).setValue('Saved; email failed');
       throw error;
     }
 
     return resultPage_(requestId, true, 'emailed');
   } catch (error) {
-    console.error(error && error.stack ? error.stack : error);
+    // Provider exceptions may include applicant data. Keep logs categorical.
+    console.error('Olea lead delivery failed.');
     return resultPage_(requestId, false, 'delivery_failed');
   }
 }
 
 function parseLead_(event) {
+  // Bound processing and reject ambiguous fields; browser validation is only UX.
+  const contentLength = Number(event && event.contentLength || 0);
+  const contents = event && event.postData && event.postData.contents || '';
+  if (contentLength > 65536 || contents.length > 65536) throw new Error('Submission is too large.');
+  const values = event && event.parameters || {};
+  if (Object.keys(values).some(key => values[key].length > 1)) throw new Error('Repeated fields are not accepted.');
   const params = (event && event.parameter) || {};
   return {
-    requestId: clean_(params.requestId, 80),
-    name: clean_(params.name, 100),
-    phone: clean_(params.phone, 40),
-    email: clean_(params.email, 160).toLowerCase(),
-    currentBrokerage: clean_(params.currentBrokerage, 160),
-    reason: clean_(params.reason, 2000),
-    source: clean_(params.source, 80) || 'Agent Recruiting',
-    utm_source: clean_(params.utm_source, 160),
-    utm_campaign: clean_(params.utm_campaign, 160),
-    utm_content: clean_(params.utm_content, 160),
-    pageUrl: clean_(params.pageUrl, 500),
-    submittedAt: clean_(params.submittedAt, 60),
+    requestId: field_(params.requestId, 80),
+    name: field_(params.name, 100),
+    phone: field_(params.phone, 40),
+    email: field_(params.email, 160).toLowerCase(),
+    currentBrokerage: field_(params.currentBrokerage, 160),
+    reason: field_(params.reason, 2000),
+    source: field_(params.source, 80) || 'Agent Recruiting',
+    utm_source: field_(params.utm_source, 160),
+    utm_campaign: field_(params.utm_campaign, 160),
+    utm_content: field_(params.utm_content, 160),
+    // Also minimize direct submissions that bypass the browser's payload builder.
+    pageUrl: field_(params.pageUrl, 500).split(/[?#]/, 1)[0],
+    submittedAt: field_(params.submittedAt, 60),
     formStartedAt: Number(params.formStartedAt || 0),
-    companyFax: clean_(params.companyFax, 300),
+    companyFax: field_(params.companyFax, 300),
   };
 }
 
@@ -248,6 +256,12 @@ function emailRow_(label, value) {
 
 function clean_(value, maxLength) {
   return String(value == null ? '' : value).trim().replace(/\u0000/g, '').slice(0, maxLength);
+}
+
+function field_(value, maxLength) {
+  const text = String(value == null ? '' : value).trim().replace(/\u0000/g, '');
+  if (text.length > maxLength) throw new Error('Field is too long.');
+  return text;
 }
 
 function html_(value) {

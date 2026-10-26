@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 import { faqEntries, faqGroups, faqSchema } from './src/js/faq-content.js';
+import { securityMeta } from './scripts/security-policy.mjs';
 
 const escapeHtml = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
@@ -20,7 +21,7 @@ const renderFaq = () => {
 // Base path comes from the workflow: '/olea-careers/' while serving from
 // augdog214.github.io, '/' once careers.myoleagroup.com DNS is live.
 export default defineConfig({
-  plugins: [{
+  plugins: [securityMeta(), {
     name: 'olea-static-faq',
     transformIndexHtml(html) {
       if (!html.includes('faq-generated:start')) return html;

@@ -28,10 +28,12 @@ import { currentLang } from './i18n.js';
 // in-page navigation and the language toggle.
 const landingParams = new URLSearchParams(window.location.search);
 const utm = {
-  utm_source: landingParams.get('utm_source') || '',
-  utm_campaign: landingParams.get('utm_campaign') || '',
-  utm_content: landingParams.get('utm_content') || '',
+  utm_source: (landingParams.get('utm_source') || '').slice(0, 160),
+  utm_campaign: (landingParams.get('utm_campaign') || '').slice(0, 160),
+  utm_content: (landingParams.get('utm_content') || '').slice(0, 160),
 };
+
+const fieldLimits = { name: 100, phone: 40, email: 160, currentBrokerage: 160, reason: 2000 };
 
 const copy = {
   invalid: {
@@ -146,7 +148,8 @@ export function initForm() {
 
     const data = Object.fromEntries(new FormData(form).entries());
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '');
-    if ((data.name || '').trim().length < 2 || (data.phone || '').replace(/\D/g, '').length < 7 || !emailOk) {
+    const tooLong = Object.entries(fieldLimits).some(([name, limit]) => (data[name] || '').trim().length > limit);
+    if (tooLong || (data.name || '').trim().length < 2 || (data.phone || '').replace(/\D/g, '').length < 7 || !emailOk) {
       status.textContent = copy.invalid[lang];
       status.dataset.state = 'invalid';
       return;
@@ -161,7 +164,8 @@ export function initForm() {
       reason: (data.reason || '').trim(),
       source: 'Agent Recruiting',
       ...utm,
-      pageUrl: window.location.href,
+      // Keep attribution in the explicit UTM fields; never retain other query/hash data.
+      pageUrl: window.location.origin + window.location.pathname,
       submittedAt: new Date().toISOString(),
       formStartedAt,
       companyFax: honeypot.value,
